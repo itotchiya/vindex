@@ -4,7 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 
 // Demo articles data for static paths
-const articles = {
+const articlesData = {
   "jurisprudence-photovoltaique-2026": {
     title:
       "Jurisprudence photovoltaïque : les apports de la Cour de cassation en 2025",
@@ -58,7 +58,7 @@ const articles = {
     `,
   },
   "delais-magendie-vigilance": {
-    title: "Délais Magendie : points de vigilance pour 2026",
+    title: "Délais Magendie : points de vigilance for 2026",
     date: "2 janvier 2026",
     category: "Procédure d'appel",
     content: `
@@ -109,13 +109,16 @@ const articles = {
 };
 
 export function getStaticPaths() {
-  return Object.keys(articles).map((slug) => ({
-    params: { slug },
-  }));
+  return [
+    { params: { slug: "jurisprudence-photovoltaique-2026" } },
+    { params: { slug: "procedure-participative-appel" } },
+    { params: { slug: "delais-magendie-vigilance" } },
+    { params: { slug: "credit-affecte-deblocage-fonds" } },
+  ];
 }
 
 const { slug } = Astro.params;
-const article = articles[slug as keyof typeof articles];
+const article = articlesData[slug as keyof typeof articlesData];
 
 if (!article) {
   return Astro.redirect("/actualites");
