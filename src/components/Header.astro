@@ -242,20 +242,29 @@ import Button from "./ui-kit/Button.astro";
   const divider = document.querySelector(".vertical-divider");
 
   if (header && progressiveBlur) {
-    // Switch to light theme when CabinetPreview enters
-    ScrollTrigger.create({
-      trigger: ".cabinet-preview",
-      start: "top 100px",
-      onEnter: () => header.setAttribute("data-theme", "light"),
-      onLeaveBack: () => header.setAttribute("data-theme", "dark"),
+    // Centralized theme switching based on data-header-theme attribute
+    const themeSections = document.querySelectorAll("[data-header-theme]");
+
+    themeSections.forEach((section) => {
+      const theme = section.getAttribute("data-header-theme");
+      if (!theme) return;
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 100px",
+        onEnter: () => header.setAttribute("data-theme", theme as string),
+        onEnterBack: () => header.setAttribute("data-theme", theme as string),
+        // Important: refresh when things change
+        invalidateOnRefresh: true,
+      });
     });
 
-    // Switch to dark theme when TargetAudience enters
-    ScrollTrigger.create({
-      trigger: ".target-audience",
-      start: "top 100px",
-      onEnter: () => header.setAttribute("data-theme", "dark"),
-      onLeaveBack: () => header.setAttribute("data-theme", "light"),
+    // Manual refresh after a short delay to ensure all components (especially pinned ones)
+    // have established their scroll positions correctly
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 500);
     });
 
     gsap.to(progressiveBlur, {
