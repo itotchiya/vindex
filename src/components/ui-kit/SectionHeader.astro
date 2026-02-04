@@ -1,0 +1,106 @@
+---
+interface Props {
+  subtitle?: string;
+  title: string;
+  intro?: string;
+  theme?: "light" | "dark";
+  align?: "left" | "center";
+  class?: string;
+}
+
+const {
+  subtitle,
+  title,
+  intro,
+  theme = "light",
+  align = "left",
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={["section-header", theme, align, className]}>
+  {subtitle && <span class="subtitle">{subtitle}</span>}
+  <h2 class="title">{title}</h2>
+  {intro && <p class="intro">{intro}</p>}
+</div>
+
+<style>
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  /* Alignment */
+  .section-header.left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .section-header.center {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Theme: Light (Dark text on light bg) */
+  .section-header.light .subtitle {
+    color: var(--color-primary);
+  }
+  .section-header.light .title {
+    color: #1a1c20;
+  }
+  .section-header.light .intro {
+    color: rgba(26, 28, 32, 0.7);
+  }
+
+  /* Theme: Dark (Light text on dark bg) */
+  .section-header.dark .subtitle {
+    color: var(--color-primary);
+  }
+  .section-header.dark .title {
+    color: #ffffff;
+  }
+  .section-header.dark .intro {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Typography */
+  .subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .title {
+    font-family: var(--font-sans);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .intro {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .section-header {
+      align-items: center !important;
+      text-align: center !important;
+    }
+
+    .intro {
+      max-width: 100%;
+    }
+  }
+</style>

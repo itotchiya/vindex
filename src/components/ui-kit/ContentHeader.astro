@@ -1,0 +1,82 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  titleSecondLine?: string;
+  description: string | string[];
+  class?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  titleSecondLine,
+  description,
+  class: className = "",
+} = Astro.props;
+
+// Convert description to array if it's a single string
+const descriptionArray = Array.isArray(description)
+  ? description
+  : [description];
+---
+
+<div class={`content-header ${className}`}>
+  <span class="eyebrow">{eyebrow}</span>
+
+  <h2 class="headline">
+    <span class="line">{title}</span>
+    {titleSecondLine && <span class="line serif">{titleSecondLine}</span>}
+  </h2>
+
+  {
+    descriptionArray.map((paragraph) => (
+      <p class="description" set:html={paragraph} />
+    ))
+  }
+</div>
+
+<style>
+  .content-header {
+    max-width: 560px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+  }
+
+  .headline {
+    font-family: var(--font-sans);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: var(--color-text-main);
+    letter-spacing: -0.02em;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .line.serif {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(var(--color-text-main-rgb), 0.8);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .description:last-of-type {
+    margin-bottom: 0;
+  }
+</style>

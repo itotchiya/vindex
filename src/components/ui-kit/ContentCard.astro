@@ -1,0 +1,191 @@
+---
+import { ArrowRight } from "lucide-astro";
+
+interface Props {
+  label: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+  keywords?: string[];
+  href: string;
+  linkText: string;
+  class?: string;
+}
+
+const {
+  label,
+  title,
+  subtitle,
+  description,
+  keywords = [],
+  href,
+  linkText,
+  class: className = "",
+} = Astro.props;
+---
+
+<article class:list={["content-card", className]}>
+  <div class="card-header">
+    <span class="label">{label}</span>
+    <div class="accent-line"></div>
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">{title}</h3>
+    {subtitle && <p class="subtitle">{subtitle}</p>}
+    <p class="body1">{description}</p>
+    {
+      keywords.length > 0 && (
+        <ul class="keywords">
+          {keywords.map((keyword) => (
+            <li>{keyword}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+  <div class="card-action">
+    <a href={href} class="link-arrow">
+      {linkText}
+      <ArrowRight width={16} height={16} />
+    </a>
+  </div>
+</article>
+
+<style>
+  .content-card {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    border-left: 1px solid rgba(var(--color-primary-rgb), 0.2);
+    background-color: #f7f9f8;
+    transition:
+      background-color 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .content-card:hover {
+    border-left-color: var(--color-primary);
+    background-color: #f3fcf8;
+    transform: translateY(-4px);
+  }
+
+  .card-header {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(var(--color-text-main-rgb), 0.6);
+  }
+
+  .accent-line {
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-primary);
+    transform-origin: left;
+    transition: width 0.3s ease;
+  }
+
+  .content-card:hover .accent-line {
+    width: 48px;
+  }
+
+  .card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .card-title {
+    font-family: var(--font-sans);
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-text-main);
+  }
+
+  .subtitle {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: rgba(var(--color-text-main-rgb), 0.8);
+    margin-top: -8px;
+  }
+
+  .body1 {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.8);
+  }
+
+  .keywords {
+    list-style: none;
+    padding: 0;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .keywords li {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: rgba(var(--color-text-main-rgb), 0.6);
+    position: relative;
+    padding-left: 12px;
+  }
+
+  .keywords li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+  }
+
+  .card-action {
+    margin-top: auto;
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .link-arrow svg {
+    transition: transform 0.3s ease;
+  }
+
+  .content-card:hover .link-arrow {
+    color: var(--color-primary);
+  }
+
+  .content-card:hover .link-arrow svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 1024px) {
+    .content-card {
+      padding: 32px;
+    }
+  }
+</style>

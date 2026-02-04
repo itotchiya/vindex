@@ -1,0 +1,117 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout title="Domaines d'activité | VINDEX – Avocats">
+  <Header />
+
+  <main class="page-domaines">
+    <!-- Hero Section -->
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="text-h1">Domaines d'activité</h1>
+        <p class="body1 subtitle">
+          Une expertise ciblée au service de vos droits.
+        </p>
+      </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="section-intro">
+      <div class="container">
+        <p class="body1">
+          Le cabinet VINDEX concentre son activité sur trois domaines
+          d'expertise complémentaires, permettant d'offrir à ses clients une
+          défense technique et rigoureuse, au plus près de leurs intérêts.
+        </p>
+      </div>
+    </section>
+
+    <!-- Domaines List -->
+    <section class="section-domaines-list">
+      <div class="container">
+        <div class="domaines-grid">
+          <!-- Contentieux photovoltaïque -->
+          <article class="domaine-card">
+            <div class="card-header">
+              <span class="label">Défense des consommateurs</span>
+            </div>
+            <div class="card-content">
+              <h2 class="text-h3">Contentieux des panneaux photovoltaïques</h2>
+              <p class="body1">
+                Le cabinet intervient aux côtés des consommateurs confrontés à
+                des opérations de vente de panneaux photovoltaïques irrégulières
+                et des crédits affectés liés à ces installations.
+              </p>
+              <ul class="keywords">
+                <li>Vente hors établissement</li>
+                <li>Crédit affecté</li>
+                <li>Nullité des contrats</li>
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href="/domaines/contentieux-photovoltaique" class="link-arrow">
+                En savoir plus
+              </a>
+            </div>
+          </article>
+
+          <!-- Postulation en appel -->
+          <article class="domaine-card">
+            <div class="card-header">
+              <span class="label">Procédure d'appel</span>
+            </div>
+            <div class="card-content">
+              <h2 class="text-h3">Postulation en appel</h2>
+              <p class="body2">Cour d'appel de Douai</p>
+              <p class="body1">
+                Le cabinet propose aux avocats hors ressort une activité de
+                postulation dédiée, assurant la gestion procédurale de leurs
+                dossiers en appel avec rigueur et réactivité.
+              </p>
+              <ul class="keywords">
+                <li>Représentation procédurale</li>
+                <li>Gestion des délais Magendie</li>
+                <li>Suivi des audiences</li>
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href="/domaines/postulation-appel" class="link-arrow">
+                En savoir plus
+              </a>
+            </div>
+          </article>
+
+          <!-- Procédure participative -->
+          <article class="domaine-card">
+            <div class="card-header">
+              <span class="label">Outil procédural</span>
+            </div>
+            <div class="card-content">
+              <h2 class="text-h3">Convention de procédure participative</h2>
+              <p class="body1">
+                La convention de procédure participative est un outil
+                stratégique permettant de maîtriser le temps judiciaire et de
+                sécuriser le cadre procédural des litiges.
+              </p>
+              <ul class="keywords">
+                <li>Interruption des délais</li>
+                <li>Acte d'avocat</li>
+                <li>Mise en état conventionnelle</li>
+              </ul>
+            </div>
+            <div class="card-action">
+              <a href="/domaines/procedure-participative" class="link-arrow">
+                En savoir plus
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

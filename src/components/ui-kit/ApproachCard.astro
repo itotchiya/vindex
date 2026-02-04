@@ -1,0 +1,137 @@
+---
+interface Props {
+  number: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt?: string;
+}
+
+const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
+---
+
+<div class="approach-card">
+  <!-- Background container (height determined by text only) -->
+  <div class="card-background">
+    <!-- Text Content -->
+    <div class="text-content">
+      <span class="approach-number">{number}</span>
+      <h3 class="approach-title">{title}</h3>
+      <p class="approach-description">{description}</p>
+    </div>
+  </div>
+
+  <!-- Image/Illustration (positioned to not affect background height) -->
+  <div class="image-content">
+    <img src={imageSrc} alt={imageAlt} class="approach-image" />
+  </div>
+</div>
+
+<style>
+  .approach-card {
+    position: relative;
+    width: 100%;
+    max-width: 1392px;
+    margin: 0 auto;
+  }
+
+  /* Background container - height determined by text content */
+  .card-background {
+    background-color: #f7f9f8;
+    padding: 50px 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Text Content */
+  .text-content {
+    flex: 0 0 50%;
+    padding-right: 60px;
+  }
+
+  .approach-number {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .approach-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--color-text-main);
+    margin-bottom: 20px;
+  }
+
+  .approach-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.8);
+    font-weight: 300;
+  }
+
+  /* Image/Illustration - positioned absolutely to not affect card height */
+  .image-content {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    max-width: 550px;
+  }
+
+  .approach-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background: transparent;
+  }
+
+  @media (max-width: 1024px) {
+    .card-background {
+      padding: 40px;
+    }
+
+    .approach-card {
+      padding-bottom: 300px; /* Space for image on mobile */
+    }
+
+    .text-content {
+      flex: 1;
+      width: 100%;
+      padding-right: 0;
+    }
+
+    .image-content {
+      position: absolute;
+      right: 50%;
+      top: auto;
+      bottom: 0;
+      transform: translateX(50%);
+      width: 80%;
+      max-width: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .card-background {
+      padding: 32px 24px;
+    }
+
+    .approach-card {
+      padding-bottom: 250px;
+    }
+
+    .image-content {
+      width: 90%;
+    }
+  }
+</style>

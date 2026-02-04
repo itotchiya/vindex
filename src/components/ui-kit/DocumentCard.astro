@@ -1,0 +1,159 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  text: string;
+  meta: string[];
+  class?: string;
+}
+
+const { label, title, text, meta, class: className } = Astro.props;
+---
+
+<article class:list={["card-document", className]}>
+  <div class="card-content">
+    <span class="card-label">{label}</span>
+    <h3 class="card-title">{title}</h3>
+    <p class="card-text">
+      {text}
+    </p>
+
+    {
+      meta && meta.length > 0 && (
+        <ul class="card-meta-list">
+          {meta.map((item) => (
+            <li class="meta-item">{item}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+
+  <img src="/stamp.png" alt="VINDEX Stamp" class="stamp-image" />
+</article>
+
+<style>
+  .card-document {
+    position: absolute;
+    width: 100%;
+    aspect-ratio: 1 / 1.414; /* A4 Ratio */
+    background-color: #ffffff;
+    padding: 64px 80px; /* More horizontal padding for the print look */
+    border: 1px solid rgba(0, 0, 0, 0.08); /* Keep subtle border */
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    height: 100%;
+    gap: 2rem; /* Consistent spacing */
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-label {
+    font-family: var(--font-sans);
+    font-weight: 500; /* Reduced from 600, not bold but legible */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    text-align: center; /* Centered tagline */
+    margin-bottom: 2rem; /* Space before title */
+    display: block;
+    width: 100%;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 2.75rem; /* Large and elegant */
+    line-height: 1.1;
+    color: var(--color-text-main);
+    text-align: left;
+  }
+
+  .card-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    text-align: left;
+  }
+
+  .card-meta-list {
+    margin-top: 2rem; /* Space from text, but part of the flow */
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .meta-item {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .meta-item::before {
+    content: ""; /* Custom dot */
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    display: block;
+    opacity: 0.6;
+  }
+
+  .stamp-image {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 120px; /* Bigger stamp */
+    height: auto;
+    opacity: 0.9;
+    mix-blend-mode: multiply;
+    transform: rotate(-12deg);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .card-document {
+      padding: 32px 32px; /* Reduced padding for mobile */
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 2rem; /* Smaller title on mobile */
+    }
+
+    .card-text {
+      font-size: 1rem; /* Smaller body text */
+      line-height: 1.5;
+    }
+
+    .card-meta-list {
+      margin-top: 1.5rem;
+      gap: 8px;
+    }
+
+    .stamp-image {
+      width: 80px; /* Smaller stamp */
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+</style>

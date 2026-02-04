@@ -1,0 +1,54 @@
+---
+import ContentHeader from "./ui-kit/ContentHeader.astro";
+---
+
+<section class="procedural-rigor">
+  <div class="container">
+    <ContentHeader
+      eyebrow="Notre posture"
+      title="La rigueur procédurale"
+      titleSecondLine="comme socle d'intervention"
+      description={[
+        "La pratique du cabinet VINDEX est fondée sur une maîtrise exigeante de la procédure civile et de la procédure d'appel.",
+        "Chaque intervention repose sur une analyse rigoureuse des textes applicables, de la jurisprudence récente et des contraintes procédurales propres à chaque dossier, dans un objectif constant de sécurité juridique.",
+      ]}
+    />
+
+    <p class="micro-line">
+      Une attention particulière est portée au respect des délais, à la
+      conformité des actes et à la stratégie procédurale globale.
+    </p>
+  </div>
+</section>
+
+<style>
+  .procedural-rigor {
+    padding: 96px 0;
+    background-color: #fafafa;
+  }
+
+  .container {
+    max-width: 1392px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .micro-line {
+    margin-top: 32px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.6);
+    font-style: italic;
+    max-width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    .procedural-rigor {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="Contact | VINDEX – Avocats">
+  <Header />
+
+  <main class="page-contact">
+    <!-- Hero Section -->
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="text-h1">Contact</h1>
+        <p class="body1 subtitle">
+          Le cabinet reçoit exclusivement sur rendez-vous.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Info & Form -->
+    <section class="section-contact">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <h2 class="text-h2">Coordonnées</h2>
+
+            <div class="info-block">
+              <h3 class="text-h3">Adresse</h3>
+              <address class="body1">
+                VINDEX – Avocats<br />
+                123 Rue de la Justice<br />
+                59500 Douai
+              </address>
+            </div>
+
+            <div class="info-block">
+              <h3 class="text-h3">Téléphone</h3>
+              <p class="body1">
+                <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+              </p>
+            </div>
+
+            <div class="info-block">
+              <h3 class="text-h3">Email</h3>
+              <p class="body1">
+                <a href="mailto:contact@vindex-avocats.fr"
+                  >contact@vindex-avocats.fr</a
+                >
+              </p>
+            </div>
+
+            <div class="info-block">
+              <h3 class="text-h3">Horaires</h3>
+              <p class="body1">
+                Du lundi au vendredi<br />
+                9h00 – 12h30 / 14h00 – 18h00
+              </p>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-wrapper">
+            <h2 class="text-h2">Formulaire de contact</h2>
+
+            <form class="contact-form" action="#" method="post">
+              <div class="form-group">
+                <label for="nom">Nom *</label>
+                <input type="text" id="nom" name="nom" required />
+              </div>
+
+              <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" name="prenom" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="telephone">Téléphone</label>
+                <input type="tel" id="telephone" name="telephone" />
+              </div>
+
+              <div class="form-group form-group-full">
+                <label for="objet">Objet *</label>
+                <select id="objet" name="objet" required>
+                  <option value="">Sélectionnez un objet</option>
+                  <option value="contentieux-photovoltaique"
+                    >Contentieux photovoltaïque</option
+                  >
+                  <option value="postulation">Postulation en appel</option>
+                  <option value="procedure-participative"
+                    >Procédure participative</option
+                  >
+                  <option value="autre">Autre demande</option>
+                </select>
+              </div>
+
+              <div class="form-group form-group-full">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="6" required
+                ></textarea>
+              </div>
+
+              <div class="form-group form-group-full">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="rgpd" required />
+                  <span class="body2">
+                    J'accepte que mes données soient traitées conformément à la
+                    politique de confidentialité du cabinet. *
+                  </span>
+                </label>
+              </div>
+
+              <div class="form-group form-group-full">
+                <button type="submit" class="submit-button">
+                  Envoyer le message
+                </button>
+              </div>
+            </form>
+
+            <div class="rgpd-notice">
+              <p class="caption">
+                Les informations recueillies font l'objet d'un traitement
+                informatique destiné à répondre à votre demande. Conformément au
+                RGPD, vous disposez d'un droit d'accès, de rectification et de
+                suppression de vos données. Pour exercer ces droits,
+                contactez-nous à l'adresse :
+                <a href="mailto:contact@vindex-avocats.fr"
+                  >contact@vindex-avocats.fr</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

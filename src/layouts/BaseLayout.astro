@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+
+const { title = "VINDEX – Avocats" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <script>
+      import Lenis from "lenis";
+      import gsap from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Initialize Lenis
+      const lenis = new Lenis({
+        lerp: 0.1, // Smoothness factor (lower is smoother/slower)
+        duration: 1.2,
+        smoothWheel: true,
+      });
+
+      // Synchronize functionality
+      lenis.on("scroll", ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+
+      gsap.ticker.lagSmoothing(0);
+    </script>
+  </body>
+</html>

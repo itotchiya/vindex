@@ -1,0 +1,213 @@
+---
+import ContentHeader from "./ui-kit/ContentHeader.astro";
+import { ArrowRight } from "lucide-astro";
+
+const audiences = [
+  {
+    label: "Consumers",
+    title: "Défense des consommateurs",
+    description:
+      "Le cabinet accompagne les particuliers confrontés à des opérations contractuelles irrégulières, notamment en matière de panneaux photovoltaïques financés par crédit affecté.",
+  },
+  {
+    label: "Lawyers",
+    title: "Avocats plaidants",
+    description:
+      "Activité dédiée de postulation en appel devant la Cour d'appel de Douai, au service des confrères.",
+  },
+  {
+    label: "Legal professionals",
+    title: "Professionnels du droit",
+    description:
+      "Mise en œuvre de conventions de procédure participative et accompagnement procédural.",
+  },
+];
+---
+
+<section class="target-audience">
+  <div class="container">
+    <div class="left-section">
+      <div class="left-content">
+        <ContentHeader
+          eyebrow="Public cible"
+          title="À qui s'adresse"
+          titleSecondLine="le cabinet VINDEX"
+          description="Le cabinet intervient auprès de trois types de clientèle, avec une approche adaptée à chaque public."
+        />
+
+        <div class="secondary-cta">
+          <a href="/domaines" class="text-link">
+            Découvrir les domaines d'activité
+            <ArrowRight width={16} height={16} />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="audience-grid">
+        {
+          audiences.map((audience) => (
+            <div class="audience-card">
+              <span class="audience-label">{audience.label}</span>
+              <h3 class="audience-title">{audience.title}</h3>
+              <p class="audience-description">{audience.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .target-audience {
+    min-height: 100vh;
+    background-color: #08110f;
+    color: #f5f5f5;
+    position: relative;
+  }
+
+  .container {
+    max-width: 1392px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    min-height: 100vh;
+  }
+
+  .left-section {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .right-section {
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+  }
+
+  /* Override ContentHeader styles for dark theme */
+  .left-section :global(.eyebrow) {
+    color: var(--color-primary);
+  }
+
+  .left-section :global(.headline) {
+    color: #ffffff;
+  }
+
+  .left-section :global(.description) {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .audience-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: 100%;
+  }
+
+  .audience-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .audience-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 500;
+  }
+
+  .audience-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    color: #ffffff;
+  }
+
+  .audience-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+  }
+
+  .secondary-cta {
+    margin-top: 0;
+  }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.2s ease;
+  }
+
+  .text-link:hover {
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    .container {
+      grid-template-columns: 1fr;
+      gap: 60px;
+      min-height: auto;
+      padding: 60px 32px;
+    }
+
+    .left-section {
+      position: relative;
+      height: auto;
+    }
+
+    .right-section {
+      padding: 0;
+    }
+
+    .target-audience {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 60px 24px;
+      gap: 40px;
+    }
+
+    .audience-grid {
+      gap: 40px;
+    }
+
+    .audience-title {
+      font-size: 1.5rem;
+    }
+
+    .audience-description {
+      font-size: 1rem;
+    }
+  }
+</style>

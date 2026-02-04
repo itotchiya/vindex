@@ -1,0 +1,136 @@
+---
+import ContentCard from "./ui-kit/ContentCard.astro";
+import ContentHeader from "./ui-kit/ContentHeader.astro";
+
+const practiceAreas = [
+  {
+    label: "Défense des consommateurs",
+    title: "Contentieux des panneaux photovoltaïques",
+    description:
+      "Une expertise reconnue dans la nullité des contrats de vente et de crédit liés aux installations photovoltaïques.",
+    keywords: ["consentement", "crédit affecté", "jurisprudence protectrice"],
+    href: "/domaines/contentieux-photovoltaique",
+    linkText: "Accéder au contentieux",
+  },
+  {
+    label: "Procédure d'appel",
+    title: "Postulation en appel",
+    subtitle: "Cour d'appel de Douai",
+    description:
+      "Maîtrise rigoureuse des délais et de la procédure Magendie pour sécuriser vos dossiers en appel.",
+    href: "/domaines/postulation-appel",
+    linkText: "Voir la postulation",
+  },
+  {
+    label: "Outil procédural",
+    title: "Convention de procédure participative",
+    description:
+      "Un outil stratégique pour maîtriser le temps judiciaire et sécuriser le cadre procédural.",
+    keywords: [
+      "mise en état",
+      "calendrier sécurisé",
+      "interruption des délais",
+    ],
+    href: "/domaines/procedure-participative",
+    linkText: "Comprendre l'outil",
+  },
+];
+---
+
+<section id="domaines" class="practice-areas">
+  <div class="container">
+    <ContentHeader
+      eyebrow="Nos domaines"
+      title="Expertise"
+      description="Trois domaines d'intervention où nous mettons notre expertise juridique au service de vos intérêts."
+    />
+
+    <div class="cards-grid">
+      {
+        practiceAreas.map((area) => (
+          <ContentCard
+            label={area.label}
+            title={area.title}
+            subtitle={area.subtitle}
+            description={area.description}
+            keywords={area.keywords}
+            href={area.href}
+            linkText={area.linkText}
+            class="card"
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .practice-areas {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    display: flex;
+    align-items: center;
+    padding: 0 0 96px 0;
+    overflow: hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    width: 100%;
+  }
+
+  /* Animation initial state for cards */
+  .cards-grid :global(.card) {
+    opacity: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .cards-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const section = document.querySelector(".practice-areas");
+  const cards = section?.querySelectorAll(".card");
+
+  if (section && cards) {
+    gsap.fromTo(
+      cards,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+          toggleActions: "play none none reverse",
+        },
+      },
+    );
+  }
+</script>

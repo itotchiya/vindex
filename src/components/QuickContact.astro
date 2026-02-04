@@ -1,0 +1,151 @@
+---
+import Button from "./ui-kit/Button.astro";
+---
+
+<section id="contact-rapide" class="quick-contact">
+  <div class="container">
+    <h2 class="section-title">Nous contacter</h2>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <h3 class="label">Téléphone</h3>
+        <p class="value">
+          <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+        </p>
+      </div>
+
+      <div class="contact-item">
+        <h3 class="label">Email</h3>
+        <p class="value">
+          <a href="mailto:contact@vindex-avocats.fr"
+            >contact@vindex-avocats.fr</a
+          >
+        </p>
+      </div>
+
+      <div class="contact-item">
+        <h3 class="label">Adresse</h3>
+        <address class="value">
+          VINDEX – Avocats<br />
+          123 Rue de la Justice<br />
+          59500 Douai
+        </address>
+      </div>
+    </div>
+
+    <div class="notice">
+      <p>Le cabinet reçoit uniquement sur rendez-vous.</p>
+    </div>
+
+    <div class="actions">
+      <Button href="/contact" variant="primary"> Prendre rendez-vous </Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quick-contact {
+    position: relative;
+    padding: 96px 0;
+    background-color: #ffffff;
+    z-index: 10;
+  }
+
+  .container {
+    max-width: 1392px;
+    margin: 0 auto;
+    padding: 0 32px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: var(--font-sans);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--color-text-main);
+    letter-spacing: -0.02em;
+    margin-bottom: 60px;
+  }
+
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+  }
+
+  .contact-item {
+    text-align: center;
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
+  .value {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-main);
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .value a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .value a:hover {
+    color: var(--color-primary);
+  }
+
+  .notice {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    padding: 24px;
+    background-color: #f7f9f8;
+    border-radius: 4px;
+  }
+
+  .notice p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.8);
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 1024px) {
+    .contact-info {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .quick-contact {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .section-title {
+      margin-bottom: 40px;
+    }
+  }
+</style>

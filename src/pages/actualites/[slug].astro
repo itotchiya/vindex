@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+// Demo articles data for static paths
+const articles = {
+  "jurisprudence-photovoltaique-2026": {
+    title:
+      "Jurisprudence photovoltaïque : les apports de la Cour de cassation en 2025",
+    date: "15 janvier 2026",
+    category: "Jurisprudence",
+    content: `
+      <p>L'année 2025 a été marquée par plusieurs arrêts significatifs de la Cour de cassation 
+      en matière de contentieux photovoltaïque. Ces décisions viennent préciser les conditions 
+      de mise en œuvre de la responsabilité des établissements de crédit et les conséquences 
+      de l'annulation des contrats interdépendants.</p>
+      
+      <h2>La faute de la banque dans le déblocage des fonds</h2>
+      <p>La Cour de cassation a rappelé que l'établissement de crédit qui débloque les fonds 
+      avant l'achèvement complet de l'installation et sa mise en service commet une faute 
+      de nature à le priver de son droit à restitution du capital prêté.</p>
+      
+      <h2>L'interdépendance des contrats</h2>
+      <p>La jurisprudence confirme que l'annulation du contrat de vente entraîne de plein 
+      droit l'anéantissement du contrat de crédit affecté, conformément aux dispositions 
+      de l'article L. 312-55 du Code de la consommation.</p>
+      
+      <h2>Les obligations d'information</h2>
+      <p>Les décisions de 2025 ont également renforcé l'exigence de clarté des bons de commande, 
+      sanctionnant les manquements aux obligations d'information précontractuelle par la nullité 
+      du contrat.</p>
+    `,
+  },
+  "procedure-participative-appel": {
+    title:
+      "La convention de procédure participative en appel : un outil sous-exploité",
+    date: "8 janvier 2026",
+    category: "Analyse procédurale",
+    content: `
+      <p>La convention de procédure participative reste un outil méconnu et sous-utilisé 
+      dans le cadre de la procédure d'appel. Pourtant, ses avantages sont nombreux et 
+      permettent de sécuriser efficacement les procédures contentieuses.</p>
+      
+      <h2>Un effet interruptif précieux</h2>
+      <p>L'un des principaux atouts de la convention de procédure participative réside 
+      dans son effet interruptif sur les délais de prescription et de forclusion. 
+      En appel, cet effet permet de suspendre le cours des délais Magendie.</p>
+      
+      <h2>Une mise en état conventionnelle</h2>
+      <p>Les parties peuvent organiser une véritable mise en état conventionnelle, 
+      définissant elles-mêmes le calendrier des échanges et la durée de la négociation.</p>
+      
+      <h2>Vers une généralisation de l'outil ?</h2>
+      <p>Face à l'engorgement des juridictions et à la complexité croissante des litiges, 
+      la convention de procédure participative pourrait connaître un essor significatif 
+      dans les années à venir.</p>
+    `,
+  },
+  "delais-magendie-vigilance": {
+    title: "Délais Magendie : points de vigilance pour 2026",
+    date: "2 janvier 2026",
+    category: "Procédure d'appel",
+    content: `
+      <p>La procédure d'appel est encadrée par des délais stricts, dont le non-respect 
+      est lourdement sanctionné. Rappel des principaux points de vigilance pour 2026.</p>
+      
+      <h2>Les délais de conclusion</h2>
+      <p>L'appelant dispose de trois mois à compter de la déclaration d'appel pour 
+      conclure. L'intimé dispose ensuite de trois mois pour répliquer. Le non-respect 
+      de ces délais est sanctionné par la caducité ou l'irrecevabilité.</p>
+      
+      <h2>La communication des pièces</h2>
+      <p>Les pièces doivent être communiquées simultanément avec les conclusions. 
+      La communication tardive peut entraîner le rejet des pièces et fragiliser 
+      l'ensemble du dossier.</p>
+      
+      <h2>L'importance du RPVA</h2>
+      <p>Tous les actes de procédure doivent être accomplis par voie électronique 
+      via le RPVA. Les dysfonctionnements techniques ne constituent pas une excuse 
+      valable en cas de dépassement des délais.</p>
+    `,
+  },
+  "credit-affecte-deblocage-fonds": {
+    title: "Crédit affecté : la faute de la banque dans le déblocage des fonds",
+    date: "18 décembre 2025",
+    category: "Jurisprudence",
+    content: `
+      <p>L'établissement de crédit qui finance une installation photovoltaïque 
+      est tenu à des obligations de vérification avant de procéder au déblocage 
+      des fonds. Le manquement à ces obligations constitue une faute.</p>
+      
+      <h2>L'obligation de vérification</h2>
+      <p>Avant de débloquer les fonds, la banque doit s'assurer que l'installation 
+      a été intégralement réalisée et mise en service. Elle ne peut se contenter 
+      d'une attestation de livraison signée par le consommateur.</p>
+      
+      <h2>Les conséquences de la faute</h2>
+      <p>Lorsque la faute de la banque est caractérisée, celle-ci est privée de 
+      son droit à restitution du capital prêté. Le consommateur n'est alors tenu 
+      de rembourser que les échéances déjà versées.</p>
+      
+      <h2>La charge de la preuve</h2>
+      <p>Il appartient à l'établissement de crédit de prouver qu'il a procédé 
+      aux vérifications nécessaires avant de débloquer les fonds. À défaut, 
+      sa faute est présumée.</p>
+    `,
+  },
+};
+
+export function getStaticPaths() {
+  return Object.keys(articles).map((slug) => ({
+    params: { slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const article = articles[slug as keyof typeof articles];
+
+if (!article) {
+  return Astro.redirect("/actualites");
+}
+---
+
+<BaseLayout title={`${article.title} | VINDEX – Avocats`}>
+  <Header />
+
+  <main class="page-article">
+    <!-- Article Header -->
+    <section class="article-hero">
+      <div class="container">
+        <div class="article-meta">
+          <span class="article-category">{article.category}</span>
+          <time class="article-date">{article.date}</time>
+        </div>
+        <h1 class="text-h1">{article.title}</h1>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+      <div class="container">
+        <div class="content-wrapper" set:html={article.content} />
+      </div>
+    </section>
+
+    <!-- Back Link -->
+    <section class="article-footer">
+      <div class="container">
+        <a href="/actualites" class="back-link"> ← Retour aux actualités </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

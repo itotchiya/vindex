@@ -1,0 +1,299 @@
+---
+import Button from "./ui-kit/Button.astro";
+---
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="tagline">
+        <span class="icon">▲</span>
+        <span class="text">VINDEX – Expertise Juridique</span>
+      </div>
+
+      <h1 class="text-h1">Défendre les droits.<br />Maîtriser la procédure.</h1>
+
+      <p class="body1 subtitle">
+        Cabinet d'avocats dédié au contentieux photovoltaïque, à la postulation
+        en appel et à la procédure participative. Nous interposons le droit pour
+        protéger vos intérêts.
+      </p>
+
+      <div class="actions">
+        <Button href="/contact" variant="primary" theme="dark"
+          >Prendre rendez-vous</Button
+        >
+        <Button href="/domaines" variant="secondary" theme="dark"
+          >Nos domaines d'intervention</Button
+        >
+      </div>
+    </div>
+
+    <div class="client-logos">
+      <div class="logo-slider">
+        <div class="logo-track">
+          <img
+            src="/Logos/logoipsum-391.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <img
+            src="/Logos/logoipsum-398.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <img
+            src="/Logos/logoipsum-402.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <img
+            src="/Logos/logoipsum-412.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <img
+            src="/Logos/logoipsum-414.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <!-- Duplicated for seamless loop -->
+          <img
+            src="/Logos/logoipsum-391.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <img
+            src="/Logos/logoipsum-398.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <img
+            src="/Logos/logoipsum-402.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <img
+            src="/Logos/logoipsum-412.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+          <img
+            src="/Logos/logoipsum-414.svg"
+            alt="Partner Logo"
+            class="brand-logo"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: sticky; /* Sticky positioning for parallax overlap effect */
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh; /* Ensure full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #08110f;
+    color: #f5f5f5;
+    overflow: hidden;
+    padding: 120px 0 60px;
+    z-index: 0; /* Lower z-index so PracticeAreas slides OVER it */
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
+    background-image: url("/hero-bg.avif");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 1;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .tagline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+  }
+
+  .tagline .icon {
+    font-size: 0.8rem;
+    color: var(--color-primary);
+  }
+
+  .tagline .text {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1;
+    margin: 0;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+  }
+
+  .subtitle {
+    max-width: 60ch;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .client-logos {
+    margin-top: 100px;
+    width: 100%;
+    max-width: 1000px; /* Constrain slider width for better effect */
+    opacity: 0.5;
+    /* Progressive edges mask */
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+  }
+
+  .logo-slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+  }
+
+  .logo-track {
+    display: flex;
+    width: max-content;
+    gap: 80px;
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 40px));
+    } /* -50% shifts half the track, -40px adjusts for gap */
+  }
+
+  .brand-logo {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .brand-logo:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 100px 0 40px;
+    }
+    .actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    .logo-track {
+      gap: 32px;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Entrance animations
+  gsap.from(".hero-content > *", {
+    y: 30,
+    opacity: 0,
+    duration: 1.2,
+    stagger: 0.2,
+    ease: "expo.out",
+    delay: 0.2,
+  });
+
+  gsap.from(".client-logos", {
+    opacity: 0,
+    duration: 1.5,
+    delay: 1,
+    ease: "power2.out",
+  });
+
+  // Parallax Scroll Effect
+  // The hero is sticky, so it stays in view. We animate internal elements to create the "slow scroll" feel.
+  const heroContent = document.querySelector(".hero-container");
+  const heroBg = document.querySelector(".hero-bg");
+
+  if (heroContent && heroBg) {
+    gsap.to(heroContent, {
+      y: -100, // Moves up very slowly (strong parallax)
+      scrollTrigger: {
+        trigger: "body", // Use body to track overall scroll since hero is sticky
+        start: "top top",
+        end: "640vh top", // Animate over the height of the viewport
+        scrub: true,
+      },
+    });
+  }
+</script>

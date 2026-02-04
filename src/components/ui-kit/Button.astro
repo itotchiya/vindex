@@ -1,0 +1,115 @@
+---
+interface Props {
+  href?: string;
+  variant?: "primary" | "secondary" | "outline";
+  theme?: "light" | "dark";
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  href,
+  variant = "primary",
+  theme = "light",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const Element = href ? "a" : "button";
+---
+
+<Element href={href} class:list={["btn", variant, theme, className]} {...rest}>
+  <slot />
+</Element>
+
+<style>
+  /* ==========================================================================
+     BASE STYLES (Sizes & Layout)
+     ========================================================================== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-transform: none;
+  }
+
+  .btn:hover {
+    transform: translateY(-1.6px);
+  }
+
+  /* ==========================================================================
+     THEME: LIGHT (White background sections)
+     ========================================================================== */
+
+  /* Primary - Light */
+  .primary.light {
+    background: var(--color-primary);
+    color: #1a1a2d;
+  }
+  .primary.light:hover {
+    background: #9EDACF;
+  }
+
+  /* Secondary - Light */
+  .secondary.light {
+    background: rgba(26, 26, 45, 0.05);
+    border-color: rgba(26, 26, 45, 0.1);
+    color: #1a1a2d;
+  }
+  .secondary.light:hover {
+    background: rgba(26, 26, 45, 0.1);
+  }
+
+  /* Outline - Light */
+  .outline.light {
+    border-color: rgba(26, 26, 45, 0.2);
+    color: #1a1a2d;
+  }
+  .outline.light:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  /* ==========================================================================
+     THEME: DARK (Hero / Dark sections)
+     ========================================================================== */
+
+  /* Primary - Dark */
+  .primary.dark {
+    background: var(--color-primary);
+    color: #08110f;
+  }
+  .primary.dark:hover {
+    background: #b3e5dc;
+  }
+
+  /* Secondary - Dark */
+  .secondary.dark {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    backdrop-filter: blur(10px);
+  }
+  .secondary.dark:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Outline - Dark */
+  .outline.dark {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+  }
+  .outline.dark:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>

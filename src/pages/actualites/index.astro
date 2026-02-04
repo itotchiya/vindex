@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+// Demo articles data
+const articles = [
+  {
+    slug: "jurisprudence-photovoltaique-2026",
+    title:
+      "Jurisprudence photovoltaïque : les apports de la Cour de cassation en 2025",
+    date: "15 janvier 2026",
+    category: "Jurisprudence",
+    excerpt:
+      "La Cour de cassation a rendu plusieurs arrêts marquants en matière de contentieux photovoltaïque, précisant les conditions de mise en œuvre de la responsabilité des établissements de crédit.",
+  },
+  {
+    slug: "procedure-participative-appel",
+    title:
+      "La convention de procédure participative en appel : un outil sous-exploité",
+    date: "8 janvier 2026",
+    category: "Analyse procédurale",
+    excerpt:
+      "Retour sur les avantages de la convention de procédure participative dans le cadre de la procédure d'appel et son effet interruptif sur les délais Magendie.",
+  },
+  {
+    slug: "delais-magendie-vigilance",
+    title: "Délais Magendie : points de vigilance pour 2026",
+    date: "2 janvier 2026",
+    category: "Procédure d'appel",
+    excerpt:
+      "Rappel des principaux délais applicables en procédure d'appel et des sanctions encourues en cas de non-respect.",
+  },
+  {
+    slug: "credit-affecte-deblocage-fonds",
+    title: "Crédit affecté : la faute de la banque dans le déblocage des fonds",
+    date: "18 décembre 2025",
+    category: "Jurisprudence",
+    excerpt:
+      "Analyse de la jurisprudence récente sur les conditions de mise en œuvre de la responsabilité de l'établissement prêteur en cas de déblocage prématuré des fonds.",
+  },
+];
+---
+
+<BaseLayout title="Actualités | VINDEX – Avocats">
+  <Header />
+
+  <main class="page-actualites">
+    <!-- Hero Section -->
+    <section class="page-hero">
+      <div class="container">
+        <h1 class="text-h1">Actualités</h1>
+        <p class="body1 subtitle">
+          Analyses juridiques, jurisprudence et actualités procédurales.
+        </p>
+      </div>
+    </section>
+
+    <!-- Articles List -->
+    <section class="section-articles">
+      <div class="container">
+        <div class="articles-grid">
+          {
+            articles.map((article) => (
+              <article class="article-card">
+                <div class="article-meta">
+                  <span class="article-category">{article.category}</span>
+                  <time class="article-date">{article.date}</time>
+                </div>
+                <h2 class="text-h3">
+                  <a href={`/actualites/${article.slug}`}>{article.title}</a>
+                </h2>
+                <p class="body1">{article.excerpt}</p>
+                <a href={`/actualites/${article.slug}`} class="read-more">
+                  Lire la suite
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

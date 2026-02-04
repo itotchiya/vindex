@@ -1,0 +1,238 @@
+/* 
+  VINDEX - Global Design System
+  Fonts: General Sans (Headings/UI) & Gambetta (Body/Editorial)
+*/
+
+/* --- FONT FACES --- */
+
+/* Gambetta - Body Serif */
+@font-face {
+  font-family: "Gambetta";
+  src: url("/Fonts/Gambetta_Complete/Fonts/WEB/fonts/Gambetta-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gambetta";
+  src: url("/Fonts/Gambetta_Complete/Fonts/WEB/fonts/Gambetta-Semibold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gambetta";
+  src: url("/Fonts/Gambetta_Complete/Fonts/WEB/fonts/Gambetta-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* General Sans - Headline Sans */
+@font-face {
+  font-family: "General Sans";
+  src: url("/Fonts/GeneralSans_Complete/Fonts/WEB/fonts/GeneralSans-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/Fonts/GeneralSans_Complete/Fonts/WEB/fonts/GeneralSans-Medium.woff2")
+    format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/Fonts/GeneralSans_Complete/Fonts/WEB/fonts/GeneralSans-Semibold.woff2")
+    format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/Fonts/GeneralSans_Complete/Fonts/WEB/fonts/GeneralSans-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- DESIGN TOKENS --- */
+
+:root {
+  /* Fonts */
+  --font-sans: "General Sans", system-ui, -apple-system, sans-serif;
+  --font-serif: "Gambetta", Georgia, serif;
+
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-text: #1A1A2D;
+  --color-text-main: #1A1A2D;
+  --color-text-main-rgb: 26, 26, 45;
+  --color-text-muted: rgba(26, 26, 45, 0.6);
+  --color-primary: #91CEC2;
+  --color-accent: #91CEC2;
+
+  /* Typography Scale (Fluid) */
+  --step--2: clamp(0.69rem, calc(0.66rem + 0.18vw), 0.8rem);
+  --step--1: clamp(0.78rem, calc(0.72rem + 0.28vw), 0.94rem);
+  --step-0: clamp(0.88rem, calc(0.8rem + 0.4vw), 1.1rem);
+  --step-1: clamp(1rem, calc(0.88rem + 0.58vw), 1.32rem);
+  --step-2: clamp(1.13rem, calc(0.97rem + 0.81vw), 1.58rem);
+  --step-3: clamp(1.27rem, calc(1.06rem + 1.05vw), 1.9rem);
+  --step-4: clamp(1.43rem, calc(1.15rem + 1.38vw), 2.25rem);
+  --step-5: clamp(1.6rem, calc(1.25rem + 1.77vw), 2.7rem);
+  --step-6: clamp(1.79rem, calc(1.35rem + 2.2vw), 3.25rem);
+  --step-7: clamp(2rem, calc(1.42rem + 2.85vw), 3.9rem);
+
+  /* Line Heights */
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+  --leading-loose: 1.8;
+}
+
+/* --- BASE STYLES --- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+body {
+  font-family: var(--font-serif);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- TYPOGRAPHY HIERARCHY --- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin-bottom: 0.5em;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: var(--step-7);
+}
+h2 {
+  font-size: var(--step-5);
+}
+h3 {
+  font-size: var(--step-3);
+}
+h4 {
+  font-size: var(--step-2);
+}
+h5 {
+  font-size: var(--step-1);
+}
+h6 {
+  font-size: var(--step-0);
+}
+
+p,
+li {
+  margin-bottom: 0rem;
+}
+
+/* Specific class-based hierarchy as requested */
+
+.text-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--step-7);
+  font-weight: 600;
+}
+.text-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--step-5);
+  font-weight: 600;
+}
+.text-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--step-3);
+  font-weight: 600;
+}
+
+.body1 {
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+}
+.body2 {
+  font-family: var(--font-serif);
+  font-size: var(--step-0);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+}
+
+.caption {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.button-text {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* Address */
+address {
+  font-style: normal;
+}
+
+/* Footer & Muted elements */
+footer,
+.muted {
+  color: var(--color-text-muted);
+}

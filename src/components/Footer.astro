@@ -1,0 +1,252 @@
+---
+// Site Footer
+---
+
+<footer class="site-footer">
+  <div class="footer-bg"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col brand-col">
+        <h3 class="footer-title">VINDEX</h3>
+        <p class="tagline">
+          Défendre les droits.<br />
+          Maîtriser la procédure.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <nav>
+          <ul class="footer-nav">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/cabinet">Le Cabinet</a></li>
+            <li><a href="/domaines">Domaines d'activité</a></li>
+            <li><a href="/actualites">Actualités</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Domaines d'intervention</h4>
+        <nav>
+          <ul class="footer-nav">
+            <li>
+              <a href="/domaines/contentieux-photovoltaique"
+                >Contentieux photovoltaïque</a
+              >
+            </li>
+            <li>
+              <a href="/domaines/postulation-appel">Postulation en appel</a>
+            </li>
+            <li>
+              <a href="/domaines/procedure-participative"
+                >Procédure participative</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Contact</h4>
+        <address class="contact-info">
+          123 Rue de la Justice<br />
+          59500 Douai<br />
+          <a href="tel:+33123456789">+33 1 23 45 67 89</a><br />
+          <a href="mailto:contact@vindex-avocats.fr"
+            >contact@vindex-avocats.fr</a
+          >
+        </address>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">© 2026 VINDEX – Avocats. Tous droits réservés.</p>
+      <nav>
+        <ul class="footer-legal">
+          <li><a href="/mentions-legales">Mentions légales</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: sticky;
+    bottom: 0;
+    background-color: #08110f;
+    color: #f5f5f5;
+    padding: 80px 0 40px;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .footer-bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
+    background-image: url("/hero-bg.avif");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    z-index: 1;
+  }
+
+  .container {
+    position: relative;
+    z-index: 3;
+    max-width: 1392px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .brand-col {
+    padding-right: 40px;
+  }
+
+  .footer-title {
+    font-family: var(--font-sans);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .tagline {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .footer-heading {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-nav a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 300;
+    transition: color 0.2s ease;
+  }
+
+  .footer-nav a:hover {
+    color: var(--color-primary);
+  }
+
+  .contact-info {
+    font-style: normal;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+  }
+
+  .contact-info a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-info a:hover {
+    color: var(--color-primary);
+  }
+
+  .footer-bottom {
+    padding-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .copyright {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+  }
+
+  .footer-legal {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-legal a {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-legal a:hover {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .brand-col {
+      grid-column: 1 / -1;
+      padding-right: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .site-footer {
+      padding: 60px 0 32px;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+  }
+</style>

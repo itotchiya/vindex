@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import PracticeAreas from "../components/PracticeAreas.astro";
+import CabinetPreview from "../components/CabinetPreview.astro";
+import ApproachValues from "../components/ApproachValues.astro";
+import ProceduralRigor from "../components/ProceduralRigor.astro";
+import TargetAudience from "../components/TargetAudience.astro";
+import FinalCTA from "../components/FinalCTA.astro";
+
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout
+  title="VINDEX – Avocats | Défendre les droits. Maîtriser la procédure."
+>
+  <Header />
+
+  <main>
+    <div class="hero-wrapper">
+      <Hero />
+      <CabinetPreview />
+    </div>
+    <ApproachValues />
+    <ProceduralRigor />
+    <PracticeAreas />
+    <TargetAudience />
+
+    <div class="footer-wrapper">
+      <FinalCTA />
+      <Footer />
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Wrapper to control the sticky hero duration */
+  .hero-wrapper {
+    position: relative;
+  }
+
+  /* Wrapper for reverse sticky footer effect */
+  .footer-wrapper {
+    position: relative;
+    /* height: 200vh; Extra height for scroll effect */
+  }
+</style>

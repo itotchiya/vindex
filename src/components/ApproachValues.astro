@@ -1,0 +1,152 @@
+---
+import ApproachCard from "./ui-kit/ApproachCard.astro";
+import ContentHeader from "./ui-kit/ContentHeader.astro";
+import Button from "./ui-kit/Button.astro";
+
+// Approach & Values Section - Horizontal Scroll
+const approaches = [
+  {
+    title: "Rigueur procédurale",
+    description:
+      "Le cabinet VINDEX fonde son intervention sur une analyse juridique rigoureuse, une parfaite maîtrise des textes procéduraux et une attention constante portée aux intérêts du client.",
+  },
+  {
+    title: "Défense des droits",
+    description:
+      "Chaque dossier est traité avec la même exigence de qualité, qu'il s'agisse d'accompagner un justiciable ou d'assister un confrère dans ses démarches procédurales devant la Cour d'appel.",
+  },
+  {
+    title: "Maîtrise du temps judiciaire",
+    description:
+      "La sécurisation des délais et la gestion optimale du calendrier procédural constituent le cœur de notre pratique, garantissant à nos clients une défense efficace et sans faille.",
+  },
+];
+---
+
+<section id="approche" class="approach-values">
+  <div class="scroll-container">
+    <!-- Panel 1: Introduction -->
+    <div class="scroll-panel intro-panel">
+      <div class="panel-content">
+        <ContentHeader
+          eyebrow="Notre approche"
+          title="Une méthode"
+          titleSecondLine="de travail"
+          description="Trois piliers essentiels qui garantissent l'excellence de notre accompagnement juridique et la défense rigoureuse de vos intérêts."
+        />
+
+        <div class="intro-actions">
+          <Button href="/contact" variant="primary">
+            Prendre rendez-vous
+          </Button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panels 2-4: Approach Cards -->
+    {
+      approaches.map((approach, index) => (
+        <div class="scroll-panel approach-panel">
+          <div class="panel-content">
+            <ApproachCard
+              number={`0${index + 1}`}
+              title={approach.title}
+              description={approach.description}
+              imageSrc="/Influencer 1.png"
+              imageAlt={approach.title}
+            />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .approach-values {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: #ffffff;
+  }
+
+  .scroll-container {
+    display: flex;
+    height: 100vh;
+    width: 350vw; /* 4 panels × 100vw */
+    will-change: transform;
+  }
+
+  .scroll-panel {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 60px;
+  }
+
+  .panel-content {
+    max-width: 1392px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Intro Panel Styles */
+  .intro-panel {
+    /* background-color: #fafafa; */
+    margin-right: -50vw;
+  }
+
+  .intro-actions {
+    margin-top: 40px;
+  }
+
+  /* Approach Panel Styles */
+  .approach-panel {
+    background-color: #ffffff;
+  }
+
+  @media (max-width: 1024px) {
+    .scroll-panel {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .scroll-panel {
+      padding: 0 24px;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const section = document.querySelector(".approach-values");
+  const scrollContainer = section?.querySelector(".scroll-container");
+
+  if (section && scrollContainer) {
+    // Horizontal scroll animation
+    const scrollWidth = scrollContainer.scrollWidth - window.innerWidth;
+
+    gsap.to(scrollContainer, {
+      x: -scrollWidth,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: () => `+=${scrollWidth}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+  }
+</script>

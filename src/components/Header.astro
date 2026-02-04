@@ -1,0 +1,295 @@
+---
+import Button from "./ui-kit/Button.astro";
+---
+
+<header id="main-header" data-theme="dark">
+  <div class="header-bg progressive-blur">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="header-container">
+    <div class="header-left">
+      <a href="/" class="logo">Vindex</a>
+      <div class="vertical-divider"></div>
+    </div>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="/domaines/contentieux-photovoltaique">Photovoltaïque</a>
+        </li>
+        <li><a href="/domaines/postulation-appel">Appel</a></li>
+        <li><a href="/domaines/procedure-participative">Procédure</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-right">
+      <Button href="/contact" variant="primary" theme="dark" class="header-btn"
+        >Prendre rendez-vous</Button
+      >
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* height: 90px; Removed fixed height to allow padding to dictate initial size */
+    display: flex;
+    align-items: center;
+    transition: height 0.3s ease;
+  }
+
+  /* Progressive Gradient Blur Implementation */
+  .progressive-blur {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    transition: background 0.3s ease;
+  }
+
+  header[data-theme="light"] .progressive-blur {
+    background: transparent; /* changed from rgba(255, 255, 255, 0.8) to allow blur effect */
+  }
+
+  header[data-theme="dark"] .progressive-blur {
+    background: transparent;
+  }
+
+  .progressive-blur > div,
+  .progressive-blur::before,
+  .progressive-blur::after {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(var(--blur-amount));
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) var(--mask-start),
+      rgba(0, 0, 0, 0) var(--mask-end)
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) var(--mask-start),
+      rgba(0, 0, 0, 0) var(--mask-end)
+    );
+  }
+
+  /* Layer definitions: progressively increasing blur from top to bottom */
+  .progressive-blur::before {
+    --blur-amount: 0.5px;
+    --mask-start: 0%;
+    --mask-end: 12.5%;
+    content: "";
+  }
+  .progressive-blur div:nth-child(1) {
+    --blur-amount: 1px;
+    --mask-start: 0%;
+    --mask-end: 25%;
+  }
+  .progressive-blur div:nth-child(2) {
+    --blur-amount: 2px;
+    --mask-start: 0%;
+    --mask-end: 37.5%;
+  }
+  .progressive-blur div:nth-child(3) {
+    --blur-amount: 4px;
+    --mask-start: 0%;
+    --mask-end: 50%;
+  }
+  .progressive-blur div:nth-child(4) {
+    --blur-amount: 8px;
+    --mask-start: 0%;
+    --mask-end: 62.5%;
+  }
+  .progressive-blur div:nth-child(5) {
+    --blur-amount: 16px;
+    --mask-start: 0%;
+    --mask-end: 75%;
+  }
+  .progressive-blur div:nth-child(6) {
+    --blur-amount: 32px;
+    --mask-start: 0%;
+    --mask-end: 87.5%;
+  }
+  .progressive-blur::after {
+    --blur-amount: 64px;
+    --mask-start: 0%;
+    --mask-end: 100%;
+    content: "";
+  }
+
+  .header-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .logo {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.4rem;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+  }
+
+  header[data-theme="dark"] .logo {
+    color: #f5f5f5;
+  }
+  header[data-theme="light"] .logo {
+    color: #1a1a2d;
+  }
+
+  /* .vertical-divider {
+    width: 1px;
+    height: 20px;
+    transition: background 0.3s ease;
+  } */
+
+  header[data-theme="dark"] .vertical-divider {
+    background: rgba(245, 245, 245, 0.15);
+  }
+  header[data-theme="light"] .vertical-divider {
+    background: rgba(26, 26, 45, 0.15);
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+  }
+
+  header[data-theme="dark"] nav a {
+    color: rgba(245, 245, 245, 0.6);
+  }
+  header[data-theme="light"] nav a {
+    color: rgba(26, 26, 45, 0.6);
+  }
+
+  header nav a:hover {
+    color: var(--color-primary);
+  }
+
+  nav a:hover {
+    color: var(--color-primary);
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 1024px) {
+    .header-container {
+      padding: 0 30px;
+    }
+    nav ul {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    header {
+      height: 70px;
+    }
+    nav,
+    .vertical-divider {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const header = document.querySelector("#main-header");
+  const progressiveBlur = document.querySelector(".progressive-blur");
+  const logo = document.querySelector(".logo");
+  const navLinks = document.querySelectorAll("nav a");
+  const divider = document.querySelector(".vertical-divider");
+
+  if (header && progressiveBlur) {
+    // Switch to light theme when CabinetPreview enters
+    ScrollTrigger.create({
+      trigger: ".cabinet-preview",
+      start: "top 100px",
+      onEnter: () => header.setAttribute("data-theme", "light"),
+      onLeaveBack: () => header.setAttribute("data-theme", "dark"),
+    });
+
+    // Switch to dark theme when TargetAudience enters
+    ScrollTrigger.create({
+      trigger: ".target-audience",
+      start: "top 100px",
+      onEnter: () => header.setAttribute("data-theme", "dark"),
+      onLeaveBack: () => header.setAttribute("data-theme", "light"),
+    });
+
+    gsap.to(progressiveBlur, {
+      opacity: 1,
+      scrollTrigger: {
+        trigger: "body",
+        start: "top +=50",
+        end: "top +=200",
+        scrub: true,
+      },
+    });
+
+    gsap.to(header, {
+      height: "80px",
+      scrollTrigger: {
+        trigger: "body",
+        start: "top +=50",
+        end: "top +=200",
+        scrub: true,
+      },
+    });
+
+    const headerContainer = document.querySelector(".header-container");
+    if (headerContainer) {
+      gsap.to(headerContainer, {
+        paddingTop: "16px",
+        paddingBottom: "16px",
+        scrollTrigger: {
+          trigger: "body",
+          start: "top +=50",
+          end: "top +=200",
+          scrub: true,
+        },
+      });
+    }
+  }
+</script>
