@@ -1,77 +1,81 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
+import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
+import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
 ---
 
 <BaseLayout title="Contentieux des panneaux photovoltaïques | VINDEX – Avocats">
   <Header />
 
-  <main class="page-domaine-detail">
-    <!-- Hero Section -->
-    <section class="page-hero">
-      <div class="container">
-        <span class="label">Défense des consommateurs</span>
-        <h1 class="text-h1">Contentieux des panneaux photovoltaïques</h1>
-        <p class="body1 subtitle">
-          Une expertise reconnue dans la défense des consommateurs victimes
-          d'installations photovoltaïques irrégulières.
-        </p>
-      </div>
-    </section>
+  <main>
+    <div class="hero-wrapper">
+      <section class="page-hero">
+        <div class="container">
+          <ContentHeader
+            theme="dark"
+            eyebrow="Défense des consommateurs"
+            title="Contentieux"
+            titleSecondLine="des panneaux photovoltaïques"
+            description="Le cabinet intervient aux côtés des consommateurs confrontés à des opérations de vente irrégulières et des crédits affectés liés à ces installations."
+          />
+        </div>
+      </section>
+    </div>
 
     <!-- Présentation générale -->
     <section class="section-presentation">
       <div class="container">
-        <h2 class="text-h2">Présentation générale</h2>
-        <p class="body1">
-          Le cabinet intervient aux côtés des consommateurs confrontés à des
-          opérations de vente de panneaux photovoltaïques irrégulières. Ces
-          contentieux impliquent généralement des ventes conclues à domicile,
-          souvent présentées comme autofinancées par les économies d'énergie
-          promises.
-        </p>
-        <p class="body1">
-          Le cabinet accompagne ses clients dans l'obtention de la nullité des
-          contrats de vente et des crédits affectés, permettant le plus souvent
-          une remise en état complète de leur situation financière.
-        </p>
+        <div class="presentation-content">
+          <h2 class="section-title">Analyse & Enjeux</h2>
+          <div class="text-block">
+            <p class="body-text">
+              Ces contentieux impliquent généralement des ventes conclues à
+              domicile, souvent présentées comme autofinancées par les économies
+              d'énergie promises.
+            </p>
+            <p class="body-text">
+              Le cabinet accompagne ses clients dans l'obtention de la nullité
+              des contrats de vente et des crédits affectés, permettant le plus
+              souvent une remise en état complète de leur situation financière.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Cadre juridique -->
     <section class="section-cadre">
       <div class="container">
-        <h2 class="text-h2">Cadre juridique</h2>
+        <ContentHeader
+          eyebrow="Cadre Légal"
+          title="Fondements Juridiques"
+          description="Une défense articulée autour des dispositions protectrices du Code de la consommation."
+        />
 
         <div class="cadre-grid">
           <div class="cadre-item">
-            <h3 class="text-h3">Vente hors établissement</h3>
-            <p class="body1">
-              Les ventes de panneaux photovoltaïques sont généralement conclues
-              à domicile, soumettant le contrat au régime protecteur des ventes
-              hors établissement (articles L. 221-1 et suivants du Code de la
-              consommation).
+            <h3 class="card-title">Vente hors établissement</h3>
+            <p class="card-text">
+              Les ventes à domicile sont soumises au régime protecteur des
+              articles L. 221-1 et suivants, imposant un formalisme strict.
             </p>
           </div>
 
           <div class="cadre-item">
-            <h3 class="text-h3">Crédit affecté</h3>
-            <p class="body1">
-              Le financement de l'installation est le plus souvent assuré par un
-              crédit affecté, dont le sort est lié à celui du contrat principal.
-              L'annulation de la vente entraîne l'anéantissement du crédit
-              (article L. 312-55 du Code de la consommation).
+            <h3 class="card-title">Crédit affecté</h3>
+            <p class="card-text">
+              L'annulation de la vente entraîne l'anéantissement du crédit en
+              vertu de l'article L. 312-55 du Code de la consommation.
             </p>
           </div>
 
           <div class="cadre-item">
-            <h3 class="text-h3">Obligations d'information</h3>
-            <p class="body1">
-              Le professionnel est tenu à de nombreuses obligations
-              d'information précontractuelle, dont le non-respect est sanctionné
-              par la nullité du contrat et, dans certains cas, par
-              l'impossibilité pour la banque de recouvrer le capital prêté.
+            <h3 class="card-title">Information précontractuelle</h3>
+            <p class="card-text">
+              Le non-respect du formalisme est sanctionné par la nullité du
+              contrat et peut priver la banque de son droit à restitution.
             </p>
           </div>
         </div>
@@ -79,99 +83,209 @@ import Footer from "../../components/Footer.astro";
     </section>
 
     <!-- Points de contentieux -->
-    <section class="section-contentieux">
+    <section class="section-points">
       <div class="container">
-        <h2 class="text-h2">Points de contentieux fréquents</h2>
-
-        <ul class="contentieux-list">
-          <li>
-            <h3 class="text-h3">Clarté du contrat</h3>
-            <p class="body1">
-              Les bons de commande présentent souvent des lacunes quant à la
-              désignation précise des biens vendus, aux délais de livraison ou
-              aux caractéristiques essentielles de l'installation.
-            </p>
-          </li>
-          <li>
-            <h3 class="text-h3">Informations précontractuelles</h3>
-            <p class="body1">
-              Le non-respect du formalisme imposé par le Code de la
-              consommation, notamment concernant le droit de rétractation,
-              constitue un motif fréquent d'annulation.
-            </p>
-          </li>
-          <li>
-            <h3 class="text-h3">Déblocage des fonds</h3>
-            <p class="body1">
-              Le déblocage prématuré des fonds par l'établissement de crédit,
-              avant l'achèvement complet de l'installation et sa mise en
-              service, constitue une faute privant la banque de son droit à
-              restitution.
-            </p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Jurisprudence -->
-    <section class="section-jurisprudence">
-      <div class="container">
-        <h2 class="text-h2">Jurisprudence récente</h2>
-        <p class="body1">
-          La Cour de cassation a joué un rôle structurant dans la protection des
-          consommateurs victimes de pratiques commerciales déloyales dans le
-          secteur photovoltaïque.
-        </p>
-        <p class="body1">
-          Les décisions récentes ont notamment précisé les conditions de mise en
-          œuvre de la responsabilité des établissements de crédit et les
-          conséquences de l'annulation des contrats interdépendants.
-        </p>
-      </div>
-    </section>
-
-    <!-- Accompagnement -->
-    <section class="section-accompagnement">
-      <div class="container">
-        <h2 class="text-h2">Accompagnement proposé</h2>
-
-        <div class="accompagnement-grid">
-          <div class="accompagnement-item">
-            <h3 class="text-h3">Analyse du dossier</h3>
-            <p class="body1">
-              Étude approfondie des contrats, des conditions de conclusion et
-              des éventuelles irrégularités susceptibles de fonder une action en
-              nullité.
-            </p>
+        <div class="points-grid">
+          <div class="points-intro">
+            <ContentHeader
+              eyebrow="Points de vigilance"
+              title="Anomalies Fréquentes"
+              description="Chaque dossier est unique, mais certains motifs de nullité reviennent régulièrement dans nos analyses."
+            />
           </div>
-          <div class="accompagnement-item">
-            <h3 class="text-h3">Stratégie contentieuse</h3>
-            <p class="body1">
-              Définition de la stratégie procédurale adaptée au dossier,
-              identification des défendeurs et des moyens à soulever.
-            </p>
-          </div>
-          <div class="accompagnement-item">
-            <h3 class="text-h3">Suivi procédural</h3>
-            <p class="body1">
-              Gestion complète de la procédure, de l'assignation au prononcé du
-              jugement, en passant par la mise en état et les audiences.
-            </p>
+
+          <div class="points-list">
+            <div class="point-item">
+              <span class="point-number">01</span>
+              <div class="point-content">
+                <h4 class="point-title">Clarté & Désignation</h4>
+                <p class="point-text">
+                  Lacunes quant à la désignation des biens, aux délais de
+                  livraison ou aux caractéristiques essentielles.
+                </p>
+              </div>
+            </div>
+
+            <div class="point-item">
+              <span class="point-number">02</span>
+              <div class="point-content">
+                <h4 class="point-title">Droit de rétractation</h4>
+                <p class="point-text">
+                  Non-respect du formalisme sur le coupon de rétractation ou les
+                  informations liées à son exercice.
+                </p>
+              </div>
+            </div>
+
+            <div class="point-item">
+              <span class="point-number">03</span>
+              <div class="point-content">
+                <h4 class="point-title">Déblocage des fonds</h4>
+                <p class="point-text">
+                  Faute de la banque lors du déblocage prématuré des fonds avant
+                  achèvement complet des travaux.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section-cta">
-      <div class="container">
-        <p class="body1">
-          Vous êtes concerné par un litige lié à des panneaux photovoltaïques ?
-        </p>
-        <a href="/contact" class="cta-link">Contacter le cabinet</a>
-      </div>
-    </section>
+    <div class="footer-wrapper">
+      <FinalCTA />
+      <Footer />
+    </div>
   </main>
-
-  <Footer />
 </BaseLayout>
+
+<style>
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-wrapper {
+    background-color: #08110f;
+    color: #ffffff;
+    padding-top: 80px;
+  }
+
+  .page-hero {
+    padding: 128px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-presentation {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .presentation-content {
+    max-width: 900px;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 48px;
+    color: var(--color-primary);
+  }
+
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .body-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.82);
+  }
+
+  .section-cadre {
+    padding: 128px 24px;
+    background-color: #fafafa;
+  }
+
+  .cadre-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 80px;
+  }
+
+  .cadre-item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .card-text {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.7);
+  }
+
+  .section-points {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .points-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .points-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .point-item {
+    display: flex;
+    gap: 32px;
+  }
+
+  .point-number {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  .point-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+
+  .point-text {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.7);
+  }
+
+  .footer-wrapper {
+    position: relative;
+  }
+
+  @media (max-width: 1024px) {
+    .cadre-grid,
+    .points-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .points-grid {
+      gap: 64px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 120px 16px 64px;
+    }
+
+    .section-presentation,
+    .section-cadre,
+    .section-points {
+      padding: 64px 16px;
+    }
+  }
+</style>

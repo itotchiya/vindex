@@ -1,74 +1,74 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
+import ContentHeader from "../components/ui-kit/ContentHeader.astro";
+import FinalCTA from "../components/FinalCTA.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout title="Le Cabinet | VINDEX – Avocats">
   <Header />
 
-  <main class="page-cabinet">
-    <!-- Hero Section -->
-    <section class="page-hero">
-      <div class="container">
-        <h1 class="text-h1">Le Cabinet</h1>
-        <p class="body1 subtitle">
-          VINDEX – S'interposer pour que le droit demeure.
-        </p>
-      </div>
-    </section>
+  <main>
+    <div class="hero-wrapper">
+      <section class="page-hero">
+        <div class="container">
+          <h1 class="hero-title">Le Cabinet</h1>
+          <p class="hero-subtitle">
+            VINDEX – S'interposer pour que le droit demeure.
+          </p>
+        </div>
+      </section>
 
-    <!-- Introduction institutionnelle -->
-    <section class="section-intro">
-      <div class="container">
-        <h2 class="text-h2">Un cabinet dédié au contentieux</h2>
-        <p class="body1">
-          VINDEX est un cabinet d'avocats dédié au contentieux civil et à la
-          procédure, avec une pratique affirmée en matière d'appel et de défense
-          des consommateurs.
-        </p>
-        <p class="body1">
-          Implanté à Douai, le cabinet intervient principalement devant la Cour
-          d'appel de Douai et les juridictions du ressort, avec une expertise
-          particulière dans le contentieux des panneaux photovoltaïques et la
-          procédure participative.
-        </p>
-      </div>
-    </section>
+      <section class="section-intro">
+        <div class="container">
+          <ContentHeader
+            theme="dark"
+            eyebrow="Présentation"
+            title="Un cabinet dédié au contentieux"
+            description={[
+              "VINDEX est un cabinet d'avocats dédié au contentieux civil et à la procédure, avec une pratique affirmée en matière d'appel et de défense des consommateurs.",
+              "Implanté à Douai, le cabinet intervient principalement devant la Cour d'appel de Douai et les juridictions du ressort.",
+            ]}
+          />
+        </div>
+      </section>
+    </div>
 
     <!-- Philosophie & positionnement -->
     <section class="section-philosophy">
       <div class="container">
-        <h2 class="text-h2">Philosophie & positionnement</h2>
+        <ContentHeader
+          eyebrow="Nos Valeurs"
+          title="Philosophie & Positionnement"
+          description="L'expertise technique au service de la défense des droits, avec une approche rigoureuse et humaine."
+        />
 
         <div class="philosophy-grid">
           <div class="philosophy-item">
-            <h3 class="text-h3">Défense des droits</h3>
-            <p class="body1">
+            <h3 class="card-title">Défense des droits</h3>
+            <p class="card-text">
               Le cabinet place la défense des intérêts de ses clients au cœur de
               sa pratique, avec une attention particulière portée aux
-              justiciables les plus vulnérables, notamment les consommateurs
-              victimes de pratiques commerciales déloyales.
+              justiciables les plus vulnérables.
             </p>
           </div>
 
           <div class="philosophy-item">
-            <h3 class="text-h3">Maîtrise des mécanismes procéduraux</h3>
-            <p class="body1">
-              La procédure n'est pas un obstacle mais un instrument au service
-              du droit. Le cabinet maîtrise parfaitement les règles
-              procédurales, les délais et les formes, faisant de cette expertise
-              technique un atout décisif dans la conduite des litiges.
+            <h3 class="card-title">Maîtrise procédurale</h3>
+            <p class="card-text">
+              La procédure n'est pas un obstacle mais un instrument. Le cabinet
+              maîtrise parfaitement les règles, délais et formes pour un atout
+              décisif.
             </p>
           </div>
 
           <div class="philosophy-item">
-            <h3 class="text-h3">Sécurité juridique</h3>
-            <p class="body1">
-              Chaque acte, chaque écriture, chaque intervention est réalisé avec
-              le souci constant de la sécurité juridique, garantissant à nos
-              clients une défense sans faille et exempte de tout risque
-              procédural.
+            <h3 class="card-title">Sécurité juridique</h3>
+            <p class="card-text">
+              Chaque intervention est réalisée avec le souci constant de la
+              sécurité juridique, garantissant une défense sans faille et
+              exempte de tout risque.
             </p>
           </div>
         </div>
@@ -78,18 +78,13 @@ import Footer from "../components/Footer.astro";
     <!-- Implantation & ressort -->
     <section class="section-location">
       <div class="container">
-        <h2 class="text-h2">Implantation & ressort</h2>
-
-        <div class="location-content">
+        <div class="location-grid">
           <div class="location-text">
-            <p class="body1">
-              Le cabinet VINDEX est situé à Douai, au cœur des Hauts-de-France,
-              à proximité immédiate de la Cour d'appel de Douai.
-            </p>
-            <p class="body1">
-              Cette implantation stratégique permet une intervention réactive
-              devant l'ensemble des juridictions du ressort :
-            </p>
+            <ContentHeader
+              eyebrow="Localisation"
+              title="Implantation & Ressort"
+              description="Le cabinet VINDEX est situé à Douai, au cœur des Hauts-de-France, à proximité immédiate de la Cour d'appel de Douai."
+            />
             <ul class="location-list">
               <li>Cour d'appel de Douai</li>
               <li>Tribunaux judiciaires du ressort</li>
@@ -98,14 +93,14 @@ import Footer from "../components/Footer.astro";
             </ul>
           </div>
 
-          <div class="location-info">
-            <h3 class="text-h3">Activité de postulation</h3>
-            <p class="body1">
-              Le cabinet propose une activité de postulation dédiée aux avocats
-              n'étant pas du ressort de la Cour d'appel de Douai, leur
-              permettant de confier la représentation procédurale de leurs
-              clients en toute sérénité.
-            </p>
+          <div class="location-visual">
+            <div class="location-card">
+              <h3 class="card-title">Activité de postulation</h3>
+              <p class="card-text">
+                Le cabinet propose une activité de postulation dédiée aux
+                avocats n'étant pas du ressort de la Cour d'appel de Douai.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -114,49 +109,231 @@ import Footer from "../components/Footer.astro";
     <!-- Méthode de travail -->
     <section class="section-method">
       <div class="container">
-        <h2 class="text-h2">Méthode de travail</h2>
+        <ContentHeader
+          eyebrow="Méthode"
+          title="Rigueur & Transparence"
+          description="Une approche structurée pour garantir la sécurité juridique et la clarté des échanges."
+        />
 
         <div class="method-grid">
           <div class="method-item">
-            <h3 class="text-h3">Analyse juridique approfondie</h3>
-            <p class="body1">
-              Chaque dossier fait l'objet d'une étude approfondie, permettant
-              d'identifier les forces et les faiblesses du dossier, les
-              arguments à développer et la stratégie à adopter.
+            <span class="method-number">01</span>
+            <h3 class="method-title">Analyse juridique approfondie</h3>
+            <p class="method-text">
+              Étude exhaustive de chaque dossier pour identifier les forces,
+              faiblesses et leviers stratégiques.
             </p>
           </div>
 
           <div class="method-item">
-            <h3 class="text-h3">Respect strict des délais</h3>
-            <p class="body1">
-              La maîtrise du calendrier procédural est essentielle. Le cabinet
-              veille au respect scrupuleux des délais légaux et réglementaires,
-              évitant tout risque de forclusion ou d'irrecevabilité.
+            <span class="method-number">02</span>
+            <h3 class="method-title">Respect strict des délais</h3>
+            <p class="method-text">
+              Veille rigoureuse du calendrier procédural pour éliminer tout
+              risque de forclusion ou d'irrecevabilité.
             </p>
           </div>
 
           <div class="method-item">
-            <h3 class="text-h3">Communication claire</h3>
-            <p class="body1">
-              Le cabinet assure une communication régulière et transparente avec
-              ses clients et les avocats mandants, les tenant informés de
-              l'avancement de leur dossier et des échéances à venir.
+            <span class="method-number">03</span>
+            <h3 class="method-title">Communication claire</h3>
+            <p class="method-text">
+              Information régulière et transparente sur l'avancement du dossier
+              et les orientations stratégiques.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Signature -->
-    <section class="section-signature">
-      <div class="container">
-        <blockquote class="signature-quote">
-          <p class="text-h2">VINDEX</p>
-          <p class="body1">S'interposer pour que le droit demeure.</p>
-        </blockquote>
-      </div>
-    </section>
+    <div class="footer-wrapper">
+      <FinalCTA />
+      <Footer />
+    </div>
   </main>
-
-  <Footer />
 </BaseLayout>
+
+<style>
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-wrapper {
+    position: relative;
+    background-color: #08110f;
+    color: #ffffff;
+  }
+
+  .page-hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    padding: 180px 24px 100px;
+  }
+
+  .hero-title {
+    font-family: var(--font-sans);
+    font-size: var(--step-7);
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .hero-subtitle {
+    font-family: var(--font-serif);
+    font-size: var(--step-1);
+    margin-top: 24px;
+    color: var(--color-primary);
+    font-style: italic;
+  }
+
+  .section-intro {
+    padding: 100px 24px 128px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-philosophy {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 80px;
+  }
+
+  .philosophy-item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .card-text {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.7);
+  }
+
+  .section-location {
+    padding: 128px 24px;
+    background-color: #fafafa;
+  }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .location-list {
+    list-style: none;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .location-list li {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .location-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 1px;
+    background-color: var(--color-primary);
+  }
+
+  .location-card {
+    background-color: #ffffff;
+    padding: 48px;
+    border-radius: 4px;
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .section-method {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 80px;
+  }
+
+  .method-item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .method-number {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .method-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .method-text {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.7);
+  }
+
+  .footer-wrapper {
+    position: relative;
+  }
+
+  @media (max-width: 1024px) {
+    .philosophy-grid,
+    .method-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .location-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 120px 16px 64px;
+    }
+
+    .section-philosophy,
+    .section-location,
+    .section-method {
+      padding: 64px 16px;
+    }
+  }
+</style>

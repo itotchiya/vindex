@@ -1,43 +1,37 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
+import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
+import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
+import Button from "../../components/ui-kit/Button.astro";
+import { ArrowRight } from "lucide-astro";
 
 // Demo articles data
 const articles = [
   {
     slug: "jurisprudence-photovoltaique-2026",
-    title:
-      "Jurisprudence photovoltaïque : les apports de la Cour de cassation en 2025",
-    date: "15 janvier 2026",
+    title: "Jurisprudence photovoltaïque : les apports de la Cour de cassation",
+    date: "15 janv. 2026",
     category: "Jurisprudence",
     excerpt:
-      "La Cour de cassation a rendu plusieurs arrêts marquants en matière de contentieux photovoltaïque, précisant les conditions de mise en œuvre de la responsabilité des établissements de crédit.",
+      "La Cour de cassation a rendu plusieurs arrêts marquants précisant les conditions de mise en œuvre de la responsabilité des banques.",
   },
   {
     slug: "procedure-participative-appel",
-    title:
-      "La convention de procédure participative en appel : un outil sous-exploité",
-    date: "8 janvier 2026",
-    category: "Analyse procédurale",
+    title: "La convention de procédure participative en appel",
+    date: "8 janv. 2026",
+    category: "Analyse",
     excerpt:
-      "Retour sur les avantages de la convention de procédure participative dans le cadre de la procédure d'appel et son effet interruptif sur les délais Magendie.",
+      "Retour sur les avantages de la convention de procédure participative dans le cadre de la procédure d'appel et son effet interruptif.",
   },
   {
     slug: "delais-magendie-vigilance",
-    title: "Délais Magendie : points de vigilance pour 2026",
-    date: "2 janvier 2026",
-    category: "Procédure d'appel",
+    title: "Délais Magendie : points de vigilance stratégiques",
+    date: "2 janv. 2026",
+    category: "Procédure",
     excerpt:
-      "Rappel des principaux délais applicables en procédure d'appel et des sanctions encourues en cas de non-respect.",
-  },
-  {
-    slug: "credit-affecte-deblocage-fonds",
-    title: "Crédit affecté : la faute de la banque dans le déblocage des fonds",
-    date: "18 décembre 2025",
-    category: "Jurisprudence",
-    excerpt:
-      "Analyse de la jurisprudence récente sur les conditions de mise en œuvre de la responsabilité de l'établissement prêteur en cas de déblocage prématuré des fonds.",
+      "Rappel des principaux délais applicables en procédure d'appel et des sanctions encourues en cas de non-respect du formalisme.",
   },
 ];
 ---
@@ -45,16 +39,19 @@ const articles = [
 <BaseLayout title="Actualités | VINDEX – Avocats">
   <Header />
 
-  <main class="page-actualites">
-    <!-- Hero Section -->
-    <section class="page-hero">
-      <div class="container">
-        <h1 class="text-h1">Actualités</h1>
-        <p class="body1 subtitle">
-          Analyses juridiques, jurisprudence et actualités procédurales.
-        </p>
-      </div>
-    </section>
+  <main>
+    <div class="hero-wrapper">
+      <section class="page-hero">
+        <div class="container">
+          <ContentHeader
+            theme="dark"
+            eyebrow="Le Mag"
+            title="Espace Actualités"
+            description="Analyses juridiques, décryptages de jurisprudence et actualités procédurales pour éclairer vos démarches."
+          />
+        </div>
+      </section>
+    </div>
 
     <!-- Articles List -->
     <section class="section-articles">
@@ -62,25 +59,158 @@ const articles = [
         <div class="articles-grid">
           {
             articles.map((article) => (
-              <article class="article-card">
-                <div class="article-meta">
-                  <span class="article-category">{article.category}</span>
-                  <time class="article-date">{article.date}</time>
+              <article class="blog-card">
+                <div class="card-header">
+                  <span class="category">{article.category}</span>
+                  <time class="date">{article.date}</time>
                 </div>
-                <h2 class="text-h3">
-                  <a href={`/actualites/${article.slug}`}>{article.title}</a>
-                </h2>
-                <p class="body1">{article.excerpt}</p>
-                <a href={`/actualites/${article.slug}`} class="read-more">
-                  Lire la suite
-                </a>
+                <div class="card-body">
+                  <h2 class="title">{article.title}</h2>
+                  <p class="excerpt">{article.excerpt}</p>
+                </div>
+                <div class="card-footer">
+                  <Button
+                    href={`/actualites/${article.slug}`}
+                    variant="secondary"
+                    size="sm"
+                  >
+                    Lire l'analyse <ArrowRight size={16} class="inline ml-1" />
+                  </Button>
+                </div>
               </article>
             ))
           }
         </div>
       </div>
     </section>
-  </main>
 
-  <Footer />
+    <div class="footer-wrapper">
+      <FinalCTA />
+      <Footer />
+    </div>
+  </main>
 </BaseLayout>
+
+<style>
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-wrapper {
+    background-color: #08110f;
+    color: #ffffff;
+    padding-top: 80px;
+  }
+
+  .page-hero {
+    padding: 128px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-articles {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 40px;
+    background-color: #fafafa;
+    border: 1px solid transparent;
+    transition: all 0.4s ease;
+  }
+
+  .blog-card:hover {
+    background-color: #ffffff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    border-color: rgba(var(--color-primary-rgb), 0.1);
+    transform: translateY(-8px);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .category {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .date {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: rgba(var(--color-text-main-rgb), 0.4);
+  }
+
+  .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--color-text-main);
+  }
+
+  .excerpt {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.65);
+  }
+
+  .card-footer {
+    padding-top: 32px;
+    border-top: 1px solid rgba(var(--color-text-main-rgb), 0.05);
+  }
+
+  .footer-wrapper {
+    position: relative;
+  }
+
+  @media (max-width: 1100px) {
+    .articles-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .articles-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .page-hero {
+      padding: 120px 16px 64px;
+    }
+
+    .section-articles {
+      padding: 64px 16px;
+    }
+
+    .blog-card {
+      padding: 32px;
+    }
+  }
+</style>

@@ -1,22 +1,27 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
+import ContentHeader from "../components/ui-kit/ContentHeader.astro";
+import FinalCTA from "../components/FinalCTA.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <BaseLayout title="Contact | VINDEX – Avocats">
   <Header />
 
-  <main class="page-contact">
-    <!-- Hero Section -->
-    <section class="page-hero">
-      <div class="container">
-        <h1 class="text-h1">Contact</h1>
-        <p class="body1 subtitle">
-          Le cabinet reçoit exclusivement sur rendez-vous.
-        </p>
-      </div>
-    </section>
+  <main>
+    <div class="hero-wrapper">
+      <section class="page-hero">
+        <div class="container">
+          <ContentHeader
+            theme="dark"
+            eyebrow="Contact"
+            title="S'interposer pour vous défendre"
+            description="Le cabinet reçoit exclusivement sur rendez-vous. Pour toute demande d'intervention ou de postulation, vous pouvez nous contacter via les coordonnées ci-dessous ou le formulaire dédié."
+          />
+        </div>
+      </section>
+    </div>
 
     <!-- Contact Info & Form -->
     <section class="section-contact">
@@ -24,68 +29,97 @@ import Footer from "../components/Footer.astro";
         <div class="contact-grid">
           <!-- Contact Information -->
           <div class="contact-info">
-            <h2 class="text-h2">Coordonnées</h2>
+            <h2 class="section-title">Coordonnées</h2>
 
-            <div class="info-block">
-              <h3 class="text-h3">Adresse</h3>
-              <address class="body1">
-                VINDEX – Avocats<br />
-                123 Rue de la Justice<br />
-                59500 Douai
-              </address>
-            </div>
+            <div class="info-blocks">
+              <div class="info-item">
+                <span class="info-label">Adresse</span>
+                <address class="info-value">
+                  VINDEX – Avocats<br />
+                  123 Rue de la Justice<br />
+                  59500 Douai
+                </address>
+              </div>
 
-            <div class="info-block">
-              <h3 class="text-h3">Téléphone</h3>
-              <p class="body1">
-                <a href="tel:+33123456789">+33 1 23 45 67 89</a>
-              </p>
-            </div>
+              <div class="info-item">
+                <span class="info-label">Téléphone</span>
+                <p class="info-value">
+                  <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+                </p>
+              </div>
 
-            <div class="info-block">
-              <h3 class="text-h3">Email</h3>
-              <p class="body1">
-                <a href="mailto:contact@vindex-avocats.fr"
-                  >contact@vindex-avocats.fr</a
-                >
-              </p>
-            </div>
+              <div class="info-item">
+                <span class="info-label">Email</span>
+                <p class="info-value">
+                  <a href="mailto:contact@vindex-avocats.fr"
+                    >contact@vindex-avocats.fr</a
+                  >
+                </p>
+              </div>
 
-            <div class="info-block">
-              <h3 class="text-h3">Horaires</h3>
-              <p class="body1">
-                Du lundi au vendredi<br />
-                9h00 – 12h30 / 14h00 – 18h00
-              </p>
+              <div class="info-item">
+                <span class="info-label">Horaires</span>
+                <p class="info-value">
+                  Du lundi au vendredi<br />
+                  9h00 – 12h30 / 14h00 – 18h00
+                </p>
+              </div>
             </div>
           </div>
 
           <!-- Contact Form -->
-          <div class="contact-form-wrapper">
-            <h2 class="text-h2">Formulaire de contact</h2>
+          <div class="contact-form-container">
+            <h2 class="section-title">Envoyer un message</h2>
 
             <form class="contact-form" action="#" method="post">
-              <div class="form-group">
-                <label for="nom">Nom *</label>
-                <input type="text" id="nom" name="nom" required />
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nom">Nom *</label>
+                  <input
+                    type="text"
+                    id="nom"
+                    name="nom"
+                    required
+                    placeholder="Votre nom"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="prenom">Prénom *</label>
+                  <input
+                    type="text"
+                    id="prenom"
+                    name="prenom"
+                    required
+                    placeholder="Votre prénom"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="votre@email.com"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="telephone">Téléphone</label>
+                  <input
+                    type="tel"
+                    id="telephone"
+                    name="telephone"
+                    placeholder="06 00 00 00 00"
+                  />
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="prenom">Prénom *</label>
-                <input type="text" id="prenom" name="prenom" required />
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-
-              <div class="form-group">
-                <label for="telephone">Téléphone</label>
-                <input type="tel" id="telephone" name="telephone" />
-              </div>
-
-              <div class="form-group form-group-full">
                 <label for="objet">Objet *</label>
                 <select id="objet" name="objet" required>
                   <option value="">Sélectionnez un objet</option>
@@ -100,46 +134,262 @@ import Footer from "../components/Footer.astro";
                 </select>
               </div>
 
-              <div class="form-group form-group-full">
+              <div class="form-group">
                 <label for="message">Message *</label>
-                <textarea id="message" name="message" rows="6" required
-                ></textarea>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  placeholder="Comment pouvons-nous vous aider ?"></textarea>
               </div>
 
-              <div class="form-group form-group-full">
-                <label class="checkbox-label">
+              <div class="form-footer">
+                <label class="checkbox-container">
                   <input type="checkbox" name="rgpd" required />
-                  <span class="body2">
+                  <span class="checkmark"></span>
+                  <span class="checkbox-text">
                     J'accepte que mes données soient traitées conformément à la
-                    politique de confidentialité du cabinet. *
+                    politique de confidentialité. *
                   </span>
                 </label>
-              </div>
 
-              <div class="form-group form-group-full">
-                <button type="submit" class="submit-button">
-                  Envoyer le message
-                </button>
+                <button type="submit" class="submit-button"> Envoyer </button>
               </div>
             </form>
-
-            <div class="rgpd-notice">
-              <p class="caption">
-                Les informations recueillies font l'objet d'un traitement
-                informatique destiné à répondre à votre demande. Conformément au
-                RGPD, vous disposez d'un droit d'accès, de rectification et de
-                suppression de vos données. Pour exercer ces droits,
-                contactez-nous à l'adresse :
-                <a href="mailto:contact@vindex-avocats.fr"
-                  >contact@vindex-avocats.fr</a
-                >
-              </p>
-            </div>
           </div>
         </div>
       </div>
     </section>
-  </main>
 
-  <Footer />
+    <div class="footer-wrapper">
+      <FinalCTA />
+      <Footer />
+    </div>
+  </main>
 </BaseLayout>
+
+<style>
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-wrapper {
+    background-color: #08110f;
+    color: #ffffff;
+    padding-top: 80px;
+  }
+
+  .page-hero {
+    padding: 128px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-contact {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 120px;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 48px;
+    color: var(--color-text-main);
+  }
+
+  .info-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .info-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  .info-value {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.8);
+  }
+
+  .info-value a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .info-value a:hover {
+    color: var(--color-primary);
+  }
+
+  /* Form Styling */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  label {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 16px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(var(--color-text-main-rgb), 0.1);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--color-text-main);
+    transition: border-color 0.3s ease;
+    outline: none;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-bottom-color: var(--color-primary);
+  }
+
+  /* Placeholder Styling */
+  ::placeholder {
+    color: rgba(var(--color-text-main-rgb), 0.3);
+  }
+
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: rgba(var(--color-text-main-rgb), 0.6);
+  }
+
+  .checkbox-container input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .checkmark {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(var(--color-text-main-rgb), 0.2);
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .checkbox-container:hover .checkmark {
+    border-color: var(--color-primary);
+  }
+
+  .checkbox-container input:checked + .checkmark {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .checkbox-container input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .submit-button {
+    align-self: flex-start;
+    padding: 16px 48px;
+    background-color: var(--color-text-main);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .submit-button:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 64px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+
+    .page-hero {
+      padding: 120px 16px 64px;
+    }
+
+    .section-contact {
+      padding: 64px 16px;
+    }
+  }
+</style>

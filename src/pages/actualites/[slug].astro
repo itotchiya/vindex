@@ -1,14 +1,17 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
+import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
+import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
+import Button from "../../components/ui-kit/Button.astro";
+import { ArrowLeft } from "lucide-astro";
 
 // Demo articles data for static paths
 const articlesData = {
   "jurisprudence-photovoltaique-2026": {
-    title:
-      "Jurisprudence photovoltaïque : les apports de la Cour de cassation en 2025",
-    date: "15 janvier 2026",
+    title: "Jurisprudence photovoltaïque : les apports de la Cour de cassation",
+    date: "15 janv. 2026",
     category: "Jurisprudence",
     content: `
       <p>L'année 2025 a été marquée par plusieurs arrêts significatifs de la Cour de cassation 
@@ -33,10 +36,9 @@ const articlesData = {
     `,
   },
   "procedure-participative-appel": {
-    title:
-      "La convention de procédure participative en appel : un outil sous-exploité",
-    date: "8 janvier 2026",
-    category: "Analyse procédurale",
+    title: "La convention de procédure participative en appel",
+    date: "8 janv. 2026",
+    category: "Analyse",
     content: `
       <p>La convention de procédure participative reste un outil méconnu et sous-utilisé 
       dans le cadre de la procédure d'appel. Pourtant, ses avantages sont nombreux et 
@@ -58,9 +60,9 @@ const articlesData = {
     `,
   },
   "delais-magendie-vigilance": {
-    title: "Délais Magendie : points de vigilance for 2026",
-    date: "2 janvier 2026",
-    category: "Procédure d'appel",
+    title: "Délais Magendie : points de vigilance stratégiques",
+    date: "2 janv. 2026",
+    category: "Procédure",
     content: `
       <p>La procédure d'appel est encadrée par des délais stricts, dont le non-respect 
       est lourdement sanctionné. Rappel des principaux points de vigilance pour 2026.</p>
@@ -81,31 +83,6 @@ const articlesData = {
       valable en cas de dépassement des délais.</p>
     `,
   },
-  "credit-affecte-deblocage-fonds": {
-    title: "Crédit affecté : la faute de la banque dans le déblocage des fonds",
-    date: "18 décembre 2025",
-    category: "Jurisprudence",
-    content: `
-      <p>L'établissement de crédit qui finance une installation photovoltaïque 
-      est tenu à des obligations de vérification avant de procéder au déblocage 
-      des fonds. Le manquement à ces obligations constitue une faute.</p>
-      
-      <h2>L'obligation de vérification</h2>
-      <p>Avant de débloquer les fonds, la banque doit s'assurer que l'installation 
-      a été intégralement réalisée et mise en service. Elle ne peut se contenter 
-      d'une attestation de livraison signée par le consommateur.</p>
-      
-      <h2>Les conséquences de la faute</h2>
-      <p>Lorsque la faute de la banque est caractérisée, celle-ci est privée de 
-      son droit à restitution du capital prêté. Le consommateur n'est alors tenu 
-      de rembourser que les échéances déjà versées.</p>
-      
-      <h2>La charge de la preuve</h2>
-      <p>Il appartient à l'établissement de crédit de prouver qu'il a procédé 
-      aux vérifications nécessaires avant de débloquer les fonds. À défaut, 
-      sa faute est présumée.</p>
-    `,
-  },
 };
 
 export function getStaticPaths() {
@@ -113,7 +90,6 @@ export function getStaticPaths() {
     { params: { slug: "jurisprudence-photovoltaique-2026" } },
     { params: { slug: "procedure-participative-appel" } },
     { params: { slug: "delais-magendie-vigilance" } },
-    { params: { slug: "credit-affecte-deblocage-fonds" } },
   ];
 }
 
@@ -128,32 +104,159 @@ if (!article) {
 <BaseLayout title={`${article.title} | VINDEX – Avocats`}>
   <Header />
 
-  <main class="page-article">
-    <!-- Article Header -->
-    <section class="article-hero">
-      <div class="container">
-        <div class="article-meta">
-          <span class="article-category">{article.category}</span>
-          <time class="article-date">{article.date}</time>
+  <main>
+    <div class="hero-wrapper">
+      <section class="article-hero">
+        <div class="container">
+          <div class="header-content">
+            <div class="meta-row">
+              <span class="category">{article.category}</span>
+              <span class="separator">/</span>
+              <time class="date">{article.date}</time>
+            </div>
+            <h1 class="article-title">{article.title}</h1>
+          </div>
         </div>
-        <h1 class="text-h1">{article.title}</h1>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- Article Content -->
-    <section class="article-content">
-      <div class="container">
-        <div class="content-wrapper" set:html={article.content} />
-      </div>
-    </section>
+    <article class="section-content">
+      <div class="container--narrow">
+        <div class="wysiwyg-content" set:html={article.content} />
 
-    <!-- Back Link -->
-    <section class="article-footer">
-      <div class="container">
-        <a href="/actualites" class="back-link"> ← Retour aux actualités </a>
+        <div class="article-footer">
+          <Button href="/actualites" variant="secondary" size="md">
+            <ArrowLeft size={18} class="inline mr-2" /> Retour au Mag
+          </Button>
+        </div>
       </div>
-    </section>
+    </article>
+
+    <div class="footer-wrapper">
+      <FinalCTA />
+      <Footer />
+    </div>
   </main>
-
-  <Footer />
 </BaseLayout>
+
+<style>
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-wrapper {
+    background-color: #08110f;
+    color: #ffffff;
+    padding-top: 80px;
+  }
+
+  .article-hero {
+    padding: 128px 24px;
+  }
+
+  .header-content {
+    max-width: 900px;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .category {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .separator {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .date {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .article-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+    font-weight: 500;
+  }
+
+  .section-content {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .container--narrow {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* WYSIWYG Styling */
+  .wysiwyg-content {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: rgba(var(--color-text-main-rgb), 0.85);
+  }
+
+  .wysiwyg-content :global(p) {
+    margin-bottom: 32px;
+  }
+
+  .wysiwyg-content :global(h2) {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 64px 0 32px;
+    color: var(--color-text-main);
+    line-height: 1.2;
+  }
+
+  .wysiwyg-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .article-footer {
+    margin-top: 80px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(var(--color-text-main-rgb), 0.1);
+  }
+
+  .footer-wrapper {
+    position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .article-hero {
+      padding: 120px 16px 64px;
+    }
+
+    .article-title {
+      font-size: 2.25rem;
+    }
+
+    .section-content {
+      padding: 64px 16px;
+    }
+
+    .wysiwyg-content {
+      font-size: 1.125rem;
+    }
+
+    .wysiwyg-content :global(h2) {
+      font-size: 1.5rem;
+      margin: 48px 0 24px;
+    }
+  }
+</style>

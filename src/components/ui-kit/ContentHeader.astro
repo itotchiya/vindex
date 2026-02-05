@@ -5,6 +5,7 @@ interface Props {
   titleSecondLine?: string;
   description: string | string[];
   class?: string;
+  theme?: "light" | "dark";
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   titleSecondLine,
   description,
   class: className = "",
+  theme = "light",
 } = Astro.props;
 
 // Convert description to array if it's a single string
@@ -21,7 +23,7 @@ const descriptionArray = Array.isArray(description)
   : [description];
 ---
 
-<div class={`content-header ${className}`}>
+<div class={`content-header ${theme} ${className}`}>
   <span class="eyebrow">{eyebrow}</span>
 
   <h2 class="headline">
@@ -38,7 +40,23 @@ const descriptionArray = Array.isArray(description)
 
 <style>
   .content-header {
-    max-width: 560px;
+    max-width: 720px; /* Slightly wider for better editorial balance */
+  }
+
+  /* Theme: Light (Default) */
+  .content-header.light .headline {
+    color: var(--color-text-main);
+  }
+  .content-header.light .description {
+    color: rgba(var(--color-text-main-rgb), 0.8);
+  }
+
+  /* Theme: Dark */
+  .content-header.dark .headline {
+    color: #ffffff;
+  }
+  .content-header.dark .description {
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .eyebrow {
@@ -49,13 +67,13 @@ const descriptionArray = Array.isArray(description)
     letter-spacing: 0.15em;
     color: var(--color-primary);
     margin-bottom: 24px;
+    font-weight: 500;
   }
 
   .headline {
     font-family: var(--font-sans);
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     line-height: 1.1;
-    color: var(--color-text-main);
     letter-spacing: -0.02em;
     margin-bottom: 30px;
     display: flex;
@@ -69,11 +87,11 @@ const descriptionArray = Array.isArray(description)
   }
 
   .description {
-    font-size: 1.1rem;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
     line-height: 1.7;
-    color: rgba(var(--color-text-main-rgb), 0.8);
     margin-bottom: 24px;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .description:last-of-type {

@@ -1,170 +1,286 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
+import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
+import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
 ---
 
 <BaseLayout title="Postulation en appel | VINDEX – Avocats">
   <Header />
 
-  <main class="page-domaine-detail">
-    <!-- Hero Section -->
-    <section class="page-hero">
-      <div class="container">
-        <span class="label">Procédure d'appel</span>
-        <h1 class="text-h1">Postulation en appel</h1>
-        <p class="body2">Cour d'appel de Douai</p>
-        <p class="body1 subtitle">
-          Une représentation procédurale rigoureuse au service des avocats et de
-          leurs clients.
-        </p>
-      </div>
-    </section>
+  <main>
+    <div class="hero-wrapper">
+      <section class="page-hero">
+        <div class="container">
+          <ContentHeader
+            theme="dark"
+            eyebrow="Cour d'appel de Douai"
+            title="Postulation"
+            titleSecondLine="& Représentation Procédurale"
+            description="Une représentation rigoureuse au service des avocats hors ressort, assurant une gestion fluide et sécurisée de vos dossiers en appel."
+          />
+        </div>
+      </section>
+    </div>
 
-    <!-- Définition de la postulation -->
+    <!-- Définition -->
     <section class="section-definition">
       <div class="container">
-        <h2 class="text-h2">Définition de la postulation</h2>
-        <p class="body1">
-          La postulation désigne le mandat donné à un avocat inscrit au barreau
-          du ressort d'une cour d'appel d'accomplir les actes de procédure
-          devant cette juridiction au nom et pour le compte d'un confrère
-          n'appartenant pas à ce ressort.
-        </p>
-        <p class="body1">
-          Cette représentation procédurale est indispensable en appel, où la
-          compétence territoriale de l'avocat est strictement limitée au ressort
-          de la cour d'appel dont dépend son barreau.
-        </p>
+        <div class="definition-content">
+          <h2 class="section-title">Le Mandat de Postulation</h2>
+          <div class="text-block">
+            <p class="body-text">
+              La postulation désigne le mandat donné à un avocat inscrit au
+              barreau du ressort d'une cour d'appel d'accomplir les actes de
+              procédure devant cette juridiction au nom d'un confrère.
+            </p>
+            <p class="body-text">
+              Indispensable en appel, cette représentation garantit le respect
+              des règles de compétence territoriale et la maîtrise des usages
+              locaux propres à la Cour d'appel de Douai.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Spécificités de l'appel -->
+    <!-- Spécificités -->
     <section class="section-specificites">
       <div class="container">
-        <h2 class="text-h2">Spécificités de l'appel</h2>
+        <ContentHeader
+          eyebrow="Procédure"
+          title="Rigueur & Délais"
+          description="La procédure d'appel ne souffre d'aucune approximation. Nous sécurisons chaque étape de votre dossier."
+        />
 
         <div class="specificites-grid">
-          <div class="specificite-item">
-            <h3 class="text-h3">Procédure Magendie</h3>
-            <p class="body1">
-              La procédure d'appel est régie par le décret du 9 décembre 2009,
-              instituant des délais stricts et impératifs pour le dépôt des
-              conclusions et la communication des pièces.
+          <div class="spec-card">
+            <h3 class="card-title">Procédure Magendie</h3>
+            <p class="card-text">
+              Maîtrise complète du décret de 2009, instaurant des délais stricts
+              et impératifs pour le dépôt des écritures.
             </p>
           </div>
 
-          <div class="specificite-item">
-            <h3 class="text-h3">Délais de rigueur</h3>
-            <p class="body1">
-              L'appelant dispose de trois mois pour conclure, l'intimé de trois
-              mois pour répliquer. Le non-respect de ces délais est sanctionné
-              par la caducité ou l'irrecevabilité.
+          <div class="spec-card">
+            <h3 class="card-title">Délais de Rigueur</h3>
+            <p class="card-text">
+              Gestion précise des calendriers (3 mois pour conclure, 2 mois en
+              réplique) sous peine de caducité ou irrecevabilité.
             </p>
           </div>
 
-          <div class="specificite-item">
-            <h3 class="text-h3">Formalisme accru</h3>
-            <p class="body1">
-              La déclaration d'appel, les conclusions et les actes de procédure
-              obéissent à des règles formelles strictes dont le non-respect peut
-              compromettre l'ensemble du dossier.
+          <div class="spec-card">
+            <h3 class="card-title">Formalisme Accru</h3>
+            <p class="card-text">
+              Vérification systématique de la conformité des actes aux exigences
+              formelles de la procédure d'appel.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Gestion des délais -->
-    <section class="section-delais">
-      <div class="container">
-        <h2 class="text-h2">Gestion des délais</h2>
-        <p class="body1">
-          Le cabinet assure un suivi rigoureux des délais procéduraux,
-          garantissant le respect des échéances imposées par la procédure
-          d'appel :
-        </p>
-        <ul class="delais-list">
-          <li>Délai de conclusions de l'appelant (3 mois)</li>
-          <li>Délai de conclusions de l'intimé (3 mois)</li>
-          <li>Délai de conclusions en réplique (2 mois)</li>
-          <li>Délais spéciaux en matière d'appel à bref délai</li>
-          <li>Délais de mise en état et de clôture</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Services aux avocats -->
+    <!-- Services -->
     <section class="section-services">
       <div class="container">
-        <h2 class="text-h2">Services aux avocats plaidants</h2>
-
-        <div class="services-grid">
-          <div class="service-item">
-            <h3 class="text-h3">Représentation procédurale</h3>
-            <p class="body1">
-              Accomplissement de l'ensemble des actes de procédure : déclaration
-              d'appel, signification, dépôt des conclusions, communication des
-              pièces via RPVA.
-            </p>
+        <div class="services-wrapper">
+          <div class="services-intro">
+            <ContentHeader
+              eyebrow="Services Confraternels"
+              title="Votre Correspondant à Douai"
+              description="Nous agissons comme le prolongement de votre cabinet auprès de la Cour."
+            />
           </div>
 
-          <div class="service-item">
-            <h3 class="text-h3">Suivi du dossier</h3>
-            <p class="body1">
-              Information régulière sur l'état d'avancement de la procédure, les
-              échéances à venir et les décisions rendues par le conseiller de la
-              mise en état.
-            </p>
-          </div>
-
-          <div class="service-item">
-            <h3 class="text-h3">Représentation à l'audience</h3>
-            <p class="body1">
-              Présence à l'audience de plaidoirie ou, selon les souhaits du
-              confrère, simple représentation permettant à l'avocat plaidant de
-              se déplacer pour plaider.
-            </p>
-          </div>
-
-          <div class="service-item">
-            <h3 class="text-h3">Gestion des incidents</h3>
-            <p class="body1">
-              Traitement des incidents de mise en état : demandes de radiation,
-              incidents de communication, demandes de report d'ordonnance de
-              clôture.
-            </p>
+          <div class="services-list">
+            <div class="service-item">
+              <span class="service-label">01. Gestion RPVA</span>
+              <p class="service-description">
+                Accomplissement de tous les actes via le Réseau Privé Virtuel
+                des Avocats.
+              </p>
+            </div>
+            <div class="service-item">
+              <span class="service-label">02. Suivi de Mise en État</span>
+              <p class="service-description">
+                Information en temps réel sur les incidents, calendriers et
+                ordonnances.
+              </p>
+            </div>
+            <div class="service-item">
+              <span class="service-label">03. Représentation</span>
+              <p class="service-description">
+                Présence aux audiences de procédure ou de plaidoirie selon vos
+                besoins.
+              </p>
+            </div>
+            <div class="service-item">
+              <span class="service-label">04. Expertises Locales</span>
+              <p class="service-description">
+                Connaissance fine des usages et spécificités de la Cour d'appel
+                de Douai.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Cour d'appel de Douai -->
-    <section class="section-cour">
-      <div class="container">
-        <h2 class="text-h2">Cour d'appel de Douai</h2>
-        <p class="body1">
-          La Cour d'appel de Douai est l'une des plus importantes cours d'appel
-          de France. Son ressort couvre les départements du Nord et du
-          Pas-de-Calais, soit une population de près de 4 millions d'habitants.
-        </p>
-        <p class="body1">
-          Le cabinet VINDEX, implanté à Douai, intervient quotidiennement devant
-          cette juridiction et maîtrise parfaitement ses pratiques et usages.
-        </p>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section-cta">
-      <div class="container">
-        <p class="body1">
-          Vous êtes avocat et recherchez un correspondant pour postulation ?
-        </p>
-        <a href="/contact" class="cta-link">Contacter le cabinet</a>
-      </div>
-    </section>
+    <div class="footer-wrapper">
+      <FinalCTA />
+      <Footer />
+    </div>
   </main>
-
-  <Footer />
 </BaseLayout>
+
+<style>
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-wrapper {
+    background-color: #08110f;
+    color: #ffffff;
+    padding-top: 80px;
+  }
+
+  .page-hero {
+    padding: 128px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-definition {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .definition-content {
+    max-width: 900px;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 48px;
+    color: var(--color-primary);
+  }
+
+  .text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .body-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.82);
+  }
+
+  .section-specificites {
+    padding: 128px 24px;
+    background-color: #fafafa;
+  }
+
+  .specificites-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 80px;
+  }
+
+  .spec-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .card-text {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.7);
+  }
+
+  .section-services {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .services-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 100px;
+    align-items: flex-start;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .service-item {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(var(--color-text-main-rgb), 0.1);
+  }
+
+  .service-item:last-child {
+    border-bottom: none;
+  }
+
+  .service-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--color-text-main);
+  }
+
+  .service-description {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.6);
+  }
+
+  .footer-wrapper {
+    position: relative;
+  }
+
+  @media (max-width: 1024px) {
+    .specificites-grid,
+    .services-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .services-wrapper {
+      gap: 64px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-hero {
+      padding: 120px 16px 64px;
+    }
+
+    .section-definition,
+    .section-specificites,
+    .section-services {
+      padding: 64px 16px;
+    }
+  }
+</style>

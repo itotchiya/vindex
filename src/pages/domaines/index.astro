@@ -1,117 +1,250 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
+import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
+import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
+import Button from "../../components/ui-kit/Button.astro";
+import { ArrowRight } from "lucide-astro";
 ---
 
 <BaseLayout title="Domaines d'activité | VINDEX – Avocats">
   <Header />
 
-  <main class="page-domaines">
-    <!-- Hero Section -->
-    <section class="page-hero">
-      <div class="container">
-        <h1 class="text-h1">Domaines d'activité</h1>
-        <p class="body1 subtitle">
-          Une expertise ciblée au service de vos droits.
-        </p>
-      </div>
-    </section>
-
-    <!-- Introduction -->
-    <section class="section-intro">
-      <div class="container">
-        <p class="body1">
-          Le cabinet VINDEX concentre son activité sur trois domaines
-          d'expertise complémentaires, permettant d'offrir à ses clients une
-          défense technique et rigoureuse, au plus près de leurs intérêts.
-        </p>
-      </div>
-    </section>
+  <main>
+    <div class="hero-wrapper">
+      <section class="page-hero">
+        <div class="container">
+          <ContentHeader
+            theme="dark"
+            eyebrow="Expertise"
+            title="Domaines d'intervention"
+            description="Le cabinet VINDEX concentre son activité sur trois pôles d'expertise complémentaires, permettant d'offrir une défense technique et rigoureuse au plus près de vos intérêts."
+          />
+        </div>
+      </section>
+    </div>
 
     <!-- Domaines List -->
-    <section class="section-domaines-list">
+    <section class="section-domaines">
       <div class="container">
         <div class="domaines-grid">
           <!-- Contentieux photovoltaïque -->
           <article class="domaine-card">
-            <div class="card-header">
-              <span class="label">Défense des consommateurs</span>
-            </div>
-            <div class="card-content">
-              <h2 class="text-h3">Contentieux des panneaux photovoltaïques</h2>
-              <p class="body1">
-                Le cabinet intervient aux côtés des consommateurs confrontés à
-                des opérations de vente de panneaux photovoltaïques irrégulières
-                et des crédits affectés liés à ces installations.
+            <div class="card-eyebrow">Défense des consommateurs</div>
+            <div class="card-main">
+              <h2 class="card-title">
+                Contentieux des panneaux photovoltaïques
+              </h2>
+              <p class="card-description">
+                Intervention aux côtés des consommateurs confrontés à des
+                opérations de vente irrégulières et des crédits affectés.
               </p>
-              <ul class="keywords">
+              <ul class="card-tags">
                 <li>Vente hors établissement</li>
                 <li>Crédit affecté</li>
                 <li>Nullité des contrats</li>
               </ul>
             </div>
-            <div class="card-action">
-              <a href="/domaines/contentieux-photovoltaique" class="link-arrow">
-                En savoir plus
-              </a>
+            <div class="card-footer">
+              <Button
+                href="/domaines/contentieux-photovoltaique"
+                variant="secondary"
+                size="sm"
+              >
+                Explorer ce domaine <ArrowRight size={18} class="inline ml-1" />
+              </Button>
             </div>
           </article>
 
           <!-- Postulation en appel -->
           <article class="domaine-card">
-            <div class="card-header">
-              <span class="label">Procédure d'appel</span>
-            </div>
-            <div class="card-content">
-              <h2 class="text-h3">Postulation en appel</h2>
-              <p class="body2">Cour d'appel de Douai</p>
-              <p class="body1">
-                Le cabinet propose aux avocats hors ressort une activité de
-                postulation dédiée, assurant la gestion procédurale de leurs
-                dossiers en appel avec rigueur et réactivité.
+            <div class="card-eyebrow">Procédure d'appel</div>
+            <div class="card-main">
+              <h2 class="card-title">Postulation devant la Cour d'appel</h2>
+              <p class="card-description">
+                Activité de postulation dédiée aux avocats hors ressort,
+                assurant la gestion procédurale à Douai avec rigueur.
               </p>
-              <ul class="keywords">
-                <li>Représentation procédurale</li>
-                <li>Gestion des délais Magendie</li>
-                <li>Suivi des audiences</li>
+              <ul class="card-tags">
+                <li>Représentation</li>
+                <li>Délais Magendie</li>
+                <li>Suivi audiences</li>
               </ul>
             </div>
-            <div class="card-action">
-              <a href="/domaines/postulation-appel" class="link-arrow">
-                En savoir plus
-              </a>
+            <div class="card-footer">
+              <Button
+                href="/domaines/postulation-appel"
+                variant="secondary"
+                size="sm"
+              >
+                Détails postulation <ArrowRight size={18} class="inline ml-1" />
+              </Button>
             </div>
           </article>
 
           <!-- Procédure participative -->
           <article class="domaine-card">
-            <div class="card-header">
-              <span class="label">Outil procédural</span>
-            </div>
-            <div class="card-content">
-              <h2 class="text-h3">Convention de procédure participative</h2>
-              <p class="body1">
-                La convention de procédure participative est un outil
-                stratégique permettant de maîtriser le temps judiciaire et de
-                sécuriser le cadre procédural des litiges.
+            <div class="card-eyebrow">Outil stratégique</div>
+            <div class="card-main">
+              <h2 class="card-title">Convention de procédure participative</h2>
+              <p class="card-description">
+                Un outil puissant pour maîtriser le temps judiciaire et
+                sécuriser le cadre procédural de vos litiges.
               </p>
-              <ul class="keywords">
-                <li>Interruption des délais</li>
+              <ul class="card-tags">
                 <li>Acte d'avocat</li>
-                <li>Mise en état conventionnelle</li>
+                <li>Mise en état</li>
+                <li>Gain de temps</li>
               </ul>
             </div>
-            <div class="card-action">
-              <a href="/domaines/procedure-participative" class="link-arrow">
-                En savoir plus
-              </a>
+            <div class="card-footer">
+              <Button
+                href="/domaines/procedure-participative"
+                variant="secondary"
+                size="sm"
+              >
+                Découvrir l'outil <ArrowRight size={18} class="inline ml-1" />
+              </Button>
             </div>
           </article>
         </div>
       </div>
     </section>
-  </main>
 
-  <Footer />
+    <div class="footer-wrapper">
+      <FinalCTA />
+      <Footer />
+    </div>
+  </main>
 </BaseLayout>
+
+<style>
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-wrapper {
+    background-color: #08110f;
+    color: #ffffff;
+    padding-top: 80px;
+  }
+
+  .page-hero {
+    padding: 128px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .section-domaines {
+    padding: 128px 24px;
+    background-color: #ffffff;
+  }
+
+  .domaines-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .domaine-card {
+    background-color: #fafafa;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    border: 1px solid transparent;
+    transition: all 0.4s ease;
+    height: 100%;
+  }
+
+  .domaine-card:hover {
+    background-color: #ffffff;
+    border-color: rgba(var(--color-primary-rgb), 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+    transform: translateY(-8px);
+  }
+
+  .card-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  .card-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 500;
+    color: var(--color-text-main);
+  }
+
+  .card-description {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.7);
+  }
+
+  .card-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .card-tags li {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    background-color: rgba(var(--color-text-main-rgb), 0.05);
+    border-radius: 100px;
+    color: rgba(var(--color-text-main-rgb), 0.6);
+  }
+
+  .card-footer {
+    margin-top: auto;
+    padding-top: 32px;
+    border-top: 1px solid rgba(var(--color-text-main-rgb), 0.05);
+  }
+
+  .footer-wrapper {
+    position: relative;
+  }
+
+  @media (max-width: 1200px) {
+    .domaines-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .domaines-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .domaine-card {
+      padding: 32px;
+    }
+
+    .page-hero {
+      padding: 120px 16px 64px;
+    }
+
+    .section-domaines {
+      padding: 64px 16px;
+    }
+  }
+</style>
