@@ -18,41 +18,49 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
       <!-- Card 1 -->
       <div class="rigor-card">
         <img src="/conformite.webp" alt="Icone Conformité" class="card-icon" />
-        <h3 class="card-title">Conformité</h3>
-        <p class="card-text">
-          Analyse systématique de la recevabilité pour garantir 100% de sécurité
-          procédurale.
-        </p>
+        <div class="card-content">
+          <h3 class="card-title">Conformité</h3>
+          <p class="card-text">
+            Analyse systématique de la recevabilité pour garantir 100% de
+            sécurité procédurale.
+          </p>
+        </div>
       </div>
 
       <!-- Card 2 -->
       <div class="rigor-card">
         <img src="/deadline.webp" alt="Icone Délais" class="card-icon" />
-        <h3 class="card-title">Délais</h3>
-        <p class="card-text">
-          Gestion proactive du calendrier et anticipation des échéances
-          critiques.
-        </p>
+        <div class="card-content">
+          <h3 class="card-title">Délais</h3>
+          <p class="card-text">
+            Gestion proactive du calendrier et anticipation des échéances
+            critiques.
+          </p>
+        </div>
       </div>
 
       <!-- Card 3 -->
       <div class="rigor-card">
         <img src="/security.webp" alt="Icone Sécurité" class="card-icon" />
-        <h3 class="card-title">Sécurité</h3>
-        <p class="card-text">
-          Veille juridique constante pour une stratégie à l'épreuve des
-          évolutions.
-        </p>
+        <div class="card-content">
+          <h3 class="card-title">Sécurité</h3>
+          <p class="card-text">
+            Veille juridique constante pour une stratégie à l'épreuve des
+            évolutions.
+          </p>
+        </div>
       </div>
 
       <!-- Card 4 -->
       <div class="rigor-card">
         <img src="/strategy.webp" alt="Icone Stratégie" class="card-icon" />
-        <h3 class="card-title">Stratégie</h3>
-        <p class="card-text">
-          Vision globale du contentieux intégrant les risques et les
-          opportunités d'appel.
-        </p>
+        <div class="card-content">
+          <h3 class="card-title">Stratégie</h3>
+          <p class="card-text">
+            Vision globale du contentieux intégrant les risques et les
+            opportunités d'appel.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -80,18 +88,27 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
   .rigor-card {
     background-color: #ffffff;
     padding: 3rem;
-    border-radius: 4px; /* Minimal radius */
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 16px;
   }
 
   .card-icon {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     margin-bottom: 24px;
     border-radius: 2px;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
   }
 
   .card-title {
@@ -103,7 +120,7 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
   }
 
   .card-text {
-    font-family: var(--font-serif); /* Using serif for elegance */
+    font-family: var(--font-serif);
     font-size: 1rem;
     line-height: 1.6;
     color: rgba(var(--color-text-main-rgb), 0.7);
@@ -114,6 +131,10 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
     .rigor-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
+    }
+
+    .rigor-card {
+      padding: 2rem;
     }
   }
 
@@ -128,44 +149,24 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
     }
 
     .rigor-card {
-      padding: 24px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 32px 24px;
+      gap: 24px;
+    }
+
+    .card-icon {
+      width: 128px;
+      height: 128px;
+    }
+
+    .card-content {
+      align-items: center;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
     }
   }
 </style>
-
-<script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const section = document.querySelector(".procedural-rigor");
-  const grid = section?.querySelector(".rigor-grid");
-  const cards = section?.querySelectorAll(".rigor-card");
-
-  // Staggered y offsets: Card 1: 24px, Card 2: 32px, Card 3: 48px, Card 4: 64px
-  const offsets = [48, 96, 144, 192];
-
-  if (grid && cards) {
-    cards.forEach((card, index) => {
-      const yOffset = offsets[index] || 64;
-
-      gsap.fromTo(
-        card,
-        {
-          y: yOffset,
-        },
-        {
-          y: 0,
-          ease: "none", // Linear for smooth scroll-linked movement
-          scrollTrigger: {
-            trigger: grid,
-            start: "top 95%",
-            end: "top 30%",
-            scrub: true,
-          },
-        },
-      );
-    });
-  }
-</script>

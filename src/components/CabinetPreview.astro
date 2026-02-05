@@ -172,22 +172,22 @@ import { ArrowRight } from "lucide-astro";
 
   @media (max-width: 1024px) {
     .cabinet-preview {
-      padding: 64px 16px;
+      padding: 0 16px 64px;
       height: auto;
     }
 
     .grid-layout {
       grid-template-columns: 1fr;
-      gap: 4rem;
+      gap: 0;
     }
 
     .text-col {
       padding-right: 0;
-      order: 1;
+      order: 2;
     }
 
     .visual-col {
-      order: 2;
+      order: 1;
     }
 
     .cabinet-image {
@@ -197,6 +197,13 @@ import { ArrowRight } from "lucide-astro";
 
     .experience-card {
       width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .custom-btn {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

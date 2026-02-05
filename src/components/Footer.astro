@@ -27,7 +27,7 @@
         </nav>
       </div>
 
-      <div class="footer-col">
+      <div class="footer-col domains-col ">
         <h4 class="footer-heading">Domaines d'intervention</h4>
         <nav>
           <ul class="footer-nav">
@@ -230,7 +230,7 @@
 
   @media (max-width: 768px) {
     .site-footer {
-      padding: 60px 0 32px;
+      padding: 40px 0 24px;
     }
 
     .container {
@@ -239,14 +239,27 @@
 
     .footer-grid {
       grid-template-columns: 1fr;
-      gap: 32px;
-      margin-bottom: 40px;
+      gap: 48px;
+      margin-bottom: 24px;
+    }
+
+    .domains-col {
+      display: none;
+    }
+
+    .footer-heading {
+      margin-bottom: 12px;
+    }
+
+    .footer-nav {
+      gap: 8px;
     }
 
     .footer-bottom {
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       text-align: center;
+      padding-top: 24px;
     }
   }
 </style>

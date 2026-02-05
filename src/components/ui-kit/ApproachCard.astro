@@ -11,7 +11,7 @@ const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
 ---
 
 <div class="approach-card">
-  <!-- Background container (height determined by text only) -->
+  <!-- Combined container for background, text and assets -->
   <div class="card-background">
     <!-- Text Content -->
     <div class="text-content">
@@ -19,11 +19,11 @@ const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
       <h3 class="approach-title">{title}</h3>
       <p class="approach-description">{description}</p>
     </div>
-  </div>
 
-  <!-- Image/Illustration (positioned to not affect background height) -->
-  <div class="image-content">
-    <img src={imageSrc} alt={imageAlt} class="approach-image" />
+    <!-- Image/Illustration -->
+    <div class="image-content">
+      <img src={imageSrc} alt={imageAlt} class="approach-image" />
+    </div>
   </div>
 </div>
 
@@ -124,20 +124,22 @@ const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
 
   @media (max-width: 1024px) {
     .approach-card {
-      height: auto;
-      display: block;
+      height: 100%;
+      display: flex;
     }
 
     .card-background {
       padding: 40px;
-      min-height: auto;
+      height: 100%;
+      flex: 1;
+      display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding-bottom: 300px; /* Space for image on mobile */
+      border-radius: 8px;
     }
 
     .text-content {
-      flex: 1;
+      flex: 0 0 auto;
       width: 100%;
       padding-right: 0;
     }
@@ -147,29 +149,44 @@ const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
     }
 
     .image-content {
-      position: absolute;
-      right: 50%;
+      position: relative;
+      right: auto;
       top: auto;
-      bottom: 0;
-      transform: translateX(50%);
-      width: 80%;
-      max-width: 500px;
+      bottom: auto;
+      transform: none;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
       justify-content: center;
+      margin-top: 32px;
+      pointer-events: auto;
+    }
+
+    .approach-image {
+      max-height: 100%;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
     }
   }
 
   @media (max-width: 768px) {
     .card-background {
-      padding: 32px 24px;
-      padding-bottom: 250px;
-    }
-
-    .image-content {
-      width: 90%;
+      padding: 32px 24px 16px;
     }
 
     .approach-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .approach-description {
+      font-size: 1rem;
+    }
+
+    .image-content {
+      margin-top: 20px;
     }
   }
 </style>
