@@ -30,6 +30,7 @@ const audiences = [
     <div class="left-section">
       <div class="left-content">
         <ContentHeader
+          theme="dark"
           eyebrow="Public cible"
           title="À qui s'adresse"
           titleSecondLine="le cabinet VINDEX"
@@ -100,19 +101,6 @@ const audiences = [
     display: flex;
     align-items: center;
     padding: 0;
-  }
-
-  /* Override ContentHeader styles for dark theme */
-  .left-section :global(.eyebrow) {
-    color: var(--color-primary);
-  }
-
-  .left-section :global(.headline) {
-    color: #ffffff;
-  }
-
-  .left-section :global(.description) {
-    color: rgba(255, 255, 255, 0.8);
   }
 
   .audience-grid {
