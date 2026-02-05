@@ -170,3 +170,40 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const section = document.querySelector(".procedural-rigor");
+  const grid = section?.querySelector(".rigor-grid");
+  const cards = section?.querySelectorAll(".rigor-card");
+
+  // Staggered y offsets for 4 cards
+  const offsets = [48, 96, 144, 192];
+
+  if (grid && cards) {
+    cards.forEach((card, index) => {
+      const yOffset = offsets[index] || 64;
+
+      gsap.fromTo(
+        card,
+        {
+          y: yOffset,
+        },
+        {
+          y: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: grid,
+            start: "top 95%",
+            end: "top 30%",
+            scrub: true,
+          },
+        },
+      );
+    });
+  }
+</script>
