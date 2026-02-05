@@ -1,5 +1,6 @@
 ---
 import ContentHeader from "./ui-kit/ContentHeader.astro";
+import Button from "./ui-kit/Button.astro";
 import { ArrowRight } from "lucide-astro";
 
 const audiences = [
@@ -35,11 +36,11 @@ const audiences = [
           description="Le cabinet intervient auprès de trois types de clientèle, avec une approche adaptée à chaque public."
         />
 
-        <div class="secondary-cta">
-          <a href="/domaines" class="text-link">
+        <div class="actions">
+          <Button href="/domaines" variant="primary" class="custom-btn">
             Découvrir les domaines d'activité
-            <ArrowRight width={16} height={16} />
-          </a>
+            <ArrowRight class="btn-icon" width={18} height={18} />
+          </Button>
         </div>
       </div>
     </div>
@@ -66,15 +67,16 @@ const audiences = [
     background-color: #08110f;
     color: #f5f5f5;
     position: relative;
+    padding: 24px;
   }
 
   .container {
-    max-width: 1392px;
+    max-width: 1440px;
     width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 6rem;
     min-height: 100vh;
   }
 
@@ -84,7 +86,7 @@ const audiences = [
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
   }
 
   .left-content {
@@ -96,7 +98,7 @@ const audiences = [
   .right-section {
     display: flex;
     align-items: center;
-    padding: 80px 0;
+    padding: 0;
   }
 
   /* Override ContentHeader styles for dark theme */
@@ -150,24 +152,22 @@ const audiences = [
     font-weight: 300;
   }
 
-  .secondary-cta {
-    margin-top: 0;
+  .actions {
+    margin-top: 40px;
   }
 
-  .text-link {
+  .custom-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: gap 0.2s ease;
   }
 
-  .text-link:hover {
-    gap: 12px;
+  .btn-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .custom-btn:hover .btn-icon {
+    transform: translateX(4px);
   }
 
   @media (max-width: 1024px) {
@@ -193,9 +193,13 @@ const audiences = [
   }
 
   @media (max-width: 768px) {
+    .target-audience {
+      padding: 64px 16px;
+    }
+
     .container {
-      padding: 60px 24px;
-      gap: 40px;
+      padding: 0;
+      gap: 4rem;
     }
 
     .audience-grid {

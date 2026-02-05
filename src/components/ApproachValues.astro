@@ -9,16 +9,19 @@ const approaches = [
     title: "Rigueur procédurale",
     description:
       "Le cabinet VINDEX fonde son intervention sur une analyse juridique rigoureuse, une parfaite maîtrise des textes procéduraux et une attention constante portée aux intérêts du client.",
+    image: "/asset2.webp",
   },
   {
     title: "Défense des droits",
     description:
       "Chaque dossier est traité avec la même exigence de qualité, qu'il s'agisse d'accompagner un justiciable ou d'assister un confrère dans ses démarches procédurales devant la Cour d'appel.",
+    image: "/asset3.webp",
   },
   {
     title: "Maîtrise du temps judiciaire",
     description:
       "La sécurisation des délais et la gestion optimale du calendrier procédural constituent le cœur de notre pratique, garantissant à nos clients une défense efficace et sans faille.",
+    image: "/asset4.webp",
   },
 ];
 ---
@@ -52,7 +55,7 @@ const approaches = [
               number={`0${index + 1}`}
               title={approach.title}
               description={approach.description}
-              imageSrc="/Influencer 1.png"
+              imageSrc={approach.image}
               imageAlt={approach.title}
             />
           </div>
@@ -85,11 +88,11 @@ const approaches = [
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 60px;
+    padding: 24px;
   }
 
   .panel-content {
-    max-width: 1392px;
+    max-width: 1440px;
     width: 100%;
     margin: 0 auto;
   }
@@ -117,7 +120,7 @@ const approaches = [
 
   @media (max-width: 768px) {
     .scroll-panel {
-      padding: 0 24px;
+      padding: 64px 16px;
     }
   }
 </style>

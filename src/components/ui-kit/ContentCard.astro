@@ -9,6 +9,7 @@ interface Props {
   keywords?: string[];
   href: string;
   linkText: string;
+  image?: string;
   class?: string;
 }
 
@@ -20,11 +21,19 @@ const {
   keywords = [],
   href,
   linkText,
+  image,
   class: className = "",
 } = Astro.props;
 ---
 
-<article class:list={["content-card", className]}>
+<a href={href} class:list={["content-card", className]}>
+  {
+    image && (
+      <div class="card-image">
+        <img src={image} alt={title} />
+      </div>
+    )
+  }
   <div class="card-header">
     <span class="label">{label}</span>
     <div class="accent-line"></div>
@@ -44,18 +53,17 @@ const {
     }
   </div>
   <div class="card-action">
-    <a href={href} class="link-arrow">
+    <span class="link-arrow">
       {linkText}
       <ArrowRight width={16} height={16} />
-    </a>
+    </span>
   </div>
-</article>
+</a>
 
 <style>
   .content-card {
     display: flex;
     flex-direction: column;
-    padding: 40px;
     border-left: 1px solid rgba(var(--color-primary-rgb), 0.2);
     background-color: #f7f9f8;
     transition:
@@ -66,6 +74,57 @@ const {
     cursor: pointer;
     height: 100%;
     justify-content: space-between;
+    overflow: hidden;
+    text-decoration: none;
+    opacity: 1 !important;
+  }
+
+  .content-card,
+  .content-card * {
+    text-decoration: none !important;
+  }
+
+  .content-card:hover {
+    opacity: 1 !important;
+  }
+
+  .content-card:not(:has(.card-image)) {
+    padding: 48px;
+  }
+
+  .card-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 20px; */
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 72%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+  }
+
+  .content-card:hover .card-image img {
+    transform: scale(1.05);
+  }
+
+  .content-card:has(.card-image) .card-header,
+  .content-card:has(.card-image) .card-content,
+  .content-card:has(.card-image) .card-action {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .content-card:has(.card-image) .card-header {
+    padding-top: 48px;
+  }
+
+  .content-card:has(.card-image) .card-action {
+    padding-bottom: 48px;
   }
 
   .content-card:hover {
@@ -75,10 +134,10 @@ const {
   }
 
   .card-header {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
   }
 
   .label {

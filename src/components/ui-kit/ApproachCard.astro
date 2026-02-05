@@ -31,61 +31,72 @@ const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
   .approach-card {
     position: relative;
     width: 100%;
-    max-width: 1392px;
+    max-width: 1440px;
     margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   /* Background container - height determined by text content */
   .card-background {
     background-color: #f7f9f8;
-    padding: 50px 60px;
+    padding: 64px 0 64px 64px;
     width: 100%;
     display: flex;
     align-items: center;
+    border-radius: 8px;
+    overflow: visible;
   }
 
   /* Text Content */
   .text-content {
-    flex: 0 0 50%;
-    padding-right: 60px;
+    flex: 0 0 40%;
+    padding-right: 40px;
+    z-index: 2;
   }
 
   .approach-number {
     display: block;
     font-family: var(--font-sans);
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 400;
     color: var(--color-primary);
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
   .approach-title {
     font-family: var(--font-heading);
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 400;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 600;
     font-style: italic;
-    line-height: 1.2;
+    line-height: 1;
     color: var(--color-text-main);
-    margin-bottom: 20px;
+    margin-bottom: 32px;
   }
 
   .approach-description {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.125rem;
+    line-height: 1.7;
     color: rgba(var(--color-text-main-rgb), 0.8);
     font-weight: 300;
+    max-width: 50ch;
   }
 
   /* Image/Illustration - positioned absolutely to not affect card height */
   .image-content {
     position: absolute;
-    right: 60px;
+    right: -40px;
     top: 50%;
     transform: translateY(-50%);
-    width: 45%;
-    max-width: 550px;
+    width: 55%;
+    max-width: 900px;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: none;
   }
 
   .approach-image {
@@ -93,14 +104,35 @@ const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
     height: auto;
     object-fit: contain;
     background: transparent;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08));
+  }
+
+  @media (max-width: 1280px) {
+    .card-background {
+      padding: 60px;
+    }
+
+    .approach-title {
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+    }
+
+    .image-content {
+      width: 45%;
+      right: 60px;
+    }
   }
 
   @media (max-width: 1024px) {
-    .card-background {
-      padding: 40px;
+    .approach-card {
+      height: auto;
+      display: block;
     }
 
-    .approach-card {
+    .card-background {
+      padding: 40px;
+      min-height: auto;
+      flex-direction: column;
+      align-items: flex-start;
       padding-bottom: 300px; /* Space for image on mobile */
     }
 
@@ -110,6 +142,10 @@ const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
       padding-right: 0;
     }
 
+    .approach-description {
+      max-width: 100%;
+    }
+
     .image-content {
       position: absolute;
       right: 50%;
@@ -117,21 +153,23 @@ const { number, title, description, imageSrc, imageAlt = title } = Astro.props;
       bottom: 0;
       transform: translateX(50%);
       width: 80%;
-      max-width: 400px;
+      max-width: 500px;
+      justify-content: center;
     }
   }
 
   @media (max-width: 768px) {
     .card-background {
       padding: 32px 24px;
-    }
-
-    .approach-card {
       padding-bottom: 250px;
     }
 
     .image-content {
       width: 90%;
+    }
+
+    .approach-title {
+      font-size: 2.5rem;
     }
   }
 </style>

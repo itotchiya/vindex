@@ -1,5 +1,8 @@
 ---
 import Button from "./ui-kit/Button.astro";
+import MegaMenuCard from "./ui-kit/MegaMenuCard.astro";
+import MegaMenuCTA from "./ui-kit/MegaMenuCTA.astro";
+import { Mail, Phone, ChevronDown } from "lucide-astro";
 ---
 
 <header id="main-header" data-theme="dark">
@@ -13,17 +16,64 @@ import Button from "./ui-kit/Button.astro";
   </div>
   <div class="header-container">
     <div class="header-left">
-      <a href="/" class="logo">Vindex</a>
+      <a href="/" class="logo" aria-label="Vindex - Retour à l'accueil">
+        <img src="/vindex-logo1.svg" alt="Vindex" class="logo-svg" />
+      </a>
       <div class="vertical-divider"></div>
     </div>
 
     <nav>
       <ul>
-        <li>
-          <a href="/domaines/contentieux-photovoltaique">Photovoltaïque</a>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/cabinet">Le Cabinet</a></li>
+        <li class="has-dropdown">
+          <button
+            class="dropdown-trigger"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            Expertises
+            <svg
+              class="chevron"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="mega-menu" id="mega-menu" data-theme="dark">
+            <div class="mega-menu-container">
+              <MegaMenuCard
+                href="/domaines/contentieux-photovoltaique"
+                image="/photovoltaiques.webp"
+                title="Contentieux Photovoltaïque"
+              />
+              <MegaMenuCard
+                href="/domaines/postulation-appel"
+                image="/postulation_appel.webp"
+                title="Postulation en Appel"
+              />
+              <MegaMenuCard
+                href="/domaines/procedure-participative"
+                image="/procedure_participative.webp"
+                title="Procédure Participative"
+              />
+              <MegaMenuCTA
+                href="/contact"
+                title="Prendre rendez-vous"
+                description="Bénéficiez d'une consultation personnalisée avec nos experts juridiques."
+                actionText="Nous contacter"
+              />
+            </div>
+          </div>
         </li>
-        <li><a href="/domaines/postulation-appel">Appel</a></li>
-        <li><a href="/domaines/procedure-participative">Procédure</a></li>
+        <li><a href="/actualites">Actualités</a></li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>
@@ -33,8 +83,66 @@ import Button from "./ui-kit/Button.astro";
         >Prendre rendez-vous</Button
       >
     </div>
+
+    <!-- Mobile Hamburger Button -->
+    <button class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-content">
+    <nav class="mobile-nav">
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/cabinet">Le Cabinet</a></li>
+        <li class="mobile-dropdown">
+          <button class="mobile-dropdown-trigger" aria-expanded="false">
+            Expertises
+            <ChevronDown class="mobile-chevron" size={18} />
+          </button>
+          <ul class="mobile-dropdown-menu">
+            <li>
+              <a href="/domaines/contentieux-photovoltaique"
+                >Contentieux Photovoltaïque</a
+              >
+            </li>
+            <li>
+              <a href="/domaines/postulation-appel">Postulation en Appel</a>
+            </li>
+            <li>
+              <a href="/domaines/procedure-participative"
+                >Procédure Participative</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li><a href="/actualites">Actualités</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="mobile-menu-footer">
+      <div class="mobile-contact-buttons">
+        <a href="mailto:contact@vindex-avocats.fr" class="mobile-outline-btn">
+          <Mail size={18} />
+          contact@vindex-avocats.fr
+        </a>
+        <a href="tel:+33123456789" class="mobile-outline-btn">
+          <Phone size={18} />
+          +33 1 23 45 67 89
+        </a>
+      </div>
+      <Button href="/contact" variant="primary" class="mobile-cta-btn">
+        Prendre rendez-vous
+      </Button>
+    </div>
+  </div>
+</div>
 
 <style>
   header {
@@ -146,12 +254,17 @@ import Button from "./ui-kit/Button.astro";
   }
 
   .logo {
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    letter-spacing: -0.02em;
     transition: color 0.3s ease;
+  }
+
+  .logo-svg {
+    height: 44px;
+    width: auto;
+    display: block;
+    transition: filter 0.3s ease;
   }
 
   header[data-theme="dark"] .logo {
@@ -159,6 +272,14 @@ import Button from "./ui-kit/Button.astro";
   }
   header[data-theme="light"] .logo {
     color: #1a1a2d;
+  }
+
+  /* Invert logo for light theme (SVG is white by default) */
+  header[data-theme="dark"] .logo-svg {
+    filter: none;
+  }
+  header[data-theme="light"] .logo-svg {
+    filter: invert(1);
   }
 
   /* .vertical-divider {
@@ -204,11 +325,159 @@ import Button from "./ui-kit/Button.astro";
     color: var(--color-primary);
   }
 
+  /* Dropdown styles */
+  .has-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+    padding: 0;
+  }
+
+  header[data-theme="dark"] .dropdown-trigger {
+    color: rgba(245, 245, 245, 0.6);
+  }
+  header[data-theme="light"] .dropdown-trigger {
+    color: rgba(26, 26, 45, 0.6);
+  }
+
+  .dropdown-trigger:hover {
+    color: var(--color-primary);
+  }
+
+  .chevron {
+    transition: transform 0.3s ease;
+  }
+
+  .has-dropdown:hover .chevron,
+  .has-dropdown.open .chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Mega Menu Styles */
+  .mega-menu {
+    position: fixed;
+    top: 80px; /* Below header */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1440px;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    z-index: 999;
+  }
+
+  /* Hover bridge - invisible area to keep menu open when moving mouse */
+  .has-dropdown::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: -50px;
+    right: -50px;
+    height: 100px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .has-dropdown:hover::after {
+    pointer-events: auto;
+  }
+
+  .has-dropdown:hover .mega-menu,
+  .mega-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .mega-menu-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    .mega-menu-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mega-menu-container {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
   .header-right {
     display: flex;
     align-items: center;
   }
 
+  /* Hamburger Button - hidden by default */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  .hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: currentColor;
+    transition: all 0.3s ease;
+  }
+
+  header[data-theme="dark"] .hamburger {
+    color: #f5f5f5;
+  }
+
+  header[data-theme="light"] .hamburger {
+    color: #1a1a2d;
+  }
+
+  /* Hamburger X animation when open */
+  .hamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Desktop breakpoint adjustments */
   @media (max-width: 1024px) {
     .header-container {
       padding: 0 30px;
@@ -218,14 +487,203 @@ import Button from "./ui-kit/Button.astro";
     }
   }
 
-  @media (max-width: 768px) {
-    header {
-      height: 70px;
-    }
+  /* Mobile breakpoint at 960px */
+  @media (max-width: 960px) {
     nav,
+    .header-right,
     .vertical-divider {
       display: none;
     }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .header-container {
+      padding: 16px 24px;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Mobile Menu - needs global scope as it's outside header */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #08110f;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    display: none;
+    flex-direction: column;
+  }
+
+  @media (max-width: 960px) {
+    .mobile-menu {
+      display: flex;
+    }
+  }
+
+  .mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 96px 24px 24px;
+    overflow-y: auto;
+  }
+
+  .mobile-nav {
+    display: block !important;
+    width: 100%;
+  }
+
+  .mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .mobile-nav > ul > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-nav > ul > li > a,
+  .mobile-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 0;
+    font-family: var(--font-serif) !important;
+    font-size: 1rem !important;
+    font-weight: 400;
+    color: #f5f5f5;
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-align: left;
+  }
+
+  .mobile-nav > ul > li > a:hover,
+  .mobile-dropdown-trigger:hover {
+    color: var(--color-primary);
+  }
+
+  .mobile-chevron {
+    transition: transform 0.3s ease;
+    opacity: 0.6;
+  }
+
+  .mobile-dropdown-trigger[aria-expanded="true"] .mobile-chevron {
+    transform: rotate(180deg);
+  }
+
+  .mobile-dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 0;
+  }
+
+  ul .mobile-dropdown-menu.open {
+    gap: 0px !important;
+  }
+
+  .mobile-dropdown-menu.open {
+    max-height: 300px;
+    padding-bottom: 16px;
+  }
+
+  .mobile-dropdown-menu li {
+    border-bottom: none;
+  }
+
+  .mobile-dropdown-menu a {
+    display: block;
+    padding: 12px 0;
+    padding-left: 16px;
+    font-family: var(--font-serif) !important;
+    font-size: 0.875rem !important;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    letter-spacing: 0.01em;
+  }
+
+  .mobile-dropdown-menu a:hover {
+    color: var(--color-primary);
+  }
+
+  .mobile-menu-footer {
+    margin-top: auto;
+    /* padding-top: 32px; */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mobile-outline-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
+    transition: all 0.2s ease;
+  }
+
+  .mobile-outline-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .mobile-cta-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  /* When menu is open, force white logo and hamburger */
+  .hamburger.active {
+    color: #f5f5f5 !important;
+  }
+
+  .hamburger.active .hamburger-line {
+    background: #f5f5f5 !important;
+  }
+
+  /* Force header logo to be white when menu is open */
+  body:has(.mobile-menu.active) #main-header .logo-svg {
+    filter: none !important;
+  }
+
+  body:has(.mobile-menu.active) #main-header {
+    z-index: 1000;
   }
 </style>
 
@@ -277,46 +735,127 @@ import Button from "./ui-kit/Button.astro";
       });
     }
 
-    // Theme switching ScrollTriggers - must be created after pinned animations
-    // are set up so positions are calculated correctly
-    setTimeout(() => {
+    // Theme switching ScrollTriggers - must be created after all content loads
+    // and pinned animations are set up so positions are calculated correctly
+    const initThemeTriggers = () => {
+      // Kill any existing theme triggers to avoid duplicates
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.vars.id?.startsWith("theme-")) {
+          trigger.kill();
+        }
+      });
+
       ScrollTrigger.refresh();
+
+      const megaMenu = document.getElementById("mega-menu");
 
       // Switch to light theme when CabinetPreview enters (after Hero)
       ScrollTrigger.create({
+        id: "theme-cabinet",
         trigger: ".cabinet-preview",
         start: "top 100px",
         refreshPriority: -1,
-        onEnter: () => header.setAttribute("data-theme", "light"),
-        onLeaveBack: () => header.setAttribute("data-theme", "dark"),
+        onEnter: () => {
+          header.setAttribute("data-theme", "light");
+          if (megaMenu) megaMenu.setAttribute("data-theme", "light");
+        },
+        onLeaveBack: () => {
+          header.setAttribute("data-theme", "dark");
+          if (megaMenu) megaMenu.setAttribute("data-theme", "dark");
+        },
       });
 
       // Switch to dark theme when TargetAudience enters (dark background section)
       ScrollTrigger.create({
+        id: "theme-audience",
         trigger: ".target-audience",
         start: "top 100px",
         refreshPriority: -1,
-        onEnter: () => header.setAttribute("data-theme", "dark"),
-        onLeaveBack: () => header.setAttribute("data-theme", "light"),
+        onEnter: () => {
+          header.setAttribute("data-theme", "dark");
+          if (megaMenu) megaMenu.setAttribute("data-theme", "dark");
+        },
+        onLeaveBack: () => {
+          header.setAttribute("data-theme", "light");
+          if (megaMenu) megaMenu.setAttribute("data-theme", "light");
+        },
       });
 
       // Switch to light theme when FinalCTA enters (after TargetAudience)
       ScrollTrigger.create({
+        id: "theme-cta",
         trigger: ".final-cta",
         start: "top 100px",
+        end: "bottom 100px",
         refreshPriority: -1,
-        onEnter: () => header.setAttribute("data-theme", "light"),
-        onLeaveBack: () => header.setAttribute("data-theme", "dark"),
+        onEnter: () => {
+          header.setAttribute("data-theme", "light");
+          if (megaMenu) megaMenu.setAttribute("data-theme", "light");
+        },
+        onLeaveBack: () => {
+          header.setAttribute("data-theme", "dark");
+          if (megaMenu) megaMenu.setAttribute("data-theme", "dark");
+        },
+        onLeave: () => {
+          header.setAttribute("data-theme", "dark");
+          if (megaMenu) megaMenu.setAttribute("data-theme", "dark");
+        },
+        onEnterBack: () => {
+          header.setAttribute("data-theme", "light");
+          if (megaMenu) megaMenu.setAttribute("data-theme", "light");
+        },
       });
+    };
 
-      // Switch to dark theme when Footer enters (dark background)
-      ScrollTrigger.create({
-        trigger: ".site-footer",
-        start: "top 100px",
-        refreshPriority: -1,
-        onEnter: () => header.setAttribute("data-theme", "dark"),
-        onLeaveBack: () => header.setAttribute("data-theme", "light"),
+    // Wait for window load to ensure all content (including images) is ready
+    if (document.readyState === "complete") {
+      setTimeout(initThemeTriggers, 300);
+    } else {
+      window.addEventListener("load", () => {
+        setTimeout(initThemeTriggers, 300);
       });
-    }, 100);
+    }
+  }
+
+  // Mobile Menu Toggle
+  const hamburger = document.querySelector(".hamburger");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileDropdownTrigger = document.querySelector(
+    ".mobile-dropdown-trigger",
+  );
+  const mobileDropdownMenu = document.querySelector(".mobile-dropdown-menu");
+
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener("click", () => {
+      const isOpen = hamburger.classList.toggle("active");
+      mobileMenu.classList.toggle("active");
+      hamburger.setAttribute("aria-expanded", isOpen.toString());
+
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = isOpen ? "hidden" : "";
+    });
+
+    // Close menu when clicking a link
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    });
+  }
+
+  // Mobile Dropdown Toggle
+  if (mobileDropdownTrigger && mobileDropdownMenu) {
+    mobileDropdownTrigger.addEventListener("click", () => {
+      const isExpanded =
+        mobileDropdownTrigger.getAttribute("aria-expanded") === "true";
+      mobileDropdownTrigger.setAttribute(
+        "aria-expanded",
+        (!isExpanded).toString(),
+      );
+      mobileDropdownMenu.classList.toggle("open");
+    });
   }
 </script>
