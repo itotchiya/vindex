@@ -98,40 +98,45 @@ export function initHeaderThemeLogic() {
 
     // =========================================================================
     // HOMEPAGE TRIGGERS (index.astro)
+    // Only create these if we're on the homepage (has .hero, not .page-hero)
     // =========================================================================
+    const isHomepage = document.querySelector(".hero") && !document.querySelector(".page-hero");
+    
+    if (isHomepage) {
+      // Switch to light theme when CabinetPreview enters (after Hero)
+      ScrollTrigger.create({
+        id: "theme-cabinet",
+        trigger: ".cabinet-preview",
+        start: "top 100px",
+        refreshPriority: -1,
+        onEnter: () => setTheme("light"),
+        onLeaveBack: () => setTheme("dark"),
+      });
 
-    // Switch to light theme when CabinetPreview enters (after Hero)
-    ScrollTrigger.create({
-      id: "theme-cabinet",
-      trigger: ".cabinet-preview",
-      start: "top 100px",
-      refreshPriority: -1,
-      onEnter: () => setTheme("light"),
-      onLeaveBack: () => setTheme("dark"),
-    });
+      // Switch to dark theme when TargetAudience enters (dark background section)
+      ScrollTrigger.create({
+        id: "theme-audience",
+        trigger: ".target-audience",
+        start: "top 100px",
+        refreshPriority: -1,
+        onEnter: () => setTheme("dark"),
+        onLeaveBack: () => setTheme("light"),
+      });
 
-    // Switch to dark theme when TargetAudience enters (dark background section)
-    ScrollTrigger.create({
-      id: "theme-audience",
-      trigger: ".target-audience",
-      start: "top 100px",
-      refreshPriority: -1,
-      onEnter: () => setTheme("dark"),
-      onLeaveBack: () => setTheme("light"),
-    });
-
-    // Switch to light theme when FinalCTA enters (after TargetAudience)
-    ScrollTrigger.create({
-      id: "theme-cta",
-      trigger: ".final-cta",
-      start: "top 100px",
-      end: "bottom 100px",
-      refreshPriority: -1,
-      onEnter: () => setTheme("light"),
-      onLeaveBack: () => setTheme("dark"),
-      onLeave: () => setTheme("dark"),
-      onEnterBack: () => setTheme("light"),
-    });
+      // Switch to light theme when FinalCTA enters (after TargetAudience)
+      // On homepage, TargetAudience (dark) is above FinalCTA, so onLeaveBack goes to dark
+      ScrollTrigger.create({
+        id: "theme-cta-homepage",
+        trigger: ".final-cta",
+        start: "top 100px",
+        end: "bottom 100px",
+        refreshPriority: -1,
+        onEnter: () => setTheme("light"),
+        onLeaveBack: () => setTheme("dark"),  // Homepage: section above is dark (TargetAudience)
+        onLeave: () => setTheme("dark"),
+        onEnterBack: () => setTheme("light"),
+      });
+    }
 
     // =========================================================================
     // CONTACT PAGE TRIGGERS (contact.astro)
