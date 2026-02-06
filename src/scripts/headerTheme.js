@@ -41,6 +41,44 @@ export function initHeaderThemeLogic() {
     if (megaMenu) megaMenu.setAttribute("data-theme", theme);
   };
 
+  // Calculate current theme based on scroll position
+  // Returns "dark" if in hero area, "light" if in content area
+  const calculateInitialTheme = () => {
+    const hasHero = document.querySelector(".hero") || document.querySelector(".page-hero");
+    const scrollPosition = window.scrollY;
+    
+    // Get the first content section position
+    const contentSections = [
+      ".cabinet-preview",
+      ".section-contact", 
+      ".section-presentation",
+      ".section-domaines",
+      ".section-articles",
+      ".section-content",
+      ".section-philosophy",
+    ];
+    
+    let firstContentTop = Infinity;
+    contentSections.forEach(selector => {
+      const section = document.querySelector(selector);
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        const absoluteTop = rect.top + window.scrollY;
+        if (absoluteTop < firstContentTop) {
+          firstContentTop = absoluteTop;
+        }
+      }
+    });
+    
+    // If scroll position hasn't reached content section, stay dark
+    // 100px is the header height offset for the trigger point
+    if (hasHero && scrollPosition < firstContentTop - 100) {
+      return "dark";
+    }
+    
+    return "light";
+  };
+
   // Theme switching ScrollTriggers - must be created after all content loads
   // and pinned animations are set up so positions are calculated correctly
   const initThemeTriggers = () => {
@@ -52,6 +90,11 @@ export function initHeaderThemeLogic() {
     });
 
     ScrollTrigger.refresh();
+
+    // Set initial theme based on actual scroll position AFTER refresh
+    // This ensures correct theme even if ScrollTrigger.create fires onEnter
+    const initialTheme = calculateInitialTheme();
+    setTheme(initialTheme);
 
     // =========================================================================
     // HOMEPAGE TRIGGERS (index.astro)
@@ -151,15 +194,29 @@ export function initHeaderThemeLogic() {
     // This applies to all sub-pages that have a .footer-wrapper
     const footerWrapper = document.querySelector(".footer-wrapper");
     if (footerWrapper) {
-      ScrollTrigger.create({
-        id: "theme-subpage-footer",
-        trigger: ".footer-wrapper",
-        start: "top 100px",
-        refreshPriority: -1,
-        onEnter: () => setTheme("dark"),
-        onLeaveBack: () => setTheme("light"),
-      });
+      // FinalCTA section: Switch to light theme (it has white background)
+      const finalCTA = document.querySelector(".final-cta");
+      if (finalCTA) {
+        ScrollTrigger.create({
+          id: "theme-subpage-cta",
+          trigger: ".final-cta",
+          start: "top 100px",
+          end: "bottom 100px",
+          refreshPriority: -1,
+          onEnter: () => setTheme("light"),
+          onLeaveBack: () => setTheme("light"), // Stay light when scrolling back to content
+          onLeave: () => setTheme("dark"),      // Switch to dark when entering actual footer
+          onEnterBack: () => setTheme("light"),
+        });
+      }
     }
+
+    // Re-apply initial theme after a small delay to ensure it takes precedence
+    // over any immediate onEnter callbacks from ScrollTrigger.create
+    requestAnimationFrame(() => {
+      const theme = calculateInitialTheme();
+      setTheme(theme);
+    });
   };
 
   // Wait for window load to ensure all content (including images) is ready
