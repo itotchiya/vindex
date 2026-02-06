@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
-import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
+import PageHero from "../../components/PageHero.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
 import Button from "../../components/ui-kit/Button.astro";
@@ -13,104 +13,107 @@ import { ArrowRight } from "lucide-astro";
 
   <main>
     <div class="hero-wrapper">
-      <section class="page-hero">
+      <PageHero
+        title="Domaines d'intervention"
+        description="Le cabinet VINDEX concentre son activité sur trois pôles d'expertise complémentaires, permettant d'offrir une défense technique et rigoureuse au plus près de vos intérêts."
+        breadcrumbs={[{ label: "Domaines" }]}
+      />
+
+      <!-- Domaines List -->
+      <section class="section-domaines">
         <div class="container">
-          <ContentHeader
-            theme="dark"
-            eyebrow="Expertise"
-            title="Domaines d'intervention"
-            description="Le cabinet VINDEX concentre son activité sur trois pôles d'expertise complémentaires, permettant d'offrir une défense technique et rigoureuse au plus près de vos intérêts."
-          />
+          <div class="domaines-grid">
+            <!-- Contentieux photovoltaïque -->
+            <article class="domaine-card">
+              <div class="card-eyebrow">Défense des consommateurs</div>
+              <div class="card-main">
+                <h2 class="card-title">
+                  Contentieux des panneaux photovoltaïques
+                </h2>
+                <p class="card-description">
+                  Intervention aux côtés des consommateurs confrontés à des
+                  opérations de vente irrégulières et des crédits affectés.
+                </p>
+                <ul class="card-tags">
+                  <li>Vente hors établissement</li>
+                  <li>Crédit affecté</li>
+                  <li>Nullité des contrats</li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <Button
+                  href="/domaines/contentieux-photovoltaique"
+                  variant="secondary"
+                  size="sm"
+                >
+                  Explorer ce domaine <ArrowRight
+                    size={18}
+                    class="inline ml-1"
+                  />
+                </Button>
+              </div>
+            </article>
+
+            <!-- Postulation en appel -->
+            <article class="domaine-card">
+              <div class="card-eyebrow">Procédure d'appel</div>
+              <div class="card-main">
+                <h2 class="card-title">Postulation devant la Cour d'appel</h2>
+                <p class="card-description">
+                  Activité de postulation dédiée aux avocats hors ressort,
+                  assurant la gestion procédurale à Douai avec rigueur.
+                </p>
+                <ul class="card-tags">
+                  <li>Représentation</li>
+                  <li>Délais Magendie</li>
+                  <li>Suivi audiences</li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <Button
+                  href="/domaines/postulation-appel"
+                  variant="secondary"
+                  size="sm"
+                >
+                  Détails postulation <ArrowRight
+                    size={18}
+                    class="inline ml-1"
+                  />
+                </Button>
+              </div>
+            </article>
+
+            <!-- Procédure participative -->
+            <article class="domaine-card">
+              <div class="card-eyebrow">Outil stratégique</div>
+              <div class="card-main">
+                <h2 class="card-title">
+                  Convention de procédure participative
+                </h2>
+                <p class="card-description">
+                  Un outil puissant pour maîtriser le temps judiciaire et
+                  sécuriser le cadre procédural de vos litiges.
+                </p>
+                <ul class="card-tags">
+                  <li>Acte d'avocat</li>
+                  <li>Mise en état</li>
+                  <li>Gain de temps</li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <Button
+                  href="/domaines/procedure-participative"
+                  variant="secondary"
+                  size="sm"
+                >
+                  Découvrir l'outil <ArrowRight size={18} class="inline ml-1" />
+                </Button>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
     </div>
-
-    <!-- Domaines List -->
-    <section class="section-domaines">
-      <div class="container">
-        <div class="domaines-grid">
-          <!-- Contentieux photovoltaïque -->
-          <article class="domaine-card">
-            <div class="card-eyebrow">Défense des consommateurs</div>
-            <div class="card-main">
-              <h2 class="card-title">
-                Contentieux des panneaux photovoltaïques
-              </h2>
-              <p class="card-description">
-                Intervention aux côtés des consommateurs confrontés à des
-                opérations de vente irrégulières et des crédits affectés.
-              </p>
-              <ul class="card-tags">
-                <li>Vente hors établissement</li>
-                <li>Crédit affecté</li>
-                <li>Nullité des contrats</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <Button
-                href="/domaines/contentieux-photovoltaique"
-                variant="secondary"
-                size="sm"
-              >
-                Explorer ce domaine <ArrowRight size={18} class="inline ml-1" />
-              </Button>
-            </div>
-          </article>
-
-          <!-- Postulation en appel -->
-          <article class="domaine-card">
-            <div class="card-eyebrow">Procédure d'appel</div>
-            <div class="card-main">
-              <h2 class="card-title">Postulation devant la Cour d'appel</h2>
-              <p class="card-description">
-                Activité de postulation dédiée aux avocats hors ressort,
-                assurant la gestion procédurale à Douai avec rigueur.
-              </p>
-              <ul class="card-tags">
-                <li>Représentation</li>
-                <li>Délais Magendie</li>
-                <li>Suivi audiences</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <Button
-                href="/domaines/postulation-appel"
-                variant="secondary"
-                size="sm"
-              >
-                Détails postulation <ArrowRight size={18} class="inline ml-1" />
-              </Button>
-            </div>
-          </article>
-
-          <!-- Procédure participative -->
-          <article class="domaine-card">
-            <div class="card-eyebrow">Outil stratégique</div>
-            <div class="card-main">
-              <h2 class="card-title">Convention de procédure participative</h2>
-              <p class="card-description">
-                Un outil puissant pour maîtriser le temps judiciaire et
-                sécuriser le cadre procédural de vos litiges.
-              </p>
-              <ul class="card-tags">
-                <li>Acte d'avocat</li>
-                <li>Mise en état</li>
-                <li>Gain de temps</li>
-              </ul>
-            </div>
-            <div class="card-footer">
-              <Button
-                href="/domaines/procedure-participative"
-                variant="secondary"
-                size="sm"
-              >
-                Découvrir l'outil <ArrowRight size={18} class="inline ml-1" />
-              </Button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
     <div class="footer-wrapper">
       <FinalCTA />
@@ -129,17 +132,14 @@ import { ArrowRight } from "lucide-astro";
   .hero-wrapper {
     background-color: #08110f;
     color: #ffffff;
-    padding-top: 80px;
-  }
-
-  .page-hero {
-    padding: 128px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
   }
 
   .section-domaines {
     padding: 128px 24px;
     background-color: #ffffff;
+    position: relative;
+    z-index: 1;
   }
 
   .domaines-grid {
@@ -237,10 +237,6 @@ import { ArrowRight } from "lucide-astro";
 
     .domaine-card {
       padding: 32px;
-    }
-
-    .page-hero {
-      padding: 120px 16px 64px;
     }
 
     .section-domaines {

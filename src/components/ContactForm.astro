@@ -1,0 +1,248 @@
+---
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`contact-form-card ${className}`}>
+  <h2 class="section-title">Envoyer un message</h2>
+
+  <form class="contact-form" action="#" method="post">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nom">Nom *</label>
+        <input
+          type="text"
+          id="nom"
+          name="nom"
+          required
+          placeholder="Votre nom"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="prenom">Prénom *</label>
+        <input
+          type="text"
+          id="prenom"
+          name="prenom"
+          required
+          placeholder="Votre prénom"
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="votre@email.com"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Téléphone</label>
+        <input
+          type="tel"
+          id="telephone"
+          name="telephone"
+          placeholder="06 00 00 00 00"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="objet">Objet *</label>
+      <select id="objet" name="objet" required>
+        <option value="">Sélectionnez un objet</option>
+        <option value="contentieux-photovoltaique"
+          >Contentieux photovoltaïque</option
+        >
+        <option value="postulation">Postulation en appel</option>
+        <option value="procedure-participative">Procédure participative</option>
+        <option value="autre">Autre demande</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message *</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        required
+        placeholder="Comment pouvons-nous vous aider ?"></textarea>
+    </div>
+
+    <div class="form-footer">
+      <label class="checkbox-container">
+        <input type="checkbox" name="rgpd" required />
+        <span class="checkmark"></span>
+        <span class="checkbox-text">
+          J'accepte que mes données soient traitées conformément à la politique
+          de confidentialité. *
+        </span>
+      </label>
+
+      <button type="submit" class="submit-button"> Envoyer </button>
+    </div>
+  </form>
+</div>
+
+<style>
+  .contact-form-card {
+    background-color: #f3fcf8;
+    padding: 48px;
+    border-radius: 8px; /* Optional: adds card look */
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 32px;
+    color: var(--color-text-main);
+  }
+
+  /* Form Styling */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 1024px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(var(--color-text-main-rgb), 0.1);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--color-text-main);
+    transition: border-color 0.3s ease;
+    outline: none;
+    max-width: 100%;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-bottom-color: var(--color-primary);
+  }
+
+  /* Placeholder Styling */
+  ::placeholder {
+    color: rgba(var(--color-text-main-rgb), 0.3);
+  }
+
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: rgba(var(--color-text-main-rgb), 0.6);
+  }
+
+  .checkbox-container input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  .checkmark {
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(var(--color-text-main-rgb), 0.2);
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .checkbox-container:hover .checkmark {
+    border-color: var(--color-primary);
+  }
+
+  .checkbox-container input:checked + .checkmark {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .checkbox-container input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .submit-button {
+    align-self: flex-start;
+    padding: 16px 48px;
+    background-color: var(--color-text-main);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .submit-button:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .contact-form-card {
+      padding: 32px 24px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+  }
+</style>

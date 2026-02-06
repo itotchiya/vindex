@@ -1,0 +1,169 @@
+---
+import ContentHeader from "./ui-kit/ContentHeader.astro";
+
+const faqs = [
+  {
+    question: "Comment se déroule le premier rendez-vous ?",
+    answer:
+      "Le premier rendez-vous est essentiel pour comprendre votre situation. Nous prenons le temps d'écouter votre problématique, d'analyser les premières pièces de votre dossier et de vous orienter vers la stratégie juridique la plus adaptée. C'est également l'occasion de vous expliquer nos modalités d'intervention et de fixer nos honoraires.",
+  },
+  {
+    question: "Quel est le coût d'une procédure ?",
+    answer:
+      "Les honoraires sont fixés en toute transparence dès le premier rendez-vous, conformément aux règles déontologiques de la profession. Ils peuvent être établis au forfait pour une procédure complexe, ou au temps passé selon la nature du dossier. Une convention d'honoraires est systématiquement signée pour garantir une parfaite clarté.",
+  },
+  {
+    question: "Acceptez-vous l'aide juridictionnelle ?",
+    answer:
+      "Oui, le cabinet accepte d'intervenir au titre de l'aide juridictionnelle pour certaines procédures. L'éligibilité dépend de vos revenus et de votre patrimoine. Nous vous accompagnerons dans la constitution de votre dossier de demande auprès du bureau d'aide juridictionnelle si votre situation le permet.",
+  },
+  {
+    question: "Quels documents dois-je apporter ?",
+    answer:
+      "Pour le premier rendez-vous, il est utile d'apporter tous les documents relatifs à votre affaire (convocations, contrats, courriers reçus, décisions de justice antérieures). Pensez également à vous munir d'une pièce d'identité et de vos justificatifs de revenus si vous souhaitez vérifier votre éligibilité à l'aide juridictionnelle.",
+  },
+  {
+    question: "Combien de temps dure une procédure ?",
+    answer:
+      "La durée d'une procédure est très variable et dépend de la nature de l'affaire, de la complexité du dossier et de l'encombrement des juridictions. Lors de notre premier entretien, nous vous donnerons une estimation indicative des délais à prévoir pour votre type de dossier, tout en vous tenant régulièrement informé de l'avancement.",
+  },
+];
+---
+
+<section class="section-faq">
+  <div class="container">
+    <div class="header-wrapper">
+      <ContentHeader
+        title="Questions fréquentes"
+        description="Retrouvez ici les réponses aux questions les plus courantes concernant nos procédures, nos honoraires et le déroulement de votre dossier."
+        class="faq-header centered"
+        eyebrow=""
+      />
+    </div>
+
+    <div class="faq-list">
+      {
+        faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>
+              <span class="question">{faq.question}</span>
+              <span class="icon">+</span>
+            </summary>
+            <div class="answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-faq {
+    position: relative;
+    padding: 128px 24px;
+    background-color: #f8f9fa;
+    z-index: 10;
+  }
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .header-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  /* Target the ContentHeader when it has the .centered class */
+  :global(.faq-header.centered) {
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Deep selector to ensure internal elements are centered if flex is used */
+  :global(.faq-header.centered .headline) {
+    align-items: center;
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(var(--color-text-main-rgb), 0.1);
+    padding-bottom: 1.5rem;
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .question {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+  }
+
+  .icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+  }
+
+  details[open] .icon {
+    transform: rotate(45deg);
+  }
+
+  .answer {
+    margin-top: 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.8);
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-faq {
+      padding: 64px 16px;
+    }
+  }
+</style>

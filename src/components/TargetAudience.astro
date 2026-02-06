@@ -2,6 +2,7 @@
 import ContentHeader from "./ui-kit/ContentHeader.astro";
 import Button from "./ui-kit/Button.astro";
 import { ArrowRight } from "lucide-astro";
+import InfoCard from "./ui-kit/InfoCard.astro";
 
 const audiences = [
   {
@@ -50,12 +51,12 @@ const audiences = [
       <div class="audience-grid">
         {
           audiences.map((audience) => (
-            <div class="audience-card">
-              <span class="audience-label">{audience.label}</span>
-              <h3 class="audience-title">{audience.title}</h3>
-              <p class="audience-description">{audience.description}</p>
-              <div class="separator-line" role="presentation" />
-            </div>
+            <InfoCard
+              label={audience.label}
+              title={audience.title}
+              description={audience.description}
+              theme="dark"
+            />
           ))
         }
       </div>
@@ -110,52 +111,6 @@ const audiences = [
     width: 100%;
   }
 
-  .audience-card {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding-bottom: 24px;
-    cursor: pointer;
-    position: relative;
-  }
-
-  .separator-line {
-    width: 100%;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.08); /* Faded default state */
-    margin-top: 16px;
-    transition: background-color 0.4s ease;
-  }
-
-  .audience-card:hover .separator-line {
-    background-color: var(--color-primary); /* Primary color on hover */
-  }
-
-  .audience-label {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 500;
-  }
-
-  .audience-title {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.3;
-    color: #ffffff;
-  }
-
-  .audience-description {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 300;
-  }
-
   .actions {
     margin-top: 40px;
   }
@@ -208,14 +163,6 @@ const audiences = [
 
     .audience-grid {
       gap: 32px;
-    }
-
-    .audience-title {
-      font-size: 1.5rem;
-    }
-
-    .audience-description {
-      font-size: 1rem;
     }
 
     .custom-btn {

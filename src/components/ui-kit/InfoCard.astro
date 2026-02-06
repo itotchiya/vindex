@@ -1,0 +1,103 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  description: string;
+  theme?: "light" | "dark";
+  class?: string;
+}
+
+const {
+  label,
+  title,
+  description,
+  theme = "dark",
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={["info-card", theme, className]}>
+  <span class="label">{label}</span>
+  <h3 class="title">{title}</h3>
+  <p class="description">{description}</p>
+  <div class="separator" role="presentation"></div>
+</div>
+
+<style>
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 24px;
+    position: relative;
+    /* Cursor explicitely to default to override any parent pointer styles if necessary, though normal div is default */
+    cursor: default;
+  }
+
+  .info-card.dark {
+    --ic-label: rgba(255, 255, 255, 0.5);
+    --ic-title: #ffffff;
+    --ic-desc: rgba(255, 255, 255, 0.75);
+    --ic-sep: rgba(255, 255, 255, 0.08);
+  }
+
+  .info-card.light {
+    --ic-label: rgba(var(--color-text-main-rgb, 8, 17, 15), 0.5);
+    --ic-title: var(--color-text-main, #08110f);
+    --ic-desc: rgba(var(--color-text-main-rgb, 8, 17, 15), 0.75);
+    --ic-sep: rgba(var(--color-text-main-rgb, 8, 17, 15), 0.1);
+  }
+
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ic-label);
+    font-weight: 500;
+  }
+
+  .title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--ic-title);
+    margin: 0;
+  }
+
+  .description {
+    font-family: var(
+      --font-sans
+    ); /* Explicitly set font-sans if inherit is not enough, typical for description */
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ic-desc);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .separator {
+    width: 100%;
+    height: 1px;
+    background-color: var(--ic-sep);
+    margin-top: 16px;
+    transition: background-color 0.4s ease;
+  }
+
+  /* Hover effect: Only changes the separator line color */
+  .info-card:hover .separator {
+    background-color: var(--color-primary);
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 1.5rem;
+    }
+
+    .description {
+      font-size: 1rem;
+    }
+  }
+</style>

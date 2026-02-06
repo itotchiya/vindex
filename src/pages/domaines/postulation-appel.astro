@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
+import PageHero from "../../components/PageHero.astro";
 import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
@@ -11,39 +12,36 @@ import Footer from "../../components/Footer.astro";
 
   <main>
     <div class="hero-wrapper">
-      <section class="page-hero">
+      <PageHero
+        title="Postulation & Représentation Procédurale"
+        description="Une représentation rigoureuse au service des avocats hors ressort, assurant une gestion fluide et sécurisée de vos dossiers en appel."
+        breadcrumbs={[
+          { label: "Domaines", href: "/domaines" },
+          { label: "Postulation appel" },
+        ]}
+      />
+
+      <!-- Définition -->
+      <section class="section-definition">
         <div class="container">
-          <ContentHeader
-            theme="dark"
-            eyebrow="Cour d'appel de Douai"
-            title="Postulation"
-            titleSecondLine="& Représentation Procédurale"
-            description="Une représentation rigoureuse au service des avocats hors ressort, assurant une gestion fluide et sécurisée de vos dossiers en appel."
-          />
+          <div class="definition-content">
+            <h2 class="section-title">Le Mandat de Postulation</h2>
+            <div class="text-block">
+              <p class="body-text">
+                La postulation désigne le mandat donné à un avocat inscrit au
+                barreau du ressort d'une cour d'appel d'accomplir les actes de
+                procédure devant cette juridiction au nom d'un confrère.
+              </p>
+              <p class="body-text">
+                Indispensable en appel, cette représentation garantit le respect
+                des règles de compétence territoriale et la maîtrise des usages
+                locaux propres à la Cour d'appel de Douai.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
-
-    <!-- Définition -->
-    <section class="section-definition">
-      <div class="container">
-        <div class="definition-content">
-          <h2 class="section-title">Le Mandat de Postulation</h2>
-          <div class="text-block">
-            <p class="body-text">
-              La postulation désigne le mandat donné à un avocat inscrit au
-              barreau du ressort d'une cour d'appel d'accomplir les actes de
-              procédure devant cette juridiction au nom d'un confrère.
-            </p>
-            <p class="body-text">
-              Indispensable en appel, cette représentation garantit le respect
-              des règles de compétence territoriale et la maîtrise des usages
-              locaux propres à la Cour d'appel de Douai.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Spécificités -->
     <section class="section-specificites">
@@ -145,17 +143,14 @@ import Footer from "../../components/Footer.astro";
   .hero-wrapper {
     background-color: #08110f;
     color: #ffffff;
-    padding-top: 80px;
-  }
-
-  .page-hero {
-    padding: 128px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
   }
 
   .section-definition {
     padding: 128px 24px;
     background-color: #ffffff;
+    position: relative;
+    z-index: 1;
   }
 
   .definition-content {
@@ -273,10 +268,6 @@ import Footer from "../../components/Footer.astro";
   }
 
   @media (max-width: 768px) {
-    .page-hero {
-      padding: 120px 16px 64px;
-    }
-
     .section-definition,
     .section-specificites,
     .section-services {

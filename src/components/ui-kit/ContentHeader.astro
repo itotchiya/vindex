@@ -1,6 +1,6 @@
 ---
 interface Props {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   titleSecondLine?: string;
   description: string | string[];
@@ -24,7 +24,7 @@ const descriptionArray = Array.isArray(description)
 ---
 
 <div class={`content-header ${theme} ${className}`}>
-  <span class="eyebrow">{eyebrow}</span>
+  {eyebrow && <span class="eyebrow">{eyebrow}</span>}
 
   <h2 class="headline">
     <span class="line">{title}</span>

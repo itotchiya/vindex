@@ -15,9 +15,12 @@ import Button from "./ui-kit/Button.astro";
 
       <p class="body1 subtitle">
         Cabinet d'avocats dédié au contentieux photovoltaïque, à la postulation
-        en appel et à la procédure participative. Nous interposons le droit pour
-        protéger vos intérêts.
+        en appel et à la procédure participative.
       </p>
+
+      <!-- removed from the description
+        Nous interposons le droit pour protéger vos intérêts.
+      -->
 
       <div class="actions">
         <Button href="/contact" variant="primary" theme="dark"
@@ -260,42 +263,19 @@ import Button from "./ui-kit/Button.astro";
 </style>
 
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Entrance animations
-  gsap.from(".hero-content > *", {
-    y: 30,
-    opacity: 0,
-    duration: 1.2,
-    stagger: 0.2,
-    ease: "expo.out",
-    delay: 0.2,
-  });
-
-  gsap.from(".client-logos", {
-    opacity: 0,
-    duration: 1.5,
-    delay: 1,
-    ease: "power2.out",
-  });
-
-  // Parallax Scroll Effect
-  // The hero is sticky, so it stays in view. We animate internal elements to create the "slow scroll" feel.
-  const heroContent = document.querySelector(".hero-container");
-  const heroBg = document.querySelector(".hero-bg");
-
-  if (heroContent && heroBg) {
-    gsap.to(heroContent, {
-      y: -100, // Moves up very slowly (strong parallax)
-      scrollTrigger: {
-        trigger: "body", // Use body to track overall scroll since hero is sticky
-        start: "top top",
-        end: "640vh top", // Animate over the height of the viewport
-        scrub: true,
-      },
-    });
-  }
+  /**
+   * Main Hero Scroll Animations
+   * Uses the reusable scrollAnimations module for:
+   * - Hero content entrance animations (staggered fade-in)
+   * - Client logos fade-in animation
+   * - Parallax scroll effect on hero container
+   *
+   * Required CSS classes:
+   * - .hero-content > * : Content elements with staggered entrance
+   * - .client-logos : Logo slider section
+   * - .hero-container : Parallax target
+   * - .hero-bg : Background element (required for parallax check)
+   */
+  import { initMainHeroAnimations } from "../scripts/scrollAnimations.js";
+  initMainHeroAnimations();
 </script>

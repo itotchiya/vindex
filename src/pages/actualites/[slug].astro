@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
-import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
+import PageHero from "../../components/PageHero.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
 import Button from "../../components/ui-kit/Button.astro";
@@ -99,6 +99,9 @@ const article = articlesData[slug as keyof typeof articlesData];
 if (!article) {
   return Astro.redirect("/actualites");
 }
+
+// Build description with category and date
+const heroDescription = `${article.category} · ${article.date}`;
 ---
 
 <BaseLayout title={`${article.title} | VINDEX – Avocats`}>
@@ -106,32 +109,28 @@ if (!article) {
 
   <main>
     <div class="hero-wrapper">
-      <section class="article-hero">
-        <div class="container">
-          <div class="header-content">
-            <div class="meta-row">
-              <span class="category">{article.category}</span>
-              <span class="separator">/</span>
-              <time class="date">{article.date}</time>
-            </div>
-            <h1 class="article-title">{article.title}</h1>
+      <PageHero
+        title={article.title}
+        description={heroDescription}
+        breadcrumbs={[
+          { label: "Actualités", href: "/actualites" },
+          { label: article.category },
+        ]}
+      />
+
+      <!-- Article Content -->
+      <article class="section-content">
+        <div class="container--narrow">
+          <div class="wysiwyg-content" set:html={article.content} />
+
+          <div class="article-footer">
+            <Button href="/actualites" variant="secondary" size="md">
+              <ArrowLeft size={18} class="inline mr-2" /> Retour au Mag
+            </Button>
           </div>
         </div>
-      </section>
+      </article>
     </div>
-
-    <!-- Article Content -->
-    <article class="section-content">
-      <div class="container--narrow">
-        <div class="wysiwyg-content" set:html={article.content} />
-
-        <div class="article-footer">
-          <Button href="/actualites" variant="secondary" size="md">
-            <ArrowLeft size={18} class="inline mr-2" /> Retour au Mag
-          </Button>
-        </div>
-      </div>
-    </article>
 
     <div class="footer-wrapper">
       <FinalCTA />
@@ -141,60 +140,17 @@ if (!article) {
 </BaseLayout>
 
 <style>
-  .container {
-    max-width: 1440px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
   .hero-wrapper {
     background-color: #08110f;
     color: #ffffff;
-    padding-top: 80px;
-  }
-
-  .article-hero {
-    padding: 128px 24px;
-  }
-
-  .header-content {
-    max-width: 900px;
-  }
-
-  .meta-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 32px;
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .category {
-    color: var(--color-primary);
-    font-weight: 600;
-  }
-
-  .separator {
-    color: rgba(255, 255, 255, 0.2);
-  }
-
-  .date {
-    color: rgba(255, 255, 255, 0.4);
-  }
-
-  .article-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    line-height: 1.1;
-    font-weight: 500;
+    position: relative;
   }
 
   .section-content {
     padding: 128px 24px;
     background-color: #ffffff;
+    position: relative;
+    z-index: 1;
   }
 
   .container--narrow {
@@ -238,14 +194,6 @@ if (!article) {
   }
 
   @media (max-width: 768px) {
-    .article-hero {
-      padding: 120px 16px 64px;
-    }
-
-    .article-title {
-      font-size: 2.25rem;
-    }
-
     .section-content {
       padding: 64px 16px;
     }

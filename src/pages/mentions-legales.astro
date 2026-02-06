@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
-import ContentHeader from "../components/ui-kit/ContentHeader.astro";
+import PageHero from "../components/PageHero.astro";
 import FinalCTA from "../components/FinalCTA.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -11,114 +11,152 @@ import Footer from "../components/Footer.astro";
 
   <main>
     <div class="hero-wrapper">
-      <section class="page-hero">
-        <div class="container">
-          <ContentHeader
-            theme="dark"
-            eyebrow="Transparence"
-            title="Mentions Légales"
-            description="Informations réglementaires concernant l'éditeur, l'hébergement et la protection de vos données personnelles."
-          />
+      <PageHero
+        title="Mentions Légales"
+        description="Informations réglementaires concernant l'éditeur, l'hébergement et la protection de vos données personnelles."
+        breadcrumbs={[{ label: "Mentions légales" }]}
+      />
+
+      <!-- Content -->
+      <section class="section-content">
+        <div class="container--narrow">
+          <div class="mentions-grid">
+            <!-- Éditeur -->
+            <article class="mentions-block">
+              <h2 class="block-title">Éditeur du site</h2>
+              <div class="info-list">
+                <div class="info-item">
+                  <span class="label">Dénomination sociale</span>
+                  <span class="value">VINDEX</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Forme juridique</span>
+                  <span class="value">SELARL</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Capital social</span>
+                  <span class="value">20 000 €</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Siège social</span>
+                  <span class="value"
+                    >15, quai Auguste Bertin – 59500 Douai</span
+                  >
+                </div>
+                <div class="info-item">
+                  <span class="label">RCS</span>
+                  <span class="value">Douai</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">SIREN</span>
+                  <span class="value">881 595 516</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">SIRET</span>
+                  <span class="value">881 595 516 00033</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Code APE</span>
+                  <span class="value">6910Z – Activités juridiques</span>
+                </div>
+                <div class="info-item">
+                  <span class="label">Téléphone</span>
+                  <span class="value"
+                    ><a href="tel:0366722525" class="link-bold phone-number"
+                      >03 66 72 25 25</a
+                    ></span
+                  >
+                </div>
+                <div class="info-item">
+                  <span class="label">Email</span>
+                  <span class="value"
+                    ><a
+                      href="mailto:contact@vindex-avocats.fr"
+                      class="link-bold">contact@vindex-avocats.fr</a
+                    ></span
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- Directeur de publication -->
+            <article class="mentions-block">
+              <h2 class="block-title">Directeur de publication</h2>
+              <p class="text">
+                <a
+                  href="https://linkedin.com/in/j%C3%A9r%C3%A9mieboulaire"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-bold">Maître Jérémie Boulaire</a
+                >, Avocat au Barreau de Douai.
+              </p>
+            </article>
+
+            <!-- Hébergement -->
+            <article class="mentions-block">
+              <h2 class="block-title">Hébergement</h2>
+              <p class="text">
+                Ce site est hébergé par <a
+                  href="https://www.ovhcloud.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-bold">OVH SAS</a
+                >, situé au <a
+                  href="https://www.google.com/maps/search/?api=1&query=2+rue+Kellermann+59100+Roubaix"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="link-bold">2 rue Kellermann, 59100 Roubaix</a
+                >, joignable au <a
+                  href="tel:1007"
+                  class="link-bold phone-number">1007</a
+                >.
+              </p>
+            </article>
+
+            <!-- Propriété -->
+            <article class="mentions-block">
+              <h2 class="block-title">Propriété Intellectuelle</h2>
+              <p class="text">
+                L'ensemble du contenu de ce site (textes, images, graphismes,
+                logo) est la propriété exclusive du cabinet VINDEX – Avocats.
+                Toute reproduction, même partielle, est interdite sans accord
+                écrit préalable.
+              </p>
+            </article>
+
+            <!-- Données -->
+            <article class="mentions-block">
+              <h2 class="block-title">Données Personnelles</h2>
+              <p class="text">
+                Conformément au RGPD, vous disposez d'un droit d'accès, de
+                rectification et d'opposition aux données vous concernant en
+                contactant le cabinet à l'adresse contact@vindex-avocats.fr.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
     </div>
-
-    <!-- Content -->
-    <section class="section-content">
-      <div class="container--narrow">
-        <div class="mentions-grid">
-          <!-- Éditeur -->
-          <article class="mentions-block">
-            <h2 class="block-title">Éditeur du site</h2>
-            <div class="info-list">
-              <div class="info-item">
-                <span class="label">Dénomination :</span>
-                <span class="value">VINDEX – Avocats</span>
-              </div>
-              <div class="info-item">
-                <span class="label">Forme :</span>
-                <span class="value">SELAS – Avocats</span>
-              </div>
-              <div class="info-item">
-                <span class="label">Siège social :</span>
-                <span class="value">123 Rue de la Justice, 59500 Douai</span>
-              </div>
-              <div class="info-item">
-                <span class="label">Contact :</span>
-                <span class="value">contact@vindex-avocats.fr</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Directeur de publication -->
-          <article class="mentions-block">
-            <h2 class="block-title">Directeur de publication</h2>
-            <p class="text">
-              Maître [Nom du dirigeant], Avocat au Barreau de Douai.
-            </p>
-          </article>
-
-          <!-- Hébergement -->
-          <article class="mentions-block">
-            <h2 class="block-title">Hébergement</h2>
-            <p class="text">
-              Ce site est hébergé par [Nom de l'hébergeur], situé au [Adresse],
-              joignable au [Téléphone].
-            </p>
-          </article>
-
-          <!-- Propriété -->
-          <article class="mentions-block">
-            <h2 class="block-title">Propriété Intellectuelle</h2>
-            <p class="text">
-              L'ensemble du contenu de ce site (textes, images, graphismes,
-              logo) est la propriété exclusive du cabinet VINDEX – Avocats.
-              Toute reproduction, même partielle, est interdite sans accord
-              écrit préalable.
-            </p>
-          </article>
-
-          <!-- Données -->
-          <article class="mentions-block">
-            <h2 class="block-title">Données Personnelles</h2>
-            <p class="text">
-              Conformément au RGPD, vous disposez d'un droit d'accès, de
-              rectification et d'opposition aux données vous concernant en
-              contactant le cabinet à l'adresse contact@vindex-avocats.fr.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer-wrapper">
-      <FinalCTA />
-      <Footer />
-    </div>
   </main>
+
+  <div class="footer-wrapper">
+    <FinalCTA />
+    <Footer />
+  </div>
 </BaseLayout>
 
 <style>
-  .container {
-    max-width: 1440px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
   .hero-wrapper {
     background-color: #08110f;
     color: #ffffff;
-    padding-top: 80px;
-  }
-
-  .page-hero {
-    padding: 128px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
   }
 
   .section-content {
     padding: 128px 24px;
     background-color: #ffffff;
+    position: relative;
+    z-index: 1;
   }
 
   .container--narrow {
@@ -136,7 +174,8 @@ import Footer from "../components/Footer.astro";
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 500;
-    margin-bottom: 32px;
+    font-weight: 500;
+    margin-bottom: 24px;
     color: var(--color-primary);
   }
 
@@ -174,15 +213,30 @@ import Footer from "../components/Footer.astro";
     color: rgba(var(--color-text-main-rgb), 0.8);
   }
 
+  .link-bold {
+    font-weight: 700;
+    color: var(--color-text-main);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(var(--color-text-main-rgb), 0.2);
+    transition: all 0.2s ease;
+  }
+
+  .link-bold:hover {
+    color: var(--color-primary);
+    text-decoration-color: var(--color-primary);
+  }
+
+  .phone-number {
+    white-space: nowrap;
+  }
+
   .footer-wrapper {
     position: relative;
   }
 
   @media (max-width: 768px) {
-    .page-hero {
-      padding: 120px 16px 64px;
-    }
-
     .section-content {
       padding: 64px 16px;
     }

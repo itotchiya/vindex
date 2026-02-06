@@ -735,86 +735,10 @@ import { Mail, Phone, ChevronDown } from "lucide-astro";
       });
     }
 
-    // Theme switching ScrollTriggers - must be created after all content loads
-    // and pinned animations are set up so positions are calculated correctly
-    const initThemeTriggers = () => {
-      // Kill any existing theme triggers to avoid duplicates
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.vars.id?.startsWith("theme-")) {
-          trigger.kill();
-        }
-      });
-
-      ScrollTrigger.refresh();
-
-      const megaMenu = document.getElementById("mega-menu");
-
-      // Switch to light theme when CabinetPreview enters (after Hero)
-      ScrollTrigger.create({
-        id: "theme-cabinet",
-        trigger: ".cabinet-preview",
-        start: "top 100px",
-        refreshPriority: -1,
-        onEnter: () => {
-          header.setAttribute("data-theme", "light");
-          if (megaMenu) megaMenu.setAttribute("data-theme", "light");
-        },
-        onLeaveBack: () => {
-          header.setAttribute("data-theme", "dark");
-          if (megaMenu) megaMenu.setAttribute("data-theme", "dark");
-        },
-      });
-
-      // Switch to dark theme when TargetAudience enters (dark background section)
-      ScrollTrigger.create({
-        id: "theme-audience",
-        trigger: ".target-audience",
-        start: "top 100px",
-        refreshPriority: -1,
-        onEnter: () => {
-          header.setAttribute("data-theme", "dark");
-          if (megaMenu) megaMenu.setAttribute("data-theme", "dark");
-        },
-        onLeaveBack: () => {
-          header.setAttribute("data-theme", "light");
-          if (megaMenu) megaMenu.setAttribute("data-theme", "light");
-        },
-      });
-
-      // Switch to light theme when FinalCTA enters (after TargetAudience)
-      ScrollTrigger.create({
-        id: "theme-cta",
-        trigger: ".final-cta",
-        start: "top 100px",
-        end: "bottom 100px",
-        refreshPriority: -1,
-        onEnter: () => {
-          header.setAttribute("data-theme", "light");
-          if (megaMenu) megaMenu.setAttribute("data-theme", "light");
-        },
-        onLeaveBack: () => {
-          header.setAttribute("data-theme", "dark");
-          if (megaMenu) megaMenu.setAttribute("data-theme", "dark");
-        },
-        onLeave: () => {
-          header.setAttribute("data-theme", "dark");
-          if (megaMenu) megaMenu.setAttribute("data-theme", "dark");
-        },
-        onEnterBack: () => {
-          header.setAttribute("data-theme", "light");
-          if (megaMenu) megaMenu.setAttribute("data-theme", "light");
-        },
-      });
-    };
-
-    // Wait for window load to ensure all content (including images) is ready
-    if (document.readyState === "complete") {
-      setTimeout(initThemeTriggers, 300);
-    } else {
-      window.addEventListener("load", () => {
-        setTimeout(initThemeTriggers, 300);
-      });
-    }
+    // Initialize Theme Switching Logic from external script
+    import("../scripts/headerTheme").then(({ initHeaderThemeLogic }) => {
+      initHeaderThemeLogic();
+    });
   }
 
   // Mobile Menu Toggle

@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
-import ContentHeader from "../components/ui-kit/ContentHeader.astro";
-import FinalCTA from "../components/FinalCTA.astro";
+import PageHero from "../components/PageHero.astro";
+import FAQSection from "../components/FAQSection.astro";
+import ContactForm from "../components/ContactForm.astro";
 import Footer from "../components/Footer.astro";
 ---
 
@@ -11,159 +12,74 @@ import Footer from "../components/Footer.astro";
 
   <main>
     <div class="hero-wrapper">
-      <section class="page-hero">
+      <PageHero
+        title="S'interposer pour vous défendre"
+        description="Le cabinet reçoit exclusivement sur rendez-vous. Pour toute demande d'intervention ou de postulation, vous pouvez nous contacter via les coordonnées ci-dessous ou le formulaire dédié."
+      />
+      <!-- Contact Info & Form (moved inside wrapper for overlap effect if desired, or kept outside if standard sticking? 
+           Based on index.astro, Hero is first, CabinetPreview (next section) is second inside wrapper.
+           So we should put the next section inside here IF we want it to slide OVER the sticky hero.) 
+      -->
+
+      <!-- Contact Info & Form -->
+      <section class="section-contact">
         <div class="container">
-          <ContentHeader
-            theme="dark"
-            eyebrow="Contact"
-            title="S'interposer pour vous défendre"
-            description="Le cabinet reçoit exclusivement sur rendez-vous. Pour toute demande d'intervention ou de postulation, vous pouvez nous contacter via les coordonnées ci-dessous ou le formulaire dédié."
-          />
+          <div class="contact-grid">
+            <!-- Contact Information -->
+            <div class="contact-info">
+              <h2 class="section-title">Coordonnées</h2>
+
+              <div class="info-blocks">
+                <div class="info-item">
+                  <span class="info-label">Adresse</span>
+                  <address class="info-value">
+                    VINDEX – Avocats<br />
+                    <a
+                      class="link-bold"
+                      href="https://www.google.com/maps/search/?api=1&query=2+rue+Kellermann+59100+Roubaix"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      15 quai Auguste Bertin<br />
+                      59500 Douai
+                    </a>
+                  </address>
+                </div>
+
+                <div class="info-item">
+                  <span class="info-label">Téléphone</span>
+                  <a class="link-bold" href="tel:+33123456789">03 66 72 25 25</a
+                  >
+                </div>
+
+                <div class="info-item">
+                  <span class="info-label">Email</span>
+                  <a class="link-bold" href="mailto:contact@vindex-avocats.fr"
+                    >contact@vindex-avocats.fr</a
+                  >
+                </div>
+
+                <div class="info-item">
+                  <span class="info-label">Horaires</span>
+                  <p class="info-value">
+                    Du lundi au vendredi<br />
+                    9h00 – 12h30 / 14h00 – 18h00
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <ContactForm />
+          </div>
         </div>
       </section>
     </div>
 
-    <!-- Contact Info & Form -->
-    <section class="section-contact">
-      <div class="container">
-        <div class="contact-grid">
-          <!-- Contact Information -->
-          <div class="contact-info">
-            <h2 class="section-title">Coordonnées</h2>
-
-            <div class="info-blocks">
-              <div class="info-item">
-                <span class="info-label">Adresse</span>
-                <address class="info-value">
-                  VINDEX – Avocats<br />
-                  123 Rue de la Justice<br />
-                  59500 Douai
-                </address>
-              </div>
-
-              <div class="info-item">
-                <span class="info-label">Téléphone</span>
-                <p class="info-value">
-                  <a href="tel:+33123456789">+33 1 23 45 67 89</a>
-                </p>
-              </div>
-
-              <div class="info-item">
-                <span class="info-label">Email</span>
-                <p class="info-value">
-                  <a href="mailto:contact@vindex-avocats.fr"
-                    >contact@vindex-avocats.fr</a
-                  >
-                </p>
-              </div>
-
-              <div class="info-item">
-                <span class="info-label">Horaires</span>
-                <p class="info-value">
-                  Du lundi au vendredi<br />
-                  9h00 – 12h30 / 14h00 – 18h00
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Contact Form -->
-          <div class="contact-form-container">
-            <h2 class="section-title">Envoyer un message</h2>
-
-            <form class="contact-form" action="#" method="post">
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="nom">Nom *</label>
-                  <input
-                    type="text"
-                    id="nom"
-                    name="nom"
-                    required
-                    placeholder="Votre nom"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="prenom">Prénom *</label>
-                  <input
-                    type="text"
-                    id="prenom"
-                    name="prenom"
-                    required
-                    placeholder="Votre prénom"
-                  />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="email">Email *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="votre@email.com"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="telephone">Téléphone</label>
-                  <input
-                    type="tel"
-                    id="telephone"
-                    name="telephone"
-                    placeholder="06 00 00 00 00"
-                  />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="objet">Objet *</label>
-                <select id="objet" name="objet" required>
-                  <option value="">Sélectionnez un objet</option>
-                  <option value="contentieux-photovoltaique"
-                    >Contentieux photovoltaïque</option
-                  >
-                  <option value="postulation">Postulation en appel</option>
-                  <option value="procedure-participative"
-                    >Procédure participative</option
-                  >
-                  <option value="autre">Autre demande</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  placeholder="Comment pouvons-nous vous aider ?"></textarea>
-              </div>
-
-              <div class="form-footer">
-                <label class="checkbox-container">
-                  <input type="checkbox" name="rgpd" required />
-                  <span class="checkmark"></span>
-                  <span class="checkbox-text">
-                    J'accepte que mes données soient traitées conformément à la
-                    politique de confidentialité. *
-                  </span>
-                </label>
-
-                <button type="submit" class="submit-button"> Envoyer </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Removed separate section-contact declaration since it is now inside wrapper -->
 
     <div class="footer-wrapper">
-      <FinalCTA />
+      <FAQSection />
       <Footer />
     </div>
   </main>
@@ -179,23 +95,23 @@ import Footer from "../components/Footer.astro";
   .hero-wrapper {
     background-color: #08110f;
     color: #ffffff;
-    padding-top: 80px;
+    /* padding-top: 80px;  Removed padding-top; PageHero should handle its own top spacing if needed, or stick to top 0 */
+    position: relative; /* Essential for interaction */
   }
 
-  .page-hero {
-    padding: 128px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
+  /* .page-hero styles removed */
 
   .section-contact {
     padding: 128px 24px;
     background-color: #ffffff;
+    position: relative; /* Ensure it creates a stacking context */
+    z-index: 1; /* Slide OVER the sticky hero (PageHero is z:0) */
   }
 
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 120px;
+    gap: 96px;
   }
 
   .section-title {
@@ -235,7 +151,6 @@ import Footer from "../components/Footer.astro";
   }
 
   .info-value a {
-    text-decoration: none;
     transition: color 0.3s ease;
   }
 
@@ -243,128 +158,20 @@ import Footer from "../components/Footer.astro";
     color: var(--color-primary);
   }
 
-  /* Form Styling */
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  label {
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 500;
+  .link-bold {
+    width: fit-content;
+    font-weight: 700;
     color: var(--color-text-main);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(var(--color-text-main-rgb), 0.2);
+    transition: all 0.2s ease;
   }
 
-  input,
-  select,
-  textarea {
-    padding: 16px 0;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid rgba(var(--color-text-main-rgb), 0.1);
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    color: var(--color-text-main);
-    transition: border-color 0.3s ease;
-    outline: none;
-  }
-
-  input:focus,
-  select:focus,
-  textarea:focus {
-    border-bottom-color: var(--color-primary);
-  }
-
-  /* Placeholder Styling */
-  ::placeholder {
-    color: rgba(var(--color-text-main-rgb), 0.3);
-  }
-
-  .form-footer {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    margin-top: 16px;
-  }
-
-  .checkbox-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    cursor: pointer;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: rgba(var(--color-text-main-rgb), 0.6);
-  }
-
-  .checkbox-container input {
-    width: 0;
-    height: 0;
-    opacity: 0;
-  }
-
-  .checkmark {
-    width: 20px;
-    height: 20px;
-    border: 1px solid rgba(var(--color-text-main-rgb), 0.2);
-    flex-shrink: 0;
-    position: relative;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-  }
-
-  .checkbox-container:hover .checkmark {
-    border-color: var(--color-primary);
-  }
-
-  .checkbox-container input:checked + .checkmark {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-
-  .checkbox-container input:checked + .checkmark::after {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 2px;
-    width: 6px;
-    height: 12px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-
-  .submit-button {
-    align-self: flex-start;
-    padding: 16px 48px;
-    background-color: var(--color-text-main);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-family: var(--font-sans);
-    font-weight: 500;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .submit-button:hover {
-    background-color: var(--color-primary);
-    transform: translateY(-2px);
+  .link-bold:hover {
+    color: var(--color-primary);
+    text-decoration-color: var(--color-primary);
   }
 
   @media (max-width: 1024px) {
@@ -375,15 +182,6 @@ import Footer from "../components/Footer.astro";
   }
 
   @media (max-width: 768px) {
-    .form-row {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    .submit-button {
-      width: 100%;
-    }
-
     .page-hero {
       padding: 120px 16px 64px;
     }
@@ -391,5 +189,15 @@ import Footer from "../components/Footer.astro";
     .section-contact {
       padding: 64px 16px;
     }
+
+    .section-contact {
+      padding: 64px 16px;
+    }
+  }
+
+  /* Wrapper for reverse sticky footer effect */
+  .footer-wrapper {
+    position: relative;
+    /* height: 200vh; Extra height for scroll effect */
   }
 </style>

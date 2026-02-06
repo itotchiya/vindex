@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
+import PageHero from "../components/PageHero.astro";
 import ContentHeader from "../components/ui-kit/ContentHeader.astro";
 import FinalCTA from "../components/FinalCTA.astro";
 import Footer from "../components/Footer.astro";
@@ -11,69 +12,52 @@ import Footer from "../components/Footer.astro";
 
   <main>
     <div class="hero-wrapper">
-      <section class="page-hero">
-        <div class="container">
-          <h1 class="hero-title">Le Cabinet</h1>
-          <p class="hero-subtitle">
-            VINDEX – S'interposer pour que le droit demeure.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Le Cabinet"
+        description="VINDEX – S'interposer pour que le droit demeure. Un cabinet dédié au contentieux civil et à la procédure, avec une pratique affirmée en matière d'appel et de défense des consommateurs."
+        breadcrumbs={[{ label: "Cabinet" }]}
+      />
 
-      <section class="section-intro">
+      <!-- Philosophie & positionnement -->
+      <section class="section-philosophy">
         <div class="container">
           <ContentHeader
-            theme="dark"
-            eyebrow="Présentation"
-            title="Un cabinet dédié au contentieux"
-            description={[
-              "VINDEX est un cabinet d'avocats dédié au contentieux civil et à la procédure, avec une pratique affirmée en matière d'appel et de défense des consommateurs.",
-              "Implanté à Douai, le cabinet intervient principalement devant la Cour d'appel de Douai et les juridictions du ressort.",
-            ]}
+            eyebrow="Nos Valeurs"
+            title="Philosophie & Positionnement"
+            description="L'expertise technique au service de la défense des droits, avec une approche rigoureuse et humaine."
           />
+
+          <div class="philosophy-grid">
+            <div class="philosophy-item">
+              <h3 class="card-title">Défense des droits</h3>
+              <p class="card-text">
+                Le cabinet place la défense des intérêts de ses clients au cœur
+                de sa pratique, avec une attention particulière portée aux
+                justiciables les plus vulnérables.
+              </p>
+            </div>
+
+            <div class="philosophy-item">
+              <h3 class="card-title">Maîtrise procédurale</h3>
+              <p class="card-text">
+                La procédure n'est pas un obstacle mais un instrument. Le
+                cabinet maîtrise parfaitement les règles, délais et formes pour
+                un atout décisif.
+              </p>
+            </div>
+
+            <div class="philosophy-item">
+              <h3 class="card-title">Sécurité juridique</h3>
+              <p class="card-text">
+                Chaque intervention est réalisée avec le souci constant de la
+                sécurité juridique, garantissant une défense sans faille et
+                exempte de tout risque.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
-
-    <!-- Philosophie & positionnement -->
-    <section class="section-philosophy">
-      <div class="container">
-        <ContentHeader
-          eyebrow="Nos Valeurs"
-          title="Philosophie & Positionnement"
-          description="L'expertise technique au service de la défense des droits, avec une approche rigoureuse et humaine."
-        />
-
-        <div class="philosophy-grid">
-          <div class="philosophy-item">
-            <h3 class="card-title">Défense des droits</h3>
-            <p class="card-text">
-              Le cabinet place la défense des intérêts de ses clients au cœur de
-              sa pratique, avec une attention particulière portée aux
-              justiciables les plus vulnérables.
-            </p>
-          </div>
-
-          <div class="philosophy-item">
-            <h3 class="card-title">Maîtrise procédurale</h3>
-            <p class="card-text">
-              La procédure n'est pas un obstacle mais un instrument. Le cabinet
-              maîtrise parfaitement les règles, délais et formes pour un atout
-              décisif.
-            </p>
-          </div>
-
-          <div class="philosophy-item">
-            <h3 class="card-title">Sécurité juridique</h3>
-            <p class="card-text">
-              Chaque intervention est réalisée avec le souci constant de la
-              sécurité juridique, garantissant une défense sans faille et
-              exempte de tout risque.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Implantation & ressort -->
     <section class="section-location">
@@ -166,37 +150,11 @@ import Footer from "../components/Footer.astro";
     color: #ffffff;
   }
 
-  .page-hero {
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    padding: 180px 24px 100px;
-  }
-
-  .hero-title {
-    font-family: var(--font-sans);
-    font-size: var(--step-7);
-    font-weight: 600;
-    color: #ffffff;
-    margin: 0;
-  }
-
-  .hero-subtitle {
-    font-family: var(--font-serif);
-    font-size: var(--step-1);
-    margin-top: 24px;
-    color: var(--color-primary);
-    font-style: italic;
-  }
-
-  .section-intro {
-    padding: 100px 24px 128px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
   .section-philosophy {
     padding: 128px 24px;
     background-color: #ffffff;
+    position: relative;
+    z-index: 1;
   }
 
   .philosophy-grid {
@@ -326,10 +284,6 @@ import Footer from "../components/Footer.astro";
   }
 
   @media (max-width: 768px) {
-    .page-hero {
-      padding: 120px 16px 64px;
-    }
-
     .section-philosophy,
     .section-location,
     .section-method {

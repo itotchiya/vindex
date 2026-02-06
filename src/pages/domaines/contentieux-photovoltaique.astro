@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
+import PageHero from "../../components/PageHero.astro";
 import ContentHeader from "../../components/ui-kit/ContentHeader.astro";
 import FinalCTA from "../../components/FinalCTA.astro";
 import Footer from "../../components/Footer.astro";
@@ -11,39 +12,37 @@ import Footer from "../../components/Footer.astro";
 
   <main>
     <div class="hero-wrapper">
-      <section class="page-hero">
+      <PageHero
+        title="Contentieux des panneaux photovoltaïques"
+        description="Le cabinet intervient aux côtés des consommateurs confrontés à des opérations de vente irrégulières et des crédits affectés liés à ces installations."
+        breadcrumbs={[
+          { label: "Domaines", href: "/domaines" },
+          { label: "Contentieux photovoltaïque" },
+        ]}
+      />
+
+      <!-- Présentation générale -->
+      <section class="section-presentation">
         <div class="container">
-          <ContentHeader
-            theme="dark"
-            eyebrow="Défense des consommateurs"
-            title="Contentieux"
-            titleSecondLine="des panneaux photovoltaïques"
-            description="Le cabinet intervient aux côtés des consommateurs confrontés à des opérations de vente irrégulières et des crédits affectés liés à ces installations."
-          />
+          <div class="presentation-content">
+            <h2 class="section-title">Analyse & Enjeux</h2>
+            <div class="text-block">
+              <p class="body-text">
+                Ces contentieux impliquent généralement des ventes conclues à
+                domicile, souvent présentées comme autofinancées par les
+                économies d'énergie promises.
+              </p>
+              <p class="body-text">
+                Le cabinet accompagne ses clients dans l'obtention de la nullité
+                des contrats de vente et des crédits affectés, permettant le
+                plus souvent une remise en état complète de leur situation
+                financière.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
-
-    <!-- Présentation générale -->
-    <section class="section-presentation">
-      <div class="container">
-        <div class="presentation-content">
-          <h2 class="section-title">Analyse & Enjeux</h2>
-          <div class="text-block">
-            <p class="body-text">
-              Ces contentieux impliquent généralement des ventes conclues à
-              domicile, souvent présentées comme autofinancées par les économies
-              d'énergie promises.
-            </p>
-            <p class="body-text">
-              Le cabinet accompagne ses clients dans l'obtention de la nullité
-              des contrats de vente et des crédits affectés, permettant le plus
-              souvent une remise en état complète de leur situation financière.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Cadre juridique -->
     <section class="section-cadre">
@@ -149,17 +148,14 @@ import Footer from "../../components/Footer.astro";
   .hero-wrapper {
     background-color: #08110f;
     color: #ffffff;
-    padding-top: 80px;
-  }
-
-  .page-hero {
-    padding: 128px 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
   }
 
   .section-presentation {
     padding: 128px 24px;
     background-color: #ffffff;
+    position: relative;
+    z-index: 1;
   }
 
   .presentation-content {
@@ -278,10 +274,6 @@ import Footer from "../../components/Footer.astro";
   }
 
   @media (max-width: 768px) {
-    .page-hero {
-      padding: 120px 16px 64px;
-    }
-
     .section-presentation,
     .section-cadre,
     .section-points {
