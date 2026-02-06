@@ -1,0 +1,85 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  alt?: string;
+}
+
+const { icon, title, description, alt = "" } = Astro.props;
+---
+
+<div class="simple-card">
+  <img src={icon} alt={alt} class="card-icon" />
+  <div class="card-content">
+    <h3 class="card-title">{title}</h3>
+    <p class="card-text">{description}</p>
+  </div>
+</div>
+
+<style>
+  .simple-card {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    border: 1px solid rgba(var(--color-text-main-rgb), 0.1);
+  }
+
+  .card-icon {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 24px;
+    border-radius: 2px;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .card-text {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(var(--color-text-main-rgb), 0.7);
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .simple-card {
+      padding: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .simple-card {
+      padding: 24px 24px;
+      gap: 16px;
+    }
+
+    .card-icon {
+      width: 128px;
+      height: 128px;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+    }
+  }
+</style>

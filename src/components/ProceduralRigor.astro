@@ -1,5 +1,6 @@
 ---
 import ContentHeader from "./ui-kit/ContentHeader.astro";
+import SimpleCard from "./ui-kit/SimpleCard.astro";
 ---
 
 <section class="procedural-rigor">
@@ -15,53 +16,33 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
     />
 
     <div class="rigor-grid">
-      <!-- Card 1 -->
-      <div class="rigor-card">
-        <img src="/conformite.webp" alt="Icone Conformité" class="card-icon" />
-        <div class="card-content">
-          <h3 class="card-title">Conformité</h3>
-          <p class="card-text">
-            Analyse systématique de la recevabilité pour garantir 100% de
-            sécurité procédurale.
-          </p>
-        </div>
-      </div>
+      <SimpleCard
+        icon="/conformite.webp"
+        title="Conformité"
+        description="Analyse systématique de la recevabilité pour garantir 100% de sécurité procédurale."
+        alt="Icone Conformité"
+      />
 
-      <!-- Card 2 -->
-      <div class="rigor-card">
-        <img src="/deadline.webp" alt="Icone Délais" class="card-icon" />
-        <div class="card-content">
-          <h3 class="card-title">Délais</h3>
-          <p class="card-text">
-            Gestion proactive du calendrier et anticipation des échéances
-            critiques.
-          </p>
-        </div>
-      </div>
+      <SimpleCard
+        icon="/deadline.webp"
+        title="Délais"
+        description="Gestion proactive du calendrier et anticipation des échéances critiques."
+        alt="Icone Délais"
+      />
 
-      <!-- Card 3 -->
-      <div class="rigor-card">
-        <img src="/security.webp" alt="Icone Sécurité" class="card-icon" />
-        <div class="card-content">
-          <h3 class="card-title">Sécurité</h3>
-          <p class="card-text">
-            Veille juridique constante pour une stratégie à l'épreuve des
-            évolutions.
-          </p>
-        </div>
-      </div>
+      <SimpleCard
+        icon="/security.webp"
+        title="Sécurité"
+        description="Veille juridique constante pour une stratégie à l'épreuve des évolutions."
+        alt="Icone Sécurité"
+      />
 
-      <!-- Card 4 -->
-      <div class="rigor-card">
-        <img src="/strategy.webp" alt="Icone Stratégie" class="card-icon" />
-        <div class="card-content">
-          <h3 class="card-title">Stratégie</h3>
-          <p class="card-text">
-            Vision globale du contentieux intégrant les risques et les
-            opportunités d'appel.
-          </p>
-        </div>
-      </div>
+      <SimpleCard
+        icon="/strategy.webp"
+        title="Stratégie"
+        description="Vision globale du contentieux intégrant les risques et les opportunités d'appel."
+        alt="Icone Stratégie"
+      />
     </div>
   </div>
 </section>
@@ -85,56 +66,10 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
     margin-top: 80px;
   }
 
-  .rigor-card {
-    background-color: #ffffff;
-    padding: 3rem;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 16px;
-  }
-
-  .card-icon {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 24px;
-    border-radius: 2px;
-  }
-
-  .card-content {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-  }
-
-  .card-title {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--color-text-main);
-    font-weight: 500;
-    margin: 0;
-  }
-
-  .card-text {
-    font-family: var(--font-serif);
-    font-size: 1rem;
-    line-height: 1.6;
-    color: rgba(var(--color-text-main-rgb), 0.7);
-    margin: 0;
-  }
-
   @media (max-width: 1024px) {
     .rigor-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .rigor-card {
-      padding: 2rem;
+      gap: 8px;
     }
   }
 
@@ -147,27 +82,6 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
       grid-template-columns: 1fr;
       margin-top: 48px;
     }
-
-    .rigor-card {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 32px 24px;
-      gap: 24px;
-    }
-
-    .card-icon {
-      width: 128px;
-      height: 128px;
-    }
-
-    .card-content {
-      align-items: center;
-    }
-
-    .card-title {
-      font-size: 1.5rem;
-    }
   }
 </style>
 
@@ -179,7 +93,7 @@ import ContentHeader from "./ui-kit/ContentHeader.astro";
 
   const section = document.querySelector(".procedural-rigor");
   const grid = section?.querySelector(".rigor-grid");
-  const cards = section?.querySelectorAll(".rigor-card");
+  const cards = section?.querySelectorAll(".simple-card");
 
   // Staggered y offsets for 4 cards
   const offsets = [48, 96, 144, 192];

@@ -247,4 +247,27 @@ const {
       padding: 32px;
     }
   }
+
+  @media (max-width: 768px) {
+    .content-card {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+
+    .content-card:not(:has(.card-image)) {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+
+    .content-card:has(.card-image) .card-action {
+      padding-bottom: 24px;
+    }
+
+    .content-card:has(.card-image) .card-header,
+    .content-card:has(.card-image) .card-content,
+    .content-card:has(.card-image) .card-action {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 </style>
