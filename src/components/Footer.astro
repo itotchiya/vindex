@@ -27,7 +27,7 @@
         </nav>
       </div>
 
-      <div class="footer-col domains-col ">
+      <div class="footer-col domains-col">
         <h4 class="footer-heading">Domaines d'intervention</h4>
         <nav>
           <ul class="footer-nav">
@@ -50,14 +50,43 @@
 
       <div class="footer-col">
         <h4 class="footer-heading">Contact</h4>
-        <address class="contact-info">
-          123 Rue de la Justice<br />
-          59500 Douai<br />
-          <a href="tel:+33123456789">+33 1 23 45 67 89</a><br />
-          <a href="mailto:contact@vindex-avocats.fr"
-            >contact@vindex-avocats.fr</a
-          >
-        </address>
+        <div class="info-blocks">
+          <div class="info-item">
+            <span class="info-label">Adresse</span>
+            <address class="info-value">
+              VINDEX – Avocats<br />
+              <a
+                class="link-bold"
+                href="https://www.google.com/maps/search/?api=1&query=15+quai+Auguste+Bertin+59500+Douai"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                15 quai Auguste Bertin<br />
+                59500 Douai
+              </a>
+            </address>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Téléphone</span>
+            <a class="link-bold" href="tel:0366722525">03 66 72 25 25</a>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Email</span>
+            <a class="link-bold" href="mailto:contact@vindex-avocats.fr"
+              >contact@vindex-avocats.fr</a
+            >
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Horaires</span>
+            <p class="info-value">
+              Du lundi au vendredi<br />
+              9h00 – 12h30 / 14h00 – 18h00
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -165,21 +194,45 @@
     color: var(--color-primary);
   }
 
-  .contact-info {
-    font-style: normal;
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 300;
+  .info-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  .contact-info a {
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .info-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .info-value {
+    font-style: normal;
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .info-value a,
+  .link-bold {
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
-  .contact-info a:hover {
+  .info-value a:hover,
+  .link-bold:hover {
     color: var(--color-primary);
   }
 
