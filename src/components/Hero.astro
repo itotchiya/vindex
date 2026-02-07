@@ -7,7 +7,6 @@ import Button from "./ui-kit/Button.astro";
   <div class="hero-container">
     <div class="hero-content">
       <div class="tagline">
-        <span class="icon">▲</span>
         <span class="text">VINDEX – Expertise Juridique</span>
       </div>
 
@@ -35,57 +34,40 @@ import Button from "./ui-kit/Button.astro";
     <div class="client-logos">
       <div class="logo-slider">
         <div class="logo-track">
-          <img
-            src="/Logos/logoipsum-391.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <img
-            src="/Logos/logoipsum-398.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <img
-            src="/Logos/logoipsum-402.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <img
-            src="/Logos/logoipsum-412.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <img
-            src="/Logos/logoipsum-414.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <!-- Duplicated for seamless loop -->
-          <img
-            src="/Logos/logoipsum-391.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <img
-            src="/Logos/logoipsum-398.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <img
-            src="/Logos/logoipsum-402.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <img
-            src="/Logos/logoipsum-412.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
-          <img
-            src="/Logos/logoipsum-414.svg"
-            alt="Partner Logo"
-            class="brand-logo"
-          />
+          {
+            [
+              "Contentieux photovoltaïque",
+              "Postulation en appel",
+              "Procédure participative",
+              "Droit de la construction",
+              "Droit immobilier",
+              "Droit des assurances",
+              "Responsabilité civile",
+              "Droit des contrats",
+            ].map((text) => (
+              <>
+                <span class="expertise-item">{text}</span>
+                <span class="separator">•</span>
+              </>
+            ))
+          }
+          {
+            [
+              "Contentieux photovoltaïque",
+              "Postulation en appel",
+              "Procédure participative",
+              "Droit de la construction",
+              "Droit immobilier",
+              "Droit des assurances",
+              "Responsabilité civile",
+              "Droit des contrats",
+            ].map((text) => (
+              <>
+                <span class="expertise-item">{text}</span>
+                <span class="separator">•</span>
+              </>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -155,11 +137,6 @@ import Button from "./ui-kit/Button.astro";
     backdrop-filter: blur(10px);
   }
 
-  .tagline .icon {
-    font-size: 0.8rem;
-    color: var(--color-primary);
-  }
-
   .tagline .text {
     font-family: var(--font-sans);
     font-size: 0.8rem;
@@ -191,23 +168,23 @@ import Button from "./ui-kit/Button.astro";
   }
 
   .client-logos {
-    margin-top: 100px;
+    margin-top: 96px; /* Reduced top margin to keep it closer */
     width: 100%;
-    max-width: 1000px; /* Constrain slider width for better effect */
-    opacity: 0.5;
+    max-width: 960px; /* Constrain width to match hero content */
+    opacity: 0.7;
     /* Progressive edges mask */
     mask-image: linear-gradient(
       to right,
       transparent,
-      black 15%,
-      black 85%,
+      black 20%,
+      black 80%,
       transparent
     );
     -webkit-mask-image: linear-gradient(
       to right,
       transparent,
-      black 15%,
-      black 85%,
+      black 20%,
+      black 80%,
       transparent
     );
   }
@@ -220,9 +197,10 @@ import Button from "./ui-kit/Button.astro";
 
   .logo-track {
     display: flex;
+    align-items: center;
     width: max-content;
-    gap: 80px;
-    animation: marquee 30s linear infinite;
+    gap: 0;
+    animation: marquee 60s linear infinite;
   }
 
   @keyframes marquee {
@@ -230,20 +208,28 @@ import Button from "./ui-kit/Button.astro";
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-50% - 40px));
-    } /* -50% shifts half the track, -40px adjusts for gap */
+      transform: translateX(-50%);
+    }
   }
 
-  .brand-logo {
-    height: 32px;
-    width: auto;
-    filter: brightness(0) invert(1);
+  .expertise-item {
+    font-family: var(
+      --font-sans
+    ); /* Switch back to sans for better readability at small size? Or keep heading? User said 'look small'. Sans usually reads better small. Let's try Sans or keep heading but small. The previous was Heading. Let's stick with Heading but smaller if it's uppercase. */
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.64);
+    white-space: nowrap;
+    padding: 0 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
+
+  .separator {
+    color: var(--color-primary);
+    font-size: 0.6rem; /* Small dot */
     opacity: 0.8;
-    transition: opacity 0.3s ease;
-  }
-
-  .brand-logo:hover {
-    opacity: 1;
   }
 
   @media (max-width: 768px) {
@@ -256,8 +242,29 @@ import Button from "./ui-kit/Button.astro";
       flex-direction: column;
       width: 100%;
     }
-    .logo-track {
-      gap: 32px;
+    .client-logos {
+      max-width: 100%; /* Allow slightly wider on mobile if needed, or keep constrained? Let's keep it responsive. */
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 10%,
+        black 90%,
+        transparent
+      );
+    }
+    .expertise-item {
+      font-size: 0.75rem;
+      padding: 0 1rem;
+    }
+    .separator {
+      font-size: 0.5rem;
     }
   }
 </style>

@@ -79,12 +79,12 @@
 
   /* Colors */
   --color-bg: #ffffff;
-  --color-text: #1A1A2D;
-  --color-text-main: #1A1A2D;
+  --color-text: #1a1a2d;
+  --color-text-main: #1a1a2d;
   --color-text-main-rgb: 26, 26, 45;
   --color-text-muted: rgba(26, 26, 45, 0.6);
-  --color-primary: #91CEC2;
-  --color-accent: #91CEC2;
+  --color-primary: #91cec2ad;
+  --color-accent: #91cec2c9;
 
   /* Typography Scale (Fluid) */
   --step--2: clamp(0.69rem, calc(0.66rem + 0.18vw), 0.8rem);
@@ -126,6 +126,11 @@ body {
   line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #08110f;
 }
 
 /* --- TYPOGRAPHY HIERARCHY --- */
